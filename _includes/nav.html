@@ -1,0 +1,30 @@
+<nav class="site-nav" role="navigation" aria-label="Hoofdnavigatie">
+  <div class="nav-inner">
+    <a href="{{ '/' | relative_url }}" class="nav-logo" aria-label="Nederland-Bewust homepage">
+      <img
+        src="https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Nederland-bewust-compleet-scaled-1.png"
+        alt="Nederland-Bewust logo"
+        height="56"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-tekst" style="display:none">Nederland-Bewust</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Menu openen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/over-nederland-bewust/' | relative_url }}">Over Nederland-bewust</a></li>
+      <li><a href="{{ '/onze-bewust-makers/' | relative_url }}">Onze Bewust-Makers</a></li>
+      <li><a href="{{ '/mee-maker/' | relative_url }}">Onze Mee-makers</a></li>
+      <li><a href="{{ '/agenda/' | relative_url }}">Agenda</a></li>
+      <li><a href="{{ '/kennisbank/' | relative_url }}">Holistische kennisbank</a></li>
+      <li><a href="{{ '/inspiratie/' | relative_url }}">Inspiratie</a></li>
+      <li><a href="{{ '/meld-je-aan/' | relative_url }}" class="nav-cta">Meld je aan</a></li>
+      <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+    </ul>
+  </div>
+</nav>

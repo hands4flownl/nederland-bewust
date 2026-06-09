@@ -1,0 +1,63 @@
+---
+layout: standaard
+title: "Word Mee-maker"
+beschrijving: "Meld je gratis aan als Mee-maker van Nederland-Bewust."
+permalink: /meld-je-aan/mee-maker-formulier/
+---
+
+<div class="pagina-header">
+  <h1>Word Mee-maker</h1>
+  <p>Gratis aanmelden – bij plaatsing van ons logo op jouw website</p>
+</div>
+
+<section class="sectie">
+  <div class="container container--nauw">
+
+    <div style="background:var(--creme); border-radius:16px; padding:1.5rem 2rem; margin-bottom:2rem;">
+      <h3>Mee-maker – Gratis</h3>
+      <p style="color:#555; margin-top:0.4rem; font-size:0.92rem;">Plaats een linkje & logo van Nederland-bewust.nl op jouw website en word gratis Mee-maker.</p>
+    </div>
+
+    <div class="formulier-wrap">
+      <form
+        action="{{ site.formspree_endpoint }}"
+        method="POST"
+        class="js-formulier"
+        novalidate>
+
+        <input type="text" name="_gotcha" style="display:none">
+        <input type="hidden" name="_subject" value="Nieuwe aanmelding Mee-maker – Nederland-Bewust">
+        <input type="hidden" name="type" value="Mee-maker">
+
+        <div class="veld-groep">
+          <label for="naam">Jouw naam *</label>
+          <input type="text" id="naam" name="naam" required placeholder="Voor- en achternaam">
+        </div>
+
+        <div class="veld-groep">
+          <label for="organisatie">Naam van je organisatie / initiatief *</label>
+          <input type="text" id="organisatie" name="organisatie" required placeholder="Naam van je organisatie">
+        </div>
+
+        <div class="veld-groep">
+          <label for="email">E-mailadres *</label>
+          <input type="email" id="email" name="email" required placeholder="jouw@email.nl">
+        </div>
+
+        <div class="veld-groep">
+          <label for="website">Website *</label>
+          <input type="url" id="website" name="website" required placeholder="https://jouwwebsite.nl">
+        </div>
+
+        <div class="veld-groep">
+          <label for="beschrijving">Korte beschrijving van jouw organisatie *</label>
+          <textarea id="beschrijving" name="beschrijving" required placeholder="Wat doe je en waarom wil je Mee-maker worden?"></textarea>
+        </div>
+
+        <button type="submit" class="knop knop--aarde" style="width:100%;">Ja, ik word Mee-maker!</button>
+        <div class="formulier-melding" role="alert" aria-live="polite"></div>
+      </form>
+    </div>
+
+  </div>
+</section>

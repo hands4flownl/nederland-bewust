@@ -1,0 +1,92 @@
+---
+layout: standaard
+title: "Word Bewust-maker"
+beschrijving: "Meld je aan als Bewust-maker op Nederland-Bewust."
+permalink: /meld-je-aan/bewust-maker-formulier/
+---
+
+<div class="pagina-header">
+  <h1>Word Bewust-maker</h1>
+  <p>Vul het formulier in en wij nemen zo spoedig mogelijk contact op</p>
+</div>
+
+<section class="sectie">
+  <div class="container container--nauw">
+
+    <div style="background:var(--creme); border-radius:16px; padding:1.5rem 2rem; margin-bottom:2rem;">
+      <h3>Bewust-maker pakket – €75,- per jaar</h3>
+      <p style="color:#555; margin-top:0.4rem; font-size:0.92rem;">(plus eenmalige opstartkosten €25,-) &nbsp;|&nbsp; Inclusief logo, profielpagina, onbeperkt agenda</p>
+    </div>
+
+    <div class="formulier-wrap">
+      <form
+        action="{{ site.formspree_endpoint }}"
+        method="POST"
+        class="js-formulier"
+        novalidate>
+
+        <input type="text" name="_gotcha" style="display:none">
+        <input type="hidden" name="_subject" value="Nieuwe aanmelding Bewust-maker – Nederland-Bewust">
+        <input type="hidden" name="type" value="Bewust-maker">
+
+        <div class="veld-groep">
+          <label for="naam">Jouw naam *</label>
+          <input type="text" id="naam" name="naam" required placeholder="Voor- en achternaam">
+        </div>
+
+        <div class="veld-groep">
+          <label for="praktijk">Naam van jouw praktijk / bedrijf *</label>
+          <input type="text" id="praktijk" name="praktijk" required placeholder="Naam van je praktijk">
+        </div>
+
+        <div class="veld-groep">
+          <label for="email">E-mailadres *</label>
+          <input type="email" id="email" name="email" required placeholder="jouw@email.nl">
+        </div>
+
+        <div class="veld-groep">
+          <label for="telefoon">Telefoonnummer *</label>
+          <input type="tel" id="telefoon" name="telefoon" required placeholder="06-12345678">
+        </div>
+
+        <div class="veld-groep">
+          <label for="website">Website (indien aanwezig)</label>
+          <input type="url" id="website" name="website" placeholder="https://jouwwebsite.nl">
+        </div>
+
+        <div class="veld-groep">
+          <label for="provincie">Provincie *</label>
+          <select id="provincie" name="provincie" required>
+            <option value="">-- Selecteer provincie --</option>
+            <option>Drenthe</option>
+            <option>Groningen</option>
+            <option>Friesland</option>
+            <option>Overijssel</option>
+            <option>Gelderland</option>
+            <option>Utrecht</option>
+            <option>Noord-Holland</option>
+            <option>Zuid-Holland</option>
+            <option>Zeeland</option>
+            <option>Noord-Brabant</option>
+            <option>Limburg</option>
+            <option>Flevoland</option>
+          </select>
+        </div>
+
+        <div class="veld-groep">
+          <label for="specialiteit">Jouw specialiteit / aanbod *</label>
+          <textarea id="specialiteit" name="specialiteit" required placeholder="Beschrijf kort wat je aanbiedt (massage, coaching, voeding, etc.)"></textarea>
+        </div>
+
+        <div class="veld-groep">
+          <label for="bericht">Aanvullende informatie of vragen</label>
+          <textarea id="bericht" name="bericht" placeholder="Heb je nog vragen of wil je iets kwijt?"></textarea>
+        </div>
+
+        <button type="submit" class="knop knop--groen" style="width:100%;">Ja, ik meld me aan als Bewust-maker!</button>
+        <div class="formulier-melding" role="alert" aria-live="polite"></div>
+      </form>
+    </div>
+
+  </div>
+</section>

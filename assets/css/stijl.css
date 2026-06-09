@@ -1,0 +1,878 @@
+/* Nederland-Bewust - Hoofd stylesheet */
+
+/* =====================
+   CUSTOM PROPERTIES
+   ===================== */
+:root {
+  --groen: #4a7c59;
+  --groen-licht: #6a9c78;
+  --groen-donker: #2d5c3a;
+  --goud: #c8a96e;
+  --goud-licht: #e0c898;
+  --aarde: #8b6f47;
+  --creme: #f9f6f0;
+  --wit: #ffffff;
+  --tekst: #2c2c2c;
+  --tekst-licht: #666666;
+  --border: #e0d8cc;
+  --achtergrond: #f4f0e8;
+
+  --font-kop: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lato', 'Open Sans', sans-serif;
+
+  --schaduw: 0 2px 12px rgba(0,0,0,0.10);
+  --schaduw-hover: 0 6px 24px rgba(0,0,0,0.16);
+  --radius: 8px;
+  --radius-groot: 16px;
+}
+
+/* =====================
+   RESET & BASIS
+   ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--tekst);
+  background: var(--wit);
+  line-height: 1.7;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--groen); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--groen-donker); }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-kop);
+  line-height: 1.3;
+  color: var(--tekst);
+}
+
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+h4 { font-size: 1.1rem; }
+
+p { margin-bottom: 1rem; }
+
+ul { list-style: none; }
+
+/* =====================
+   LAYOUT HULPKLASSEN
+   ===================== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container--nauw {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sectie {
+  padding: 4rem 0;
+}
+
+.sectie--kleur {
+  background: var(--creme);
+}
+
+.sectie--groen {
+  background: var(--groen);
+  color: var(--wit);
+}
+
+.sectie--groen h1,
+.sectie--groen h2,
+.sectie--groen h3,
+.sectie--groen h4 {
+  color: var(--wit);
+}
+
+.tekst-midden { text-align: center; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* =====================
+   NAVIGATIE
+   ===================== */
+.site-nav {
+  background: var(--wit);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-logo img {
+  height: 56px;
+  width: auto;
+}
+
+.nav-logo-tekst {
+  font-family: var(--font-kop);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--groen-donker);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: var(--tekst);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--radius);
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.actief {
+  background: var(--groen);
+  color: var(--wit);
+}
+
+.nav-links a.nav-cta {
+  background: var(--goud);
+  color: var(--tekst);
+}
+.nav-links a.nav-cta:hover {
+  background: var(--goud-licht);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--tekst);
+  transition: all 0.3s;
+}
+
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--wit);
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid var(--border);
+    gap: 0.3rem;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 0.6rem 1rem; width: 100%; }
+  .site-nav { position: relative; }
+}
+
+/* =====================
+   HERO SECTIE
+   ===================== */
+.hero {
+  background: linear-gradient(135deg, var(--groen-donker) 0%, var(--groen) 50%, var(--groen-licht) 100%);
+  color: var(--wit);
+  padding: 5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://nederland-bewust.nl/wp-content/uploads/2025/09/cropped-cropped-bospad-e1758629959913.jpg') center/cover no-repeat;
+  opacity: 0.18;
+}
+
+.hero-inhoud {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.hero-label {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: var(--wit);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 {
+  color: var(--wit);
+  margin-bottom: 1.2rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.hero h2 {
+  color: rgba(255,255,255,0.9);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: 1.4rem;
+}
+
+.hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.hero-knoppen {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* =====================
+   KNOPPEN
+   ===================== */
+.knop {
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.25s;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+}
+
+.knop--primair {
+  background: var(--goud);
+  color: var(--tekst);
+}
+.knop--primair:hover {
+  background: var(--goud-licht);
+  color: var(--tekst);
+  transform: translateY(-2px);
+  box-shadow: var(--schaduw-hover);
+}
+
+.knop--omlijnd {
+  background: transparent;
+  color: var(--wit);
+  border: 2px solid rgba(255,255,255,0.7);
+}
+.knop--omlijnd:hover {
+  background: rgba(255,255,255,0.15);
+  color: var(--wit);
+}
+
+.knop--groen {
+  background: var(--groen);
+  color: var(--wit);
+}
+.knop--groen:hover {
+  background: var(--groen-donker);
+  color: var(--wit);
+  transform: translateY(-2px);
+  box-shadow: var(--schaduw-hover);
+}
+
+.knop--aarde {
+  background: var(--aarde);
+  color: var(--wit);
+}
+.knop--aarde:hover {
+  background: #6d5235;
+  color: var(--wit);
+  transform: translateY(-2px);
+}
+
+/* =====================
+   KAARTEN
+   ===================== */
+.kaart {
+  background: var(--wit);
+  border-radius: var(--radius-groot);
+  box-shadow: var(--schaduw);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.kaart:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--schaduw-hover);
+}
+
+.kaart__afbeelding {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.kaart__inhoud {
+  padding: 1.5rem;
+}
+
+.kaart__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--groen);
+  margin-bottom: 0.5rem;
+}
+
+.kaart__titel {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.kaart__tekst {
+  font-size: 0.95rem;
+  color: var(--tekst-licht);
+  margin-bottom: 1rem;
+}
+
+/* =====================
+   BEWUST-MAKER KAART
+   ===================== */
+.maker-kaart {
+  background: var(--wit);
+  border-radius: var(--radius-groot);
+  box-shadow: var(--schaduw);
+  padding: 2rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+  text-align: center;
+}
+
+.maker-kaart:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--schaduw-hover);
+}
+
+.maker-kaart__foto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border: 3px solid var(--groen-licht);
+}
+
+.maker-kaart__naam {
+  font-size: 1.15rem;
+  margin-bottom: 0.3rem;
+}
+
+.maker-kaart__praktijk {
+  font-size: 0.88rem;
+  color: var(--groen);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.maker-kaart__bio {
+  font-size: 0.9rem;
+  color: var(--tekst-licht);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* =====================
+   PIJLERS SECTIE
+   ===================== */
+.pijler {
+  border-radius: var(--radius-groot);
+  overflow: hidden;
+  box-shadow: var(--schaduw);
+  background: var(--wit);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.pijler:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--schaduw-hover);
+}
+
+.pijler__afbeelding {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.pijler__inhoud {
+  padding: 1.5rem;
+}
+
+.pijler__inhoud h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.pijler__inhoud p {
+  font-size: 0.93rem;
+  color: var(--tekst-licht);
+  margin-bottom: 1rem;
+}
+
+/* =====================
+   TELLERS
+   ===================== */
+.teller-rij {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding: 2.5rem 0;
+}
+
+.teller {
+  text-align: center;
+}
+
+.teller__getal {
+  font-family: var(--font-kop);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--groen);
+  line-height: 1;
+}
+
+.teller__label {
+  font-size: 0.9rem;
+  color: var(--tekst-licht);
+  margin-top: 0.3rem;
+}
+
+/* =====================
+   PRIJZEN
+   ===================== */
+.prijs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.prijs-kaart {
+  background: var(--wit);
+  border-radius: var(--radius-groot);
+  box-shadow: var(--schaduw);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 2px solid var(--border);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.prijs-kaart:hover {
+  border-color: var(--groen-licht);
+  box-shadow: var(--schaduw-hover);
+}
+
+.prijs-kaart--uitgelicht {
+  border-color: var(--groen);
+}
+
+.prijs-kaart__naam {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--groen-donker);
+}
+
+.prijs-kaart__prijs {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--groen);
+  margin-bottom: 0.3rem;
+}
+
+.prijs-kaart__sub {
+  font-size: 0.85rem;
+  color: var(--tekst-licht);
+  margin-bottom: 1.5rem;
+}
+
+.prijs-kaart ul {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.prijs-kaart ul li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.92rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.prijs-kaart ul li:last-child { border-bottom: none; }
+
+.prijs-kaart ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--groen);
+  font-weight: 700;
+}
+
+/* =====================
+   FORMULIEREN
+   ===================== */
+.formulier-wrap {
+  background: var(--wit);
+  border-radius: var(--radius-groot);
+  box-shadow: var(--schaduw);
+  padding: 2.5rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.formulier-wrap h3 {
+  margin-bottom: 1.5rem;
+  color: var(--groen-donker);
+}
+
+.veld-groep {
+  margin-bottom: 1.2rem;
+}
+
+.veld-groep label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: var(--tekst);
+}
+
+.veld-groep input,
+.veld-groep textarea,
+.veld-groep select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--tekst);
+  background: var(--creme);
+  transition: border-color 0.2s;
+}
+
+.veld-groep input:focus,
+.veld-groep textarea:focus,
+.veld-groep select:focus {
+  outline: none;
+  border-color: var(--groen);
+  background: var(--wit);
+}
+
+.veld-groep textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.formulier-melding {
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+  display: none;
+}
+
+.formulier-melding.succes {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  display: block;
+}
+
+.formulier-melding.fout {
+  background: #fce4e4;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+  display: block;
+}
+
+/* =====================
+   AGENDA
+   ===================== */
+.agenda-item {
+  background: var(--wit);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--schaduw);
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+
+.agenda-item:hover {
+  box-shadow: var(--schaduw-hover);
+}
+
+.agenda-datum {
+  background: var(--groen);
+  color: var(--wit);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  text-align: center;
+  min-width: 64px;
+  flex-shrink: 0;
+}
+
+.agenda-datum__dag {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.agenda-datum__maand {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.agenda-info__titel {
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.agenda-info__meta {
+  font-size: 0.88rem;
+  color: var(--tekst-licht);
+}
+
+/* =====================
+   PAGE HEADER
+   ===================== */
+.pagina-header {
+  background: linear-gradient(135deg, var(--groen-donker), var(--groen));
+  color: var(--wit);
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.pagina-header h1 {
+  color: var(--wit);
+  margin-bottom: 0.6rem;
+}
+
+.pagina-header p {
+  color: rgba(255,255,255,0.88);
+  font-size: 1.05rem;
+}
+
+/* =====================
+   CONTACT PAGINA
+   ===================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-info__item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  align-items: flex-start;
+}
+
+.contact-info__icoon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.contact-foto {
+  border-radius: var(--radius-groot);
+  width: 100%;
+  max-width: 360px;
+}
+
+@media (max-width: 720px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* =====================
+   KENNISBANK
+   ===================== */
+.tag-lijst {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.tag {
+  background: var(--creme);
+  border: 1.5px solid var(--border);
+  color: var(--tekst);
+  padding: 0.3rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.tag:hover, .tag.actief {
+  background: var(--groen);
+  border-color: var(--groen);
+  color: var(--wit);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+.site-footer {
+  background: var(--groen-donker);
+  color: rgba(255,255,255,0.85);
+  padding: 3rem 1.5rem 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+}
+
+.footer-kolom h4 {
+  color: var(--wit);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.footer-kolom ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-kolom ul li a {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.footer-kolom ul li a:hover {
+  color: var(--goud-licht);
+}
+
+.footer-kolom p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 0.8rem;
+}
+
+.footer-sociaal {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.footer-sociaal a {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+
+.footer-sociaal a:hover { color: var(--goud-licht); }
+
+.footer-bodem {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* =====================
+   INSPIRATIE BLOG
+   ===================== */
+.blog-uitgelicht {
+  background: var(--creme);
+  border-radius: var(--radius-groot);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.blog-uitgelicht__label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--groen);
+  margin-bottom: 0.5rem;
+}
+
+/* =====================
+   RESPONSIEF
+   ===================== */
+@media (max-width: 640px) {
+  .sectie { padding: 2.5rem 0; }
+  .hero { padding: 3rem 1rem; }
+  .hero-knoppen { flex-direction: column; align-items: center; }
+  .teller-rij { gap: 2rem; }
+  .agenda-item { flex-direction: column; gap: 1rem; }
+  .prijs-grid { grid-template-columns: 1fr; }
+  .formulier-wrap { padding: 1.5rem; }
+}

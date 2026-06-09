@@ -1,0 +1,40 @@
+title: "Nederland-Bewust"
+description: "Dé startpagina voor alternatieve zorg, holistische therapie, natuurlijke gezondheid én welzijn in Nederland."
+baseurl: ""
+url: "https://jouwgebruikersnaam.github.io"
+
+# Verander dit naar je eigen GitHub Pages URL of custom domein
+# url: "https://nederland-bewust.nl"
+
+lang: nl
+timezone: Europe/Amsterdam
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Formspree configuratie (vervang met je eigen endpoint)
+formspree_endpoint: "https://formspree.io/f/JOUWFORMID"
+
+# Contactgegevens
+contact:
+  marcella: "06-21312490"
+  elsemarie: "06-59111456"
+  email: "info@nederland-bewust.nl"
+  facebook: "https://www.facebook.com/share/1NK76U1wML/"
+  instagram: "https://instagram.com/nederlandbewust2026"
+  whatsapp: "https://wa.me/31659111456"
+
+# Uitsluitingen
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap

@@ -1,0 +1,35 @@
+<div class="formulier-wrap">
+  <form
+    action="{{ site.formspree_endpoint }}"
+    method="POST"
+    class="js-formulier"
+    novalidate>
+
+    <!-- Spam bescherming -->
+    <input type="text" name="_gotcha" style="display:none">
+    <input type="hidden" name="_subject" value="Bericht via Nederland-Bewust website">
+
+    <div class="veld-groep">
+      <label for="naam">Naam *</label>
+      <input type="text" id="naam" name="naam" required placeholder="Jouw volledige naam">
+    </div>
+
+    <div class="veld-groep">
+      <label for="email">E-mailadres *</label>
+      <input type="email" id="email" name="email" required placeholder="jouw@email.nl">
+    </div>
+
+    <div class="veld-groep">
+      <label for="telefoon">Telefoonnummer</label>
+      <input type="tel" id="telefoon" name="telefoon" placeholder="06-12345678">
+    </div>
+
+    <div class="veld-groep">
+      <label for="bericht">Bericht *</label>
+      <textarea id="bericht" name="bericht" required placeholder="Schrijf hier je vraag of bericht..."></textarea>
+    </div>
+
+    <button type="submit" class="knop knop--groen" style="width:100%;">Verzend bericht</button>
+    <div class="formulier-melding" role="alert" aria-live="polite"></div>
+  </form>
+</div>
