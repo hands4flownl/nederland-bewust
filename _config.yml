@@ -1,9 +1,10 @@
 title: "Nederland-Bewust"
 description: "Dé startpagina voor alternatieve zorg, holistische therapie, natuurlijke gezondheid én welzijn in Nederland."
-baseurl: ""
-url: "https://jouwgebruikersnaam.github.io"
+baseurl: "/nederland-bewust"
+url: "https://hands4flownl.github.io"
 
-# Verander dit naar je eigen GitHub Pages URL of custom domein
+# Voor een custom domein later: zet baseurl terug op "" en pas url aan:
+# baseurl: ""
 # url: "https://nederland-bewust.nl"
 
 lang: nl
