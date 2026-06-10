@@ -1,52 +1,42 @@
 <footer class="site-footer" role="contentinfo">
   <div class="footer-grid">
-
     <div class="footer-kolom">
-      <img
-        src="https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Nederland-bewust-compleet-scaled-1.png"
-        alt="Nederland-Bewust logo"
-        class="footer-logo"
-        onerror="this.style.display='none'">
-      <p>Dé startpagina voor alternatieve zorg, holistische therapie, natuurlijke gezondheid én welzijn in Nederland.</p>
+      <img src="https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Nederland-bewust-compleet-scaled-1.png"
+        alt="Nederland-Bewust" class="footer-logo" onerror="this.style.display='none'">
+      <p>Dé startpagina voor alternatieve zorg, holistische therapie en welzijn in Nederland.</p>
       <div class="footer-sociaal">
         <a href="{{ site.contact.facebook }}" target="_blank" rel="noopener">📘 Facebook</a>
         <a href="{{ site.contact.instagram }}" target="_blank" rel="noopener">📷 Instagram</a>
         <a href="{{ site.contact.whatsapp }}" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </div>
-
     <div class="footer-kolom">
       <h4>Navigatie</h4>
       <ul>
-        <li><a href="{{ '/over-nederland-bewust/' | relative_url }}">Over Nederland-bewust</a></li>
-        <li><a href="{{ '/onze-bewust-makers/' | relative_url }}">Onze Bewust-Makers</a></li>
-        <li><a href="{{ '/mee-maker/' | relative_url }}">Onze Mee-makers</a></li>
+        <li><a href="{{ '/over-nederland-bewust/' | relative_url }}">Over ons</a></li>
+        <li><a href="{{ '/onze-bewust-makers/' | relative_url }}">Bewust-makers</a></li>
         <li><a href="{{ '/agenda/' | relative_url }}">Agenda</a></li>
-        <li><a href="{{ '/kennisbank/' | relative_url }}">Holistische kennisbank</a></li>
+        <li><a href="{{ '/kennisbank/' | relative_url }}">Kennisbank</a></li>
         <li><a href="{{ '/inspiratie/' | relative_url }}">Inspiratie</a></li>
       </ul>
     </div>
-
     <div class="footer-kolom">
       <h4>Meedoen</h4>
       <ul>
-        <li><a href="{{ '/meld-je-aan/' | relative_url }}">Meld je aan</a></li>
+        <li><a href="{{ '/meld-je-aan/' | relative_url }}">Aanmelden</a></li>
         <li><a href="{{ '/meld-je-aan/#bewust-maker' | relative_url }}">Word Bewust-maker</a></li>
         <li><a href="{{ '/meld-je-aan/#mee-maker' | relative_url }}">Word Mee-maker</a></li>
         <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
       </ul>
     </div>
-
     <div class="footer-kolom">
       <h4>Contact</h4>
-      <p>📧 <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></p>
-      <p>📞 Marcella: <a href="tel:+31{{ site.contact.marcella | remove: '-' | remove: '0' }}">{{ site.contact.marcella }}</a></p>
-      <p>📞 Elsemarie: <a href="tel:+31{{ site.contact.elsemarie | remove: '-' | remove: '0' }}">{{ site.contact.elsemarie }}</a></p>
+      <p>📧 <a href="mailto:{{ site.contact.email }}" style="color:rgba(255,255,255,0.7)">{{ site.contact.email }}</a></p>
+      <p>📞 Marcella: <a href="tel:+31621312490" style="color:rgba(255,255,255,0.7)">{{ site.contact.marcella }}</a></p>
+      <p>📞 Elsemarie: <a href="tel:+31659111456" style="color:rgba(255,255,255,0.7)">{{ site.contact.elsemarie }}</a></p>
     </div>
-
   </div>
-
   <div class="footer-bodem">
-    <p>© {{ 'now' | date: "%Y" }} Nederland-Bewust. Alle rechten voorbehouden.</p>
+    <p>© {{ 'now' | date: "%Y" }} Nederland-Bewust &nbsp;·&nbsp; <a href="{{ '/contact/' | relative_url }}" style="color:rgba(255,255,255,0.45)">Contact</a></p>
   </div>
 </footer>
