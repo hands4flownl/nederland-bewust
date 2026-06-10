@@ -101,8 +101,8 @@ ul { list-style: none; }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: url('https://nederland-bewust.nl/wp-content/uploads/2025/09/cropped-cropped-bospad-e1758629959913.jpg') center/cover no-repeat;
-  opacity: 0.15;
+  background: url('../images/tulpen.jpg') center/cover no-repeat;
+  opacity: 0.22;
 }
 /* Tulpen achtergrond */
 .hero::after {
@@ -281,13 +281,18 @@ ul { list-style: none; }
 
 /* ===================== PAGE HEADER ===================== */
 .pagina-header {
-  background: linear-gradient(135deg, var(--groen-donker), var(--groen));
+  background: linear-gradient(135deg, var(--groen-donker) 0%, var(--groen) 100%);
   color: var(--wit); padding: 2.5rem 1.5rem; text-align: center;
   position: relative; overflow: hidden;
 }
 .pagina-header::before {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+  position: absolute; inset: 0;
+  background: url('../images/tulpen.jpg') center 70% / cover no-repeat;
+  opacity: 0.18;
+}
+.pagina-header .header-overlay {
+  display: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cellipse cx='100' cy='80' rx='40' ry='60' fill='%23eaad32' opacity='0.12'/%3E%3Cellipse cx='300' cy='70' rx='30' ry='50' fill='%23eaad32' opacity='0.08'/%3E%3Cellipse cx='600' cy='75' rx='35' ry='55' fill='%23eaad32' opacity='0.1'/%3E%3Cellipse cx='900' cy='65' rx='28' ry='48' fill='%23eaad32' opacity='0.09'/%3E%3Cellipse cx='1100' cy='80' rx='40' ry='60' fill='%23eaad32' opacity='0.11'/%3E%3C/svg%3E") bottom/cover no-repeat;
   pointer-events: none;
 }
