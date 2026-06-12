@@ -7,6 +7,12 @@
   <title>Nederland-Bewust Beheer</title>
 </head>
 <body>
+  <script>
+    // Zorg dat Identity altijd het juiste Netlify domein gebruikt
+    window.netlifyIdentityConfig = {
+      APIUrl: "https://nederland-bewust-beheer.netlify.app/.netlify/identity"
+    };
+  </script>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
