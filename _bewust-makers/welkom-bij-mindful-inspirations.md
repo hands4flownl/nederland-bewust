@@ -3,7 +3,7 @@ naam: "Ronald Weerman"
 praktijk: "Mindful-inspirations"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2026/06/ronald-weerman.jpg"
+foto: "/assets/images/makers/ronald-weerman.jpg"
 categorieen:
   - "Bewegen"
   - "Coaching"
