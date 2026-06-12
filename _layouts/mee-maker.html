@@ -1,0 +1,44 @@
+---
+layout: standaard
+---
+{% assign m = page %}
+
+<div class="pagina-header">
+  <h1>{{ m.naam }}</h1>
+  <p>Mee-maker Nederland-Bewust &nbsp;·&nbsp; 📍 {{ m.provincie }}</p>
+</div>
+
+<section class="sectie">
+  <div class="container container--nauw">
+
+    <div style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:2rem;">
+
+      {% if m.logo %}
+      <div style="flex-shrink:0;">
+        <img src="{{ m.logo }}" alt="{{ m.naam }}"
+          style="width:160px;height:160px;object-fit:contain;border-radius:var(--radius-groot);border:2px solid var(--border);padding:1rem;background:var(--wit);"
+          loading="lazy" onerror="this.style.opacity='0.3'">
+      </div>
+      {% endif %}
+
+      <div style="flex:1;min-width:200px;">
+        <h2 style="margin-bottom:0.4rem;">{{ m.naam }}</h2>
+        <p style="color:var(--tekst-licht);margin-bottom:1rem;">📍 {{ m.provincie }}</p>
+        {% if m.beschrijving %}
+        <p>{{ m.beschrijving }}</p>
+        {% endif %}
+        {% if m.website %}
+        <a href="{{ m.website }}" target="_blank" rel="noopener"
+           class="knop knop--goud" style="font-size:0.88rem;margin-top:0.8rem;">
+          🌐 Bezoek website
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="{{ '/mee-maker/' | relative_url }}"
+         style="font-size:0.9rem;color:var(--tekst-licht);">← Terug naar alle mee-makers</a>
+    </div>
+  </div>
+</section>
