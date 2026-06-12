@@ -7,14 +7,15 @@ foto: "https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-mak
 categorieen:
   - "Bewegen"
 methoden:
-  - "EMS"
-  - "Bodysculpting"
-  - "SlimUp®"
+  - "Bodysculptor"
+  - "EMS-sessies met SlimUp®"
 website: ""
+email_zichtbaar: ""
+telefoon: ""
 online: "Nee"
 sessieduur: "45 min"
 tarief: ""
-eerste_gesprek: "Gratis"
+eerste_gesprek: "Gratis kennismaking"
 vergoeding: ""
 ervaringsjaren: 3
 talen:
@@ -26,9 +27,8 @@ doelgroepen:
 opleidingen:
   - "Bodysculptor gecertificeerd"
   - "SlimUp® gecertificeerd"
-  - "EMS-therapie"
 verenigingen: []
-bio: "Bij Ponti Noi vind je rust, aandacht en vitaliteit. Alice biedt EMS-sessies aan met de SlimUp® voor spierstimulatie en doorbloeding."
+bio: "Bodysculptor en EMS-sessies met gebruik van de SlimUp®. Bij Ponti Noi vind je een plek waar rust, aandacht en vitaliteit samenkomen."
 waarom: ""
 onderscheid: ""
 voor_wie: ""
