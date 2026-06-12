@@ -157,6 +157,46 @@ collections:
       - {label: "Bio (kort)", name: "bio", widget: "text"}
 
 
+
+  # ── KENNISBANK ────────────────────────────────────────────────────────────
+  - name: "kennisbank-wiki"
+    label: "📚 Kennisbank"
+    label_singular: "Artikel"
+    folder: "_kennisbank"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: titel
+    summary: "{{titel}} ({{categorie}})"
+    fields:
+      - {label: "Titel (naam van de methode of het begrip)", name: "titel",
+         widget: "string", hint: "Bijv. Voetreflexologie, REIKI, Ademwerk"}
+      - label: "Categorie"
+        name: "categorie"
+        widget: "select"
+        options: ["Massage","Voeding","Bewegen","Meditatie","Coaching",
+                  "Energetisch","Coaching met dieren","Kindgericht",
+                  "Hulp voor huisdieren","Expressie / Creativiteit","Begrip"]
+      - {label: "Ook bekend als", name: "ook_bekend_als", widget: "string",
+         required: false, hint: "Andere namen of synoniemen"}
+      - {label: "Geschikt voor (kort)", name: "geschikt_voor", widget: "string",
+         required: false, hint: "Bijv. Volwassenen, chronische klachten"}
+      - {label: "Inleiding (1-2 zinnen)", name: "inleiding", widget: "text",
+         hint: "Korte kernachtige beschrijving — dit ziet Google ook"}
+      - {label: "Uitgebreide beschrijving", name: "body", widget: "markdown",
+         hint: "Wat is het? Hoe werkt het? Wat is de achtergrond?"}
+      - {label: "Wat kun je verwachten?", name: "wat_te_verwachten",
+         widget: "text", required: false,
+         hint: "Hoe verloopt een sessie, wat voel je?"}
+      - {label: "Voor wie is dit geschikt?", name: "voor_wie",
+         widget: "text", required: false}
+      - {label: "Wanneer minder geschikt?", name: "niet_voor",
+         widget: "text", required: false,
+         hint: "Contra-indicaties of situaties waarvoor andere hulp beter is"}
+      - {label: "Bronnen", name: "bronnen", widget: "string", required: false,
+         hint: "Wetenschappelijke bronnen of betrouwbare websites"}
+      - {label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean",
+         default: false, hint: "Zet aan als het artikel klaar en gecontroleerd is"}
+
   # ── MEE-MAKERS ────────────────────────────────────────────────────────────
   - name: "mee-makers-beheer"
     label: "Mee-Makers"
