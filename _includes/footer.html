@@ -36,38 +36,38 @@
       <p>📞 Elsemarie: <a href="tel:+31659111456" style="color:rgba(255,255,255,0.7)">{{ site.contact.elsemarie }}</a></p>
     </div>
   </div>
+
   <div class="footer-bodem">
-    <p>© {{ 'now' | date: "%Y" }} Nederland-Bewust &nbsp;·&nbsp; <a href="{{ '/contact/' | relative_url }}" style="color:rgba(255,255,255,0.45)">Contact</a>
+    <p>© {{ 'now' | date: "%Y" }} Nederland-Bewust
+      &nbsp;·&nbsp;
+      <a href="{{ '/contact/' | relative_url }}" style="color:rgba(255,255,255,0.45)">Contact</a>
       &nbsp;·&nbsp;
       <a href="{{ '/algemene-voorwaarden/' | relative_url }}" style="color:rgba(255,255,255,0.45)">Algemene voorwaarden</a>
       &nbsp;·&nbsp;
-      <a href="{{ '/privacyverklaring/' | relative_url }}" style="color:rgba(255,255,255,0.45)">Privacy</a></p>
+      <a href="{{ '/privacyverklaring/' | relative_url }}" style="color:rgba(255,255,255,0.45)">Privacy</a>
+      &nbsp;·&nbsp;
+      <span id="footer-login-wrap">
+        <a href="https://nederland-bewust-beheer.netlify.app/admin/" id="footer-login-link" style="color:rgba(255,255,255,0.28);font-size:0.75rem;">Inloggen</a>
+        <a href="{{ '/mijn-profiel/' | relative_url }}" id="footer-beheer-link" style="color:rgba(255,255,255,0.28);font-size:0.75rem;display:none;">⚙️ Mijn profiel beheren</a>
+      </span>
+    </p>
   </div>
-  <div style="text-align:center;padding:0.6rem 1rem;border-top:1px solid rgba(255,255,255,0.08);">
-    <a href="https://nederland-bewust-beheer.netlify.app/admin/"
-       id="footer-login-link"
-       style="color:rgba(255,255,255,0.28);font-size:0.75rem;text-decoration:none;">Inloggen</a>
-    <a href="https://nederland-bewust-beheer.netlify.app/admin/"
-       id="footer-beheer-link"
-       style="color:rgba(255,255,255,0.28);font-size:0.75rem;text-decoration:none;display:none;">⚙️ Mijn profiel beheren</a>
-  </div>
+</footer>
 
-<!-- Cookie melding -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--groen-donker);color:#fff;padding:1rem 1.5rem;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-  <p style="margin:0;font-size:0.88rem;opacity:0.9;">
-    🍪 Wij gebruiken alleen functionele cookies — noodzakelijk voor het inloggen van bewust-makers.
-    Geen tracking, geen advertenties.
+<!-- Cookiebanner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--groen-donker);color:#fff;padding:0.9rem 1.5rem;z-index:999;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+  <p style="margin:0;font-size:0.85rem;opacity:0.9;">
+    🍪 Wij gebruiken alleen functionele cookies — noodzakelijk voor het inloggen van bewust-makers. Geen tracking, geen advertenties.
     <a href="{{ '/privacyverklaring/' | relative_url }}" style="color:var(--goud-licht);">Meer info</a>
   </p>
   <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookies-ok','1');"
-    style="background:var(--goud);color:var(--tekst);border:none;padding:0.4rem 1rem;border-radius:50px;font-weight:700;cursor:pointer;white-space:nowrap;font-size:0.88rem;">
+    style="background:var(--goud);color:var(--tekst);border:none;padding:0.4rem 1rem;border-radius:50px;font-weight:700;cursor:pointer;font-size:0.85rem;">
     Begrepen
   </button>
 </div>
 <script>
-  if (!localStorage.getItem('cookies-ok')) {
-    document.getElementById('cookie-banner').style.display = 'flex';
+  if (typeof localStorage !== 'undefined' && !localStorage.getItem('cookies-ok')) {
+    var b = document.getElementById('cookie-banner');
+    if (b) b.style.display = 'flex';
   }
 </script>
-
-</footer>
