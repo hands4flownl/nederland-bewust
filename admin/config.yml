@@ -159,6 +159,38 @@ collections:
 
 
 
+
+  # ── UITNODIGINGEN (bewust-makers toevoegen) ───────────────────────────────
+  - name: "uitnodigingen"
+    label: "📨 Nieuwe bewust-maker uitnodigen"
+    files:
+      - label: "Stuur uitnodiging"
+        name: "uitnodiging"
+        file: "_data/uitnodigingen.yml"
+        fields:
+          - label: "Instructie"
+            name: "instructie"
+            widget: "hidden"
+            default: "Vul het e-mailadres in en stuur het formulier op. Claude verwerkt de uitnodiging."
+          - {label: "Naam van de nieuwe bewust-maker", name: "naam",
+             widget: "string", hint: "Voor- en achternaam"}
+          - {label: "E-mailadres", name: "email",
+             widget: "string", hint: "Dit e-mailadres ontvangt de uitnodigingsmail"}
+          - label: "Lidmaatschap"
+            name: "type"
+            widget: "select"
+            options: ["Bewust-maker", "Mee-maker"]
+            default: "Bewust-maker"
+          - {label: "Aanvullende notitie (optioneel)", name: "notitie",
+             widget: "text", required: false,
+             hint: "Bijv. betaling ontvangen op... of specifieke afspraken"}
+          - label: "Status"
+            name: "status"
+            widget: "select"
+            options: ["Te verwerken", "Uitnodiging verstuurd", "Actief"]
+            default: "Te verwerken"
+            hint: "Zet op Uitnodiging verstuurd nadat Claude de uitnodiging heeft gestuurd"
+
   # ── PAGINATEKSTEN (alleen eigenaren) ──────────────────────────────────────
   - name: "paginateksten"
     label: "✏️ Paginateksten"
