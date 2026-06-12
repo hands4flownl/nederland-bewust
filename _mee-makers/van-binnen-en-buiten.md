@@ -1,8 +1,8 @@
 ---
 naam: "Van Binnen & Buiten"
-beschrijving: "Van Binnen & Buiten"
+beschrijving: "Van Binnen & Buiten."
 website: ""
-logo: "https://nederland-bewust.nl/wp-content/uploads/2025/07/cropped-van-binnen-en-buiten-1.png"
+logo: "/assets/images/meemakers/van-binnen-en-buiten.png"
 provincie: "Drenthe"
 gepubliceerd: true
 lidmaatschap: "Mee-maker"
