@@ -1,8 +1,8 @@
 ---
 naam: "Drentse Alchemist"
-beschrijving: "Drentse Alchemist"
+beschrijving: "Drentse Alchemist."
 website: ""
-logo: "https://nederland-bewust.nl/wp-content/uploads/2025/07/cropped-drentse-alchemist-1.png"
+logo: "/assets/images/meemakers/drentse-alchemist.png"
 provincie: "Drenthe"
 gepubliceerd: true
 lidmaatschap: "Mee-maker"
