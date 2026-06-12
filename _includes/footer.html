@@ -47,4 +47,23 @@
        id="footer-beheer-link"
        style="color:rgba(255,255,255,0.28);font-size:0.75rem;text-decoration:none;display:none;">⚙️ Mijn profiel beheren</a>
   </div>
+
+<!-- Cookie melding -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--groen-donker);color:#fff;padding:1rem 1.5rem;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+  <p style="margin:0;font-size:0.88rem;opacity:0.9;">
+    🍪 Wij gebruiken alleen functionele cookies — noodzakelijk voor het inloggen van bewust-makers.
+    Geen tracking, geen advertenties.
+    <a href="{{ '/privacyverklaring/' | relative_url }}" style="color:var(--goud-licht);">Meer info</a>
+  </p>
+  <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookies-ok','1');"
+    style="background:var(--goud);color:var(--tekst);border:none;padding:0.4rem 1rem;border-radius:50px;font-weight:700;cursor:pointer;white-space:nowrap;font-size:0.88rem;">
+    Begrepen
+  </button>
+</div>
+<script>
+  if (!localStorage.getItem('cookies-ok')) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+</script>
+
 </footer>
