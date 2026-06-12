@@ -1,12 +1,11 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3"
-gem "jekyll-seo-tag"
-gem "jekyll-sitemap"
+# Gebruik github-pages gem voor GitHub Pages compatibiliteit
+gem "github-pages", group: :jekyll_plugins
 
-group :jekyll_plugins do
-  gem "jekyll-seo-tag"
-  gem "jekyll-sitemap"
+# Netlify gebruikt dit niet (die gebruikt bovenstaande direct)
+group :netlify do
+  gem "jekyll", "~> 4.3"
 end
 
 gem "webrick"
