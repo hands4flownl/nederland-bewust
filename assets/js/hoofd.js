@@ -164,32 +164,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// ===================== LOGIN STATUS: NAV + FOOTER =====================
-(function() {
-  function updateLoginUI(ingelogd) {
-    var navKnop = document.getElementById('nav-beheer-item');
-    if (navKnop) navKnop.style.display = ingelogd ? 'block' : 'none';
-    var loginLink = document.getElementById('footer-login-link');
-    var beheerLink = document.getElementById('footer-beheer-link');
-    if (loginLink) loginLink.style.display = ingelogd ? 'none' : 'inline';
-    if (beheerLink) beheerLink.style.display = ingelogd ? 'inline' : 'none';
-  }
-
-  function checkStatus() {
-    var ingelogd = false;
-    try {
-      for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        if (key && key.indexOf('gotrue') !== -1) {
-          try {
-            var val = JSON.parse(localStorage.getItem(key));
-            if (val && val.access_token) { ingelogd = true; break; }
-          } catch(e) {}
-        }
+// ===================== BEHEER KNOP (simpel) =====================
+document.addEventListener('DOMContentLoaded', function() {
+  // Check of gebruiker ingelogd is via Netlify Identity localStorage
+  var ingelogd = false;
+  try {
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key && key.indexOf('gotrue') !== -1) {
+        try {
+          var val = JSON.parse(localStorage.getItem(key));
+          if (val && val.access_token) { ingelogd = true; break; }
+        } catch(e) {}
       }
-    } catch(e) {}
-    updateLoginUI(ingelogd);
-  }
+    }
+  } catch(e) {}
 
-  document.addEventListener('DOMContentLoaded', checkStatus);
-})();
+  var navKnop = document.getElementById('nav-beheer-item');
+  var loginLink = document.getElementById('footer-login-link');
+  var beheerLink = document.getElementById('footer-beheer-link');
+
+  if (ingelogd) {
+    if (navKnop) navKnop.style.display = 'block';
+    if (loginLink) loginLink.style.display = 'none';
+    if (beheerLink) beheerLink.style.display = 'inline';
+  } else {
+    if (navKnop) navKnop.style.display = 'none';
+    if (loginLink) loginLink.style.display = 'inline';
+    if (beheerLink) beheerLink.style.display = 'none';
+  }
+});
