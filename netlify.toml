@@ -1,22 +1,16 @@
 [build]
-  command = "jekyll build"
+  command = "bundle exec jekyll build"
   publish = "_site"
 
 [build.environment]
-  JEKYLL_ENV = "production"
   RUBY_VERSION = "3.2.0"
+  JEKYLL_ENV = "production"
 
-# Netlify Identity voor CMS login
-[[plugins]]
-  package = "@netlify/plugin-jekyll"
-
-# Redirect /admin naar CMS
 [[redirects]]
   from = "/admin"
-  to = "/admin/index.html"
-  status = 200
+  to = "/admin/"
+  status = 301
 
-# Nette 404
 [[redirects]]
   from = "/*"
   to = "/404.html"
