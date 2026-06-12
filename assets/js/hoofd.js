@@ -164,47 +164,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-// ===================== NETLIFY IDENTITY: BEHEERSKNOP =====================
+// ===================== LOGIN STATUS: NAV + FOOTER =====================
 (function() {
-  function checkLogin() {
-    var knop = document.getElementById('nav-beheer-item');
-    if (!knop) return;
+  function updateLoginUI(ingelogd) {
+    // Nav knop
+    var navKnop = document.getElementById('nav-beheer-item');
+    if (navKnop) navKnop.style.display = ingelogd ? 'block' : 'none';
+    // Footer: wissel login <-> beheer link
+    var loginLink = document.getElementById('footer-login-link');
+    var beheerLink = document.getElementById('footer-beheer-link');
+    if (loginLink) loginLink.style.display = ingelogd ? 'none' : 'inline';
+    if (beheerLink) beheerLink.style.display = ingelogd ? 'inline' : 'none';
+  }
 
-    // Netlify Identity gebruikt 'gotrue-session' in localStorage
+  function checkStatus() {
     var ingelogd = false;
     try {
-      var sessie = localStorage.getItem('gotrue-session');
-      if (sessie) {
-        var data = JSON.parse(sessie);
-        ingelogd = !!(data && data.access_token);
-      }
-      // Fallback: zoek alle gotrue-* keys
-      if (!ingelogd) {
-        for (var i = 0; i < localStorage.length; i++) {
-          var key = localStorage.key(i);
-          if (key && key.indexOf('gotrue') !== -1) {
-            try {
-              var val = JSON.parse(localStorage.getItem(key));
-              if (val && val.access_token) { ingelogd = true; break; }
-            } catch(e) {}
-          }
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key && key.indexOf('gotrue') !== -1) {
+          try {
+            var val = JSON.parse(localStorage.getItem(key));
+            if (val && val.access_token) { ingelogd = true; break; }
+          } catch(e) {}
         }
       }
     } catch(e) {}
-
-    knop.style.display = ingelogd ? 'block' : 'none';
+    updateLoginUI(ingelogd);
   }
 
-  document.addEventListener('DOMContentLoaded', checkLogin);
+  document.addEventListener('DOMContentLoaded', checkStatus);
 
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on('login', function() {
-      setTimeout(checkLogin, 800);
+      setTimeout(function() { updateLoginUI(true); }, 600);
     });
     window.netlifyIdentity.on('logout', function() {
-      var knop = document.getElementById('nav-beheer-item');
-      if (knop) knop.style.display = 'none';
+      updateLoginUI(false);
     });
   }
 })();
