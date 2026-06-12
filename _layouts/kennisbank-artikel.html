@@ -1,0 +1,116 @@
+---
+layout: standaard
+---
+{% assign a = page %}
+
+<div class="pagina-header">
+  <h1>{{ a.titel | default: a.title }}</h1>
+  <p>{{ a.categorie }} &nbsp;·&nbsp; Holistische kennisbank</p>
+</div>
+
+<section class="sectie">
+  <div class="container container--nauw">
+
+    <!-- META INFO -->
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+      {% if a.ook_bekend_als %}
+      <span style="font-size:0.85rem;color:var(--tekst-licht);">
+        <strong>Ook bekend als:</strong> {{ a.ook_bekend_als }}
+      </span>
+      {% endif %}
+      {% if a.categorie %}
+      <span style="font-size:0.85rem;color:var(--tekst-licht);">
+        <strong>Categorie:</strong> {{ a.categorie }}
+      </span>
+      {% endif %}
+      {% if a.geschikt_voor %}
+      <span style="font-size:0.85rem;color:var(--tekst-licht);">
+        <strong>Geschikt voor:</strong> {{ a.geschikt_voor }}
+      </span>
+      {% endif %}
+    </div>
+
+    <!-- INLEIDING -->
+    {% if a.inleiding %}
+    <div style="font-size:1.08rem;line-height:1.85;color:var(--tekst);margin-bottom:2rem;font-style:italic;border-left:4px solid var(--goud);padding-left:1.2rem;">
+      {{ a.inleiding }}
+    </div>
+    {% endif %}
+
+    <!-- HOOFDTEKST -->
+    <div style="line-height:1.85;margin-bottom:2rem;">
+      {{ content }}
+    </div>
+
+    <!-- WAT KAN JE VERWACHTEN -->
+    {% if a.wat_te_verwachten %}
+    <div style="background:var(--creme);border-radius:var(--radius-groot);padding:1.5rem 2rem;margin-bottom:2rem;">
+      <h3 style="margin-bottom:0.8rem;">Wat kun je verwachten?</h3>
+      <p>{{ a.wat_te_verwachten }}</p>
+    </div>
+    {% endif %}
+
+    <!-- VOOR WIE -->
+    {% if a.voor_wie %}
+    <div style="background:var(--wit);border:1px solid var(--border);border-radius:var(--radius-groot);padding:1.5rem 2rem;margin-bottom:2rem;">
+      <h3 style="margin-bottom:0.8rem;">Voor wie is dit geschikt?</h3>
+      <p>{{ a.voor_wie }}</p>
+    </div>
+    {% endif %}
+
+    <!-- NIET GESCHIKT VOOR -->
+    {% if a.niet_voor %}
+    <div style="background:var(--wit);border:1px solid var(--border);border-radius:var(--radius-groot);padding:1.5rem 2rem;margin-bottom:2rem;">
+      <h3 style="margin-bottom:0.8rem;">Wanneer is dit minder geschikt?</h3>
+      <p>{{ a.niet_voor }}</p>
+    </div>
+    {% endif %}
+
+    <!-- BEWUST-MAKERS MET DEZE METHODE -->
+    {% assign methode_naam = a.titel | default: a.title %}
+    {% assign makers_met_methode = site.bewust-makers | where_exp: "m", "m.methoden contains methode_naam" %}
+    {% if makers_met_methode.size > 0 %}
+    <div style="margin-bottom:2rem;">
+      <h3 style="margin-bottom:1rem;">Bewust-makers die {{ methode_naam }} aanbieden</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;">
+        {% for maker in makers_met_methode %}
+        {% if maker.gepubliceerd %}
+        <a href="{{ maker.url | relative_url }}"
+           style="display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;background:var(--creme);border-radius:var(--radius);text-decoration:none;border:1px solid var(--border);transition:border-color 0.2s;"
+           onmouseover="this.style.borderColor='var(--goud)'"
+           onmouseout="this.style.borderColor='var(--border)'">
+          {% if maker.foto %}
+          <img src="{{ maker.foto }}" alt="{{ maker.naam }}"
+            style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;"
+            onerror="this.style.display='none'">
+          {% endif %}
+          <span style="font-size:0.88rem;font-weight:600;color:var(--tekst);">{{ maker.naam }}</span>
+        </a>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- BRONNEN -->
+    {% if a.bronnen %}
+    <div style="font-size:0.85rem;color:var(--tekst-licht);border-top:1px solid var(--border);padding-top:1rem;margin-top:2rem;">
+      <strong>Bronnen:</strong> {{ a.bronnen }}
+    </div>
+    {% endif %}
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="{{ '/kennisbank/' | relative_url }}" style="font-size:0.9rem;color:var(--tekst-licht);">
+        ← Terug naar de kennisbank
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sectie sectie--kleur">
+  <div class="container" style="text-align:center;">
+    <h2>Wil jij meer weten of hulp bij de keuze?</h2>
+    <p style="max-width:500px;margin:0.8rem auto 1.5rem;color:var(--tekst-licht);">Marcella of Elsemarie helpen je gratis en persoonlijk de juiste bewust-maker te vinden.</p>
+    <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen">Gratis adviesgesprek aanvragen</a>
+  </div>
+</section>
