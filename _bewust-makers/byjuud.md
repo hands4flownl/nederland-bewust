@@ -7,14 +7,17 @@ foto: "https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-mak
 categorieen:
   - "Voeding"
 methoden:
-  - "Orthomoleculair"
+  - "Herstel na ziekte"
+  - "Vermoeidheid"
+  - "Orthomoleculaire therapie"
   - "EMBtest"
-  - "Hormonale balans"
 website: ""
+email_zichtbaar: ""
+telefoon: ""
 online: "Ja"
 sessieduur: "60 min"
 tarief: ""
-eerste_gesprek: "Gratis"
+eerste_gesprek: "Gratis kennismaking"
 vergoeding: ""
 ervaringsjaren: 7
 talen:
@@ -22,13 +25,13 @@ talen:
 doelgroepen:
   - "Vrouwen"
   - "Vermoeidheidsklachten"
-  - "Hormonale disbalans"
   - "Herstel na ziekte"
+  - "Hormonale disbalans"
 opleidingen:
   - "Orthomoleculair therapeut gecertificeerd"
   - "EMBtest gecertificeerd diagnosticus"
 verenigingen: []
-bio: "Judith helpt vrouwen die moe wakker worden en dan horen: 'Alles ziet er goed uit.' Met de EMBtest spoort ze de oorzaak op."
+bio: "Herstel na ziekte, vermoeidheid en orthomoleculaire therapie via de EMBtest. Judith helpt vrouwen die moe wakker worden en horen: alles ziet er goed uit."
 waarom: ""
 onderscheid: ""
 voor_wie: ""
