@@ -1,4 +1,4 @@
 # Netlify-specifieke overrides
 # netlify.toml voegt dit toe: jekyll build --config _config.yml,_config_netlify.yml
 baseurl: ""
-url: "https://ubiquitous-pie-a0dcea.netlify.app"
+url: "https://nederland-bewust-beheer.netlify.app"
