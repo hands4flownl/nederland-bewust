@@ -1,0 +1,203 @@
+---
+layout: standaard
+---
+{% assign m = page %}
+
+<div class="pagina-header">
+  <h1>{{ m.naam }}</h1>
+  <p>{{ m.praktijk }} &nbsp;·&nbsp; 📍 {{ m.provincie }}</p>
+</div>
+
+<section class="sectie">
+  <div class="container container--nauw">
+
+    <!-- HEADER -->
+    <div style="display:flex;gap:2rem;align-items:flex-start;margin-bottom:2rem;flex-wrap:wrap;">
+      {% if m.foto and m.foto != "" %}
+      <img src="{{ m.foto }}" alt="{{ m.naam }}"
+        style="width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--goud);flex-shrink:0;"
+        loading="lazy" onerror="this.style.opacity='0'">
+      {% else %}
+      <div style="width:160px;height:160px;border-radius:50%;background:var(--creme);border:4px solid var(--goud);display:flex;align-items:center;justify-content:center;font-size:3rem;flex-shrink:0;">🌿</div>
+      {% endif %}
+
+      <div style="flex:1;min-width:220px;">
+        <h2 style="margin-bottom:0.3rem;">{{ m.naam }}</h2>
+        <p style="color:var(--goud-donker);font-weight:700;margin-bottom:0.2rem;">{{ m.praktijk }}</p>
+        <p style="color:var(--tekst-licht);font-size:0.9rem;margin-bottom:0.8rem;">📍 {{ m.plaats | default: m.provincie }}</p>
+
+        {% if m.categorieen %}
+        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.6rem;">
+          {% for cat in m.categorieen %}
+          <span style="background:var(--goud);border:1px solid var(--goud-donker);color:var(--tekst);font-size:0.75rem;font-weight:700;padding:0.2rem 0.7rem;border-radius:50px;">{{ cat }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if m.methoden %}
+        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+          {% for m2 in m.methoden %}
+          <span class="profiel-tag">{{ m2 }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div style="display:flex;gap:0.7rem;flex-wrap:wrap;align-items:center;">
+          <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen" style="font-size:0.88rem;">📞 Gratis adviesgesprek</a>
+          {% if m.website and m.website != "" %}
+          <a href="{{ m.website }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.88rem;">🌐 Eigen website</a>
+          {% else %}
+          <span style="font-size:0.82rem;color:var(--tekst-licht);font-style:italic;">🌐 Website volgt binnenkort</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- SNEL-INFO -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.7rem;margin-bottom:2rem;">
+      {% if m.sessieduur and m.sessieduur != "" %}
+      <div style="background:var(--wit);border-radius:var(--radius);padding:0.8rem 1rem;border:1px solid var(--border);">
+        <div style="font-size:0.72rem;color:var(--tekst-licht);text-transform:uppercase;letter-spacing:0.06em;">Sessieduur</div>
+        <div style="font-weight:600;font-size:0.95rem;margin-top:0.2rem;">{{ m.sessieduur }}</div>
+      </div>
+      {% endif %}
+      {% if m.tarief and m.tarief != "" %}
+      <div style="background:var(--wit);border-radius:var(--radius);padding:0.8rem 1rem;border:1px solid var(--border);">
+        <div style="font-size:0.72rem;color:var(--tekst-licht);text-transform:uppercase;letter-spacing:0.06em;">Tarief</div>
+        <div style="font-weight:600;font-size:0.95rem;margin-top:0.2rem;">{{ m.tarief }}</div>
+      </div>
+      {% endif %}
+      {% if m.online and m.online != "" %}
+      <div style="background:var(--wit);border-radius:var(--radius);padding:0.8rem 1rem;border:1px solid var(--border);">
+        <div style="font-size:0.72rem;color:var(--tekst-licht);text-transform:uppercase;letter-spacing:0.06em;">Online</div>
+        <div style="font-weight:600;font-size:0.95rem;margin-top:0.2rem;">{{ m.online }}</div>
+      </div>
+      {% endif %}
+      {% if m.eerste_gesprek and m.eerste_gesprek != "" %}
+      <div style="background:var(--creme);border-radius:var(--radius);padding:0.8rem 1rem;border:1px solid var(--goud);">
+        <div style="font-size:0.72rem;color:var(--tekst-licht);text-transform:uppercase;letter-spacing:0.06em;">Eerste gesprek</div>
+        <div style="font-weight:600;font-size:0.95rem;margin-top:0.2rem;color:var(--goud-donker);">{{ m.eerste_gesprek }}</div>
+      </div>
+      {% endif %}
+      {% if m.wachttijd and m.wachttijd != "" %}
+      <div style="background:var(--wit);border-radius:var(--radius);padding:0.8rem 1rem;border:1px solid var(--border);">
+        <div style="font-size:0.72rem;color:var(--tekst-licht);text-transform:uppercase;letter-spacing:0.06em;">Wachttijd</div>
+        <div style="font-weight:600;font-size:0.95rem;margin-top:0.2rem;">{{ m.wachttijd }}</div>
+      </div>
+      {% endif %}
+      {% if m.vergoeding and m.vergoeding != "" %}
+      <div style="background:var(--wit);border-radius:var(--radius);padding:0.8rem 1rem;border:1px solid var(--border);">
+        <div style="font-size:0.72rem;color:var(--tekst-licht);text-transform:uppercase;letter-spacing:0.06em;">Vergoeding</div>
+        <div style="font-weight:600;font-size:0.95rem;margin-top:0.2rem;">{{ m.vergoeding }}</div>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- BIO -->
+    {% if m.bio and m.bio != "" %}
+    <div style="background:var(--creme);border-radius:var(--radius-groot);padding:2rem;margin-bottom:2rem;">
+      <p style="font-size:1rem;line-height:1.8;">{{ m.bio }}</p>
+    </div>
+    {% endif %}
+
+    <!-- VERTROUWENSINFO -->
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;margin-bottom:2rem;">
+
+      {% if m.opleidingen %}
+      <div style="flex:1;min-width:220px;">
+        <h4 style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tekst-licht);margin-bottom:0.6rem;">🎓 Opleidingen & certificeringen</h4>
+        <ul style="list-style:none;">
+          {% for o in m.opleidingen %}
+          <li style="padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.92rem;">{{ o }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if m.verenigingen %}
+      <div style="flex:1;min-width:220px;">
+        <h4 style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tekst-licht);margin-bottom:0.6rem;">🏛️ Beroepsverenigingen</h4>
+        <ul style="list-style:none;">
+          {% for v in m.verenigingen %}
+          <li style="padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.92rem;">{{ v }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if m.doelgroepen %}
+      <div style="flex:1;min-width:220px;">
+        <h4 style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tekst-licht);margin-bottom:0.6rem;">👥 Geschikt voor</h4>
+        <ul style="list-style:none;">
+          {% for d in m.doelgroepen %}
+          <li style="padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.92rem;">{{ d }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <div style="flex:1;min-width:220px;">
+        <h4 style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tekst-licht);margin-bottom:0.6rem;">ℹ️ Overig</h4>
+        <ul style="list-style:none;">
+          {% if m.ervaringsjaren and m.ervaringsjaren > 0 %}
+          <li style="padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.92rem;">{{ m.ervaringsjaren }} jaar ervaring</li>
+          {% endif %}
+          {% if m.talen %}
+          <li style="padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.92rem;">🌍 {{ m.talen | join: ", " }}</li>
+          {% endif %}
+          {% if m.provincie %}
+          <li style="padding:0.3rem 0;border-bottom:1px solid var(--border);font-size:0.92rem;">📍 {{ m.provincie }}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- PERSOONLIJKE VRAGEN -->
+    {% if m.persoonlijk %}
+    <div style="background:var(--creme);border-radius:var(--radius-groot);padding:2rem;margin-bottom:2rem;">
+      <h3 style="font-size:1.1rem;margin-bottom:1.5rem;color:var(--groen-donker);">Meer over {{ m.naam | split: " " | first }}</h3>
+      <div style="display:flex;flex-direction:column;gap:1.2rem;">
+        {% if m.persoonlijk.waarom_opleiding and m.persoonlijk.waarom_opleiding != "Invullen" %}
+        <div>
+          <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--goud-donker);margin-bottom:0.3rem;">Waarom deed jij deze opleiding?</p>
+          <p style="font-size:0.95rem;">{{ m.persoonlijk.waarom_opleiding }}</p>
+        </div>
+        {% endif %}
+        {% if m.persoonlijk.voor_wie and m.persoonlijk.voor_wie != "Invullen" %}
+        <div>
+          <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--goud-donker);margin-bottom:0.3rem;">Waarvoor bel je mij wél — en waarvoor juist niet?</p>
+          <p style="font-size:0.95rem;">{{ m.persoonlijk.voor_wie }}</p>
+        </div>
+        {% endif %}
+        {% if m.persoonlijk.clientquote and m.persoonlijk.clientquote != "Invullen" %}
+        <div style="border-left:3px solid var(--goud);padding-left:1rem;">
+          <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--goud-donker);margin-bottom:0.3rem;">Wat zegt een cliënt over jou?</p>
+          <p style="font-size:0.95rem;font-style:italic;">"{{ m.persoonlijk.clientquote }}"</p>
+        </div>
+        {% endif %}
+        {% if m.persoonlijk.zelf_bewust and m.persoonlijk.zelf_bewust != "Invullen" %}
+        <div>
+          <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--goud-donker);margin-bottom:0.3rem;">Hoe blijf jij zelf gezond en bewust?</p>
+          <p style="font-size:0.95rem;">{{ m.persoonlijk.zelf_bewust }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+    <div style="text-align:center;margin-top:1.5rem;">
+      <a href="{{ '/onze-bewust-makers/' | relative_url }}" style="font-size:0.9rem;color:var(--tekst-licht);">← Terug naar alle bewust-makers</a>
+    </div>
+  </div>
+</section>
+
+<section class="sectie sectie--kleur">
+  <div class="container" style="text-align:center;">
+    <h2>Wil jij weten of {{ m.naam | split: " " | first }} bij jou past?</h2>
+    <p style="max-width:520px;margin:0.8rem auto 0.5rem;color:var(--tekst-licht);">Marcella of Elsemarie van Nederland-Bewust helpen je persoonlijk de juiste keuze maken — gratis en vrijblijvend.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem;">
+      <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen">Gratis adviesgesprek aanvragen</a>
+      <a href="{{ '/onze-bewust-makers/' | relative_url }}" class="knop knop--goud">Andere bewust-makers</a>
+    </div>
+  </div>
+</section>
