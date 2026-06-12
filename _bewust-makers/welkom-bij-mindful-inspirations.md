@@ -1,21 +1,25 @@
 ---
 naam: "Ronald Weerman"
-praktijk: "Mindful Inspirations"
+praktijk: "Mindful-inspirations"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2025/09/cropped-cropped-profiel-foto.avif"
+foto: "https://nederland-bewust.nl/wp-content/uploads/2026/06/ronald-weerman.jpg"
 categorieen:
   - "Bewegen"
   - "Coaching"
 methoden:
-  - "Ademwerk"
-  - "Mindset coaching"
-  - "Koud water workshops"
+  - "Ademwerk coaching"
+  - "Ademhaling workshop"
+  - "Stress verminderen met ademhaling"
+  - "Adem- en mindset coaching"
+  - "Koud water dip workshop"
 website: ""
+email_zichtbaar: ""
+telefoon: ""
 online: "Ja"
 sessieduur: "60–120 min"
 tarief: ""
-eerste_gesprek: "Gratis"
+eerste_gesprek: "Gratis kennismaking"
 vergoeding: ""
 ervaringsjaren: 5
 talen:
@@ -28,9 +32,8 @@ doelgroepen:
 opleidingen:
   - "Ademcoach gecertificeerd"
   - "Mindset coach gecertificeerd"
-  - "Koud water facilitator"
 verenigingen: []
-bio: "Via ademwerk helpt Ronald stress te verminderen en energie te verhogen. Ook groepsworkshops koud water."
+bio: "Ademwerk coaching Nederland, ademhaling workshops, stress verminderen met ademhaling, adem- en mindset coaching en koud water dip workshops."
 waarom: ""
 onderscheid: ""
 voor_wie: ""
