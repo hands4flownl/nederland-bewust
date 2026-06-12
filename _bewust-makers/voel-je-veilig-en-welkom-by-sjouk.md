@@ -8,14 +8,18 @@ categorieen:
   - "Coaching"
   - "Energetisch"
 methoden:
-  - "Coaching"
+  - "Persoonlijke coaching"
   - "Energetische healing"
-  - "Angstbegeleiding"
+  - "Angststoornis"
+  - "Paniekaanval"
+  - "Online traject"
 website: ""
+email_zichtbaar: ""
+telefoon: ""
 online: "Ja"
 sessieduur: "60 min"
 tarief: ""
-eerste_gesprek: "Gratis"
+eerste_gesprek: "Gratis kennismaking"
 vergoeding: ""
 ervaringsjaren: 4
 talen:
@@ -25,10 +29,10 @@ doelgroepen:
   - "Angst en paniekaanvallen"
   - "Online cliënten"
 opleidingen:
-  - "Invullen — coaching opleiding"
-  - "Invullen — energetische healing"
+  - "Coaching opleiding — aan te vullen"
+  - "Energetische healing — aan te vullen"
 verenigingen: []
-bio: "Bij BySjouk voel je je veilig en welkom. Sjouk begeleidt mensen met angst en paniekaanvallen via coaching en energetische healing."
+bio: "Persoonlijke coaching, energetische healing voor mensen met angststoornis en paniekaanvallen. Trajecten ook online beschikbaar."
 waarom: ""
 onderscheid: ""
 voor_wie: ""
