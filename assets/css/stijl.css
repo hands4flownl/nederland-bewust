@@ -170,7 +170,16 @@ ul { list-style: none; }
 .maker-kaart__praktijk { font-size: 0.85rem; color: var(--goud-donker); font-weight: 700; margin-bottom: 0.3rem; }
 .maker-kaart__regio { font-size: 0.8rem; color: var(--tekst-licht); margin-bottom: 0.5rem; }
 .maker-kaart__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; justify-content: center; margin-bottom: 0.9rem; }
-.maker-kaart__tag { background: var(--creme); border: 1px solid var(--border); color: var(--groen-donker); font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px; }
+.maker-kaart__tag {
+  background: transparent;
+  border: none;
+  color: var(--tekst-licht);
+  font-size: 0.78rem;
+  font-weight: 400;
+  padding: 0;
+}
+.maker-kaart__tag::after { content: " ·"; color: var(--border); margin-left: 0.1rem; }
+.maker-kaart__tag:last-child::after { content: ""; }
 .maker-kaart__bio { font-size: 0.88rem; color: var(--tekst-licht); font-style: italic; margin-bottom: 1rem; }
 
 /* ===================== ZOEKBALK ===================== */
@@ -362,5 +371,7 @@ ul { list-style: none; }
 .profiel-meta .praktijk { font-size: 1rem; color: var(--goud-donker); font-weight: 700; margin-bottom: 0.3rem; }
 .profiel-meta .regio { font-size: 0.9rem; color: var(--tekst-licht); margin-bottom: 0.8rem; }
 .profiel-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
-.profiel-tag { background: var(--creme); border: 1px solid var(--goud); color: var(--groen-donker); font-size: 0.8rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 50px; }
+.profiel-tag { background: transparent; border: none; border-bottom: 1.5px solid var(--goud); color: var(--tekst); font-size: 0.88rem; font-weight: 400; padding: 0.1rem 0; margin-right: 0.3rem; border-radius: 0; }
+.profiel-tag::after { content: "·"; margin-left: 0.4rem; color: var(--border); }
+.profiel-tag:last-child::after { content: ""; }
 </style>
