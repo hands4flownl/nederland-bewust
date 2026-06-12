@@ -12,10 +12,12 @@ methoden:
   - "Reflexintegratie"
   - "Access Bars"
 website: ""
+email_zichtbaar: ""
+telefoon: ""
 online: "Op aanvraag"
 sessieduur: "75 min"
 tarief: ""
-eerste_gesprek: "Gratis"
+eerste_gesprek: "Gratis kennismaking"
 vergoeding: ""
 ervaringsjaren: 6
 talen:
@@ -29,7 +31,7 @@ opleidingen:
   - "Access Bars gecertificeerd"
   - "Reflexintegratie gecertificeerd"
 verenigingen: []
-bio: "Met een snelle en effectieve aanpak help ik je om patronen te doorbreken, zodat je meer rust, zelfvertrouwen en grip op je leven ervaart."
+bio: "Met een snelle en effectieve aanpak help ik je patronen te doorbreken zodat je meer rust, zelfvertrouwen en grip op je leven ervaart. Ik werk met PSYCH-K®, Reflexintegratie en Access Bars."
 waarom: ""
 onderscheid: ""
 voor_wie: ""
