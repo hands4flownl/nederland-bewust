@@ -156,6 +156,31 @@ collections:
          options: ["Bewust-maker","Mee-maker"], default: "Bewust-maker"}
       - {label: "Bio (kort)", name: "bio", widget: "text"}
 
+
+  # ── MEE-MAKERS ────────────────────────────────────────────────────────────
+  - name: "mee-makers-beheer"
+    label: "Mee-Makers"
+    label_singular: "Mee-Maker"
+    folder: "_mee-makers"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: naam
+    summary: "{{naam}} ({{provincie}})"
+    fields:
+      - {label: "Naam organisatie", name: "naam", widget: "string"}
+      - {label: "Logo", name: "logo", widget: "image", required: false,
+         hint: "Logo van de organisatie"}
+      - {label: "Beschrijving", name: "beschrijving", widget: "text", required: false,
+         hint: "Korte omschrijving van de organisatie"}
+      - {label: "Website", name: "website", widget: "string", required: false}
+      - label: "Provincie"
+        name: "provincie"
+        widget: "select"
+        options: ["Drenthe","Groningen","Friesland","Overijssel","Gelderland",
+                  "Utrecht","Noord-Holland","Zuid-Holland","Zeeland",
+                  "Noord-Brabant","Limburg","Flevoland"]
+      - {label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: true}
+
   # ── AGENDA ───────────────────────────────────────────────────────────────
   - name: "agenda"
     label: "Agenda"
