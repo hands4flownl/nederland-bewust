@@ -26,6 +26,9 @@ collections:
   agenda:
     output: true
     permalink: /activiteiten/:slug/
+  mee-makers:
+    output: true
+    permalink: /mee-makers/:slug/
 
 defaults:
   - scope:
@@ -33,6 +36,12 @@ defaults:
       type: "bewust-makers"
     values:
       layout: "bewust-maker"
+      gepubliceerd: true
+  - scope:
+      path: ""
+      type: "mee-makers"
+    values:
+      layout: "mee-maker"
       gepubliceerd: true
 
 exclude:
