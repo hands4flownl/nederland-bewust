@@ -1,0 +1,151 @@
+backend:
+  name: github
+  repo: hands4flownl/nederland-bewust
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+# Mediabeheer
+media_folder: "assets/images/bewust-makers"
+public_folder: "/assets/images/bewust-makers"
+
+# Taal
+locale: "nl"
+
+collections:
+
+  # ── BEWUST-MAKERS ──────────────────────────────────────────────
+  - name: "bewust_makers"
+    label: "Bewust-makers"
+    label_singular: "Bewust-maker"
+    folder: "_bewust_makers"
+    create: false
+    slug: "{{slug}}"
+    identifier_field: naam
+    summary: "{{naam}} – {{praktijk}} ({{provincie}})"
+    editor:
+      preview: false
+
+    fields:
+
+      # Basis
+      - { label: "Naam", name: naam, widget: string }
+      - { label: "Praktijknaam", name: praktijk, widget: string }
+      - { label: "Provincie", name: provincie, widget: select,
+          options: [Drenthe, Groningen, Friesland, Overijssel, Gelderland,
+                    Utrecht, Noord-Holland, Zuid-Holland, Zeeland,
+                    Noord-Brabant, Limburg, Flevoland] }
+      - { label: "Stad / plaats", name: plaats, widget: string, required: false }
+      - { label: "Profielfoto", name: foto, widget: image, required: false,
+          hint: "Upload een vierkante foto, minimaal 400x400px." }
+
+      # Contact & online aanwezigheid
+      - { label: "E-mailadres (niet zichtbaar op site)", name: email,
+          widget: string, required: false }
+      - { label: "Telefoonnummer", name: telefoon, widget: string, required: false }
+      - { label: "Website", name: website, widget: string, required: false }
+
+      # Categorieën & methoden
+      - label: "Categorieën"
+        name: categorieen
+        widget: select
+        multiple: true
+        options: [Massage, Voeding, Bewegen, Meditatie, Coaching,
+                  Energetisch, Coaching met dieren, Kindgericht,
+                  Hulp voor huisdieren, Expressie]
+
+      - label: "Methoden / technieken"
+        name: methoden
+        widget: list
+        hint: "Één methode per regel. Bijv: REIKI, Voetreflex, Access Bars"
+        field: { label: Methode, name: methode, widget: string }
+
+      # Sessie-informatie
+      - { label: "Sessieduur", name: sessieduur, widget: string,
+          hint: "Bijv: 60 min of 60–90 min", required: false }
+      - { label: "Tarief per sessie", name: tarief, widget: string,
+          hint: "Bijv: €75,- per sessie", required: false }
+      - { label: "Online sessies mogelijk?", name: online, widget: select,
+          options: [Ja, Nee, Op aanvraag], required: false }
+      - { label: "Eerste gesprek", name: eerste_gesprek, widget: string,
+          default: "Gratis kennismaking", required: false }
+      - { label: "Vergoeding zorgverzekeraar", name: vergoeding, widget: string,
+          hint: "Bijv: Mogelijk via aanvullend pakket", required: false }
+      - { label: "Wachttijd", name: wachttijd, widget: string,
+          hint: "Bijv: Binnen 2 weken beschikbaar", required: false }
+
+      # Opleiding & betrouwbaarheid
+      - label: "Opleidingen & certificeringen"
+        name: opleidingen
+        widget: list
+        hint: "Één opleiding of certificering per regel"
+        field: { label: Opleiding, name: opleiding, widget: string }
+
+      - label: "Beroepsverenigingen"
+        name: verenigingen
+        widget: list
+        hint: "Bijv: NVA, NVST, RBNG — één per regel"
+        field: { label: Vereniging, name: vereniging, widget: string }
+
+      - { label: "Jaren ervaring", name: ervaringsjaren, widget: number,
+          value_type: int, min: 0, max: 50, required: false }
+
+      - label: "Doelgroepen"
+        name: doelgroepen
+        widget: select
+        multiple: true
+        required: false
+        options: [Volwassenen, Kinderen, Jongeren, Ouderen, Gezinnen,
+                  Vrouwen, Mannen, Sporters, Mensen met chronische klachten,
+                  Burnout herstel, Mensen met angst of stress, Online cliënten]
+
+      - label: "Talen"
+        name: talen
+        widget: select
+        multiple: true
+        default: [Nederlands]
+        options: [Nederlands, Engels, Duits, Frans, Spaans]
+
+      # Bio
+      - { label: "Over mij (korte biografie)", name: bio,
+          widget: text,
+          hint: "Max. 200 woorden. Geen opmaak nodig — gewone tekst." }
+
+      # Onderscheidende vragen
+      - label: "Persoonlijke vragen"
+        name: persoonlijk
+        widget: object
+        collapsed: false
+        hint: "Deze antwoorden maken jouw profiel uniek. Schrijf zoals je praat."
+        fields:
+          - { label: "Waarom deed jij deze opleiding?",
+              name: waarom_opleiding, widget: text, required: false,
+              hint: "Vertel het verhaal achter jouw keuze." }
+          - { label: "Waarvoor bel je mij wél — en waarvoor juist niet?",
+              name: voor_wie, widget: text, required: false,
+              hint: "Eerlijk antwoord. Helpt mensen snel te kiezen." }
+          - { label: "Wat zegt een cliënt die je goed kent over jou?",
+              name: clientquote, widget: text, required: false,
+              hint: "Geen officiële testimonial — gewoon hoe een cliënt jou zou beschrijven." }
+          - { label: "Wat doe jij zelf om gezond en bewust te blijven?",
+              name: zelf_bewust, widget: text, required: false,
+              hint: "Laat zien dat je ook zelf leeft wat je uitdraagt." }
+
+      # Publicatie
+      - { label: "Actief op platform", name: actief, widget: boolean, default: true }
+
+  # ── SITEBEHEER (alleen superuser) ──────────────────────────────
+  - name: "instellingen"
+    label: "⚙️ Sitebeheer"
+    files:
+      - label: "Sitegegevens"
+        name: "sitegegevens"
+        file: "_data/sitegegevens.yml"
+        fields:
+          - { label: "Telefoon Marcella", name: marcella, widget: string }
+          - { label: "Telefoon Elsemarie", name: elsemarie, widget: string }
+          - { label: "E-mail", name: email, widget: string }
+          - { label: "Facebook URL", name: facebook, widget: string }
+          - { label: "Instagram URL", name: instagram, widget: string }
+          - { label: "WhatsApp URL", name: whatsapp, widget: string }
+          - { label: "Formspree endpoint", name: formspree_endpoint, widget: string }
