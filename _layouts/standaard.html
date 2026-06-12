@@ -15,29 +15,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/stijl.css' | relative_url }}">
   <script>
-    window.netlifyIdentityConfig = {
-      APIUrl: "https://nederland-bewust-beheer.netlify.app/.netlify/identity"
-    };
-  </script>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    window.addEventListener('load', function() {
-      if (window.netlifyIdentity) {
-        // Na login: ga naar welkomstpagina (eerste keer) of admin
-        window.netlifyIdentity.on('login', function(user) {
-          var huidig = window.location.pathname;
-          // Als we op een gewone pagina zijn (niet admin), stuur naar welkom
-          if (!huidig.startsWith('/admin')) {
-            window.location.href = '/welkom-beheer/';
-          }
-        });
-        window.netlifyIdentity.on('logout', function() {
-          window.location.href = '/';
-        });
-      }
-    });
-  </script>
-  <script>
     window.addEventListener('load', function() {
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', function(user) {
