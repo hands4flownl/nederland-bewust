@@ -39,3 +39,14 @@ exclude:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+
+collections:
+  bewust_makers:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: "bewust_makers"
+    values:
+      actief: true
