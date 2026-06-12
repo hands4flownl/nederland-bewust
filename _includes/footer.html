@@ -39,4 +39,12 @@
   <div class="footer-bodem">
     <p>© {{ 'now' | date: "%Y" }} Nederland-Bewust &nbsp;·&nbsp; <a href="{{ '/contact/' | relative_url }}" style="color:rgba(255,255,255,0.45)">Contact</a></p>
   </div>
+  <div style="text-align:center;padding:0.6rem 1rem;border-top:1px solid rgba(255,255,255,0.08);">
+    <a href="#" onclick="if(window.netlifyIdentity){window.netlifyIdentity.open('login');}return false;"
+       id="footer-login-link"
+       style="color:rgba(255,255,255,0.28);font-size:0.75rem;text-decoration:none;">Inloggen</a>
+    <a href="/admin/"
+       id="footer-beheer-link"
+       style="color:rgba(255,255,255,0.28);font-size:0.75rem;text-decoration:none;display:none;">⚙️ Mijn profiel beheren</a>
+  </div>
 </footer>
