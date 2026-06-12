@@ -167,10 +167,8 @@ document.addEventListener('DOMContentLoaded', function () {
 // ===================== LOGIN STATUS: NAV + FOOTER =====================
 (function() {
   function updateLoginUI(ingelogd) {
-    // Nav knop
     var navKnop = document.getElementById('nav-beheer-item');
     if (navKnop) navKnop.style.display = ingelogd ? 'block' : 'none';
-    // Footer: wissel login <-> beheer link
     var loginLink = document.getElementById('footer-login-link');
     var beheerLink = document.getElementById('footer-beheer-link');
     if (loginLink) loginLink.style.display = ingelogd ? 'none' : 'inline';
@@ -194,13 +192,4 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   document.addEventListener('DOMContentLoaded', checkStatus);
-
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on('login', function() {
-      setTimeout(function() { updateLoginUI(true); }, 600);
-    });
-    window.netlifyIdentity.on('logout', function() {
-      updateLoginUI(false);
-    });
-  }
 })();
