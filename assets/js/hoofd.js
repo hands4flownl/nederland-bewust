@@ -163,3 +163,42 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+
+
+// ===================== NETLIFY IDENTITY: BEHEERSKNOP =====================
+// Toon "Mijn profiel" knop alleen voor ingelogde bewust-makers
+(function() {
+  function checkLogin() {
+    var knop = document.getElementById('nav-beheer-item');
+    if (!knop) return;
+
+    // Netlify Identity slaat gebruiker op in localStorage
+    var sleutel = Object.keys(localStorage).find(function(k) {
+      return k.startsWith('gotrue-');
+    });
+    if (sleutel) {
+      try {
+        var data = JSON.parse(localStorage.getItem(sleutel));
+        if (data && data.access_token) {
+          knop.style.display = 'block';
+          return;
+        }
+      } catch(e) {}
+    }
+    knop.style.display = 'none';
+  }
+
+  // Check bij laden
+  document.addEventListener('DOMContentLoaded', checkLogin);
+
+  // Check ook na Identity events
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('login', function() {
+      setTimeout(checkLogin, 500);
+    });
+    window.netlifyIdentity.on('logout', function() {
+      var knop = document.getElementById('nav-beheer-item');
+      if (knop) knop.style.display = 'none';
+    });
+  }
+})();
