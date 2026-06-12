@@ -2,150 +2,303 @@ backend:
   name: github
   repo: hands4flownl/nederland-bewust
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  # Bewust-makers loggen in via uitnodiging (Netlify Identity)
+  # Superuser (jij) heeft toegang tot alles
 
-# Mediabeheer
-media_folder: "assets/images/bewust-makers"
-public_folder: "/assets/images/bewust-makers"
+# Sta media uploads toe
+media_folder: "assets/images/makers"
+public_folder: "/assets/images/makers"
 
-# Taal
-locale: "nl"
+# Uitnodigingen via e-mail (Netlify Identity)
+publish_mode: editorial_workflow
 
 collections:
 
-  # ── BEWUST-MAKERS ──────────────────────────────────────────────
-  - name: "bewust_makers"
-    label: "Bewust-makers"
-    label_singular: "Bewust-maker"
-    folder: "_bewust_makers"
-    create: false
+  # ── BEWUST-MAKERS ──────────────────────────────────────────────────────────
+  - name: "bewust-makers"
+    label: "Bewust-Makers"
+    label_singular: "Bewust-Maker"
+    folder: "_bewust-makers"
+    create: true
     slug: "{{slug}}"
     identifier_field: naam
     summary: "{{naam}} – {{praktijk}} ({{provincie}})"
-    editor:
-      preview: false
 
     fields:
 
-      # Basis
-      - { label: "Naam", name: naam, widget: string }
-      - { label: "Praktijknaam", name: praktijk, widget: string }
-      - { label: "Provincie", name: provincie, widget: select,
-          options: [Drenthe, Groningen, Friesland, Overijssel, Gelderland,
-                    Utrecht, Noord-Holland, Zuid-Holland, Zeeland,
-                    Noord-Brabant, Limburg, Flevoland] }
-      - { label: "Stad / plaats", name: plaats, widget: string, required: false }
-      - { label: "Profielfoto", name: foto, widget: image, required: false,
-          hint: "Upload een vierkante foto, minimaal 400x400px." }
+      # ── BASISINFO ──
+      - label: "Naam"
+        name: "naam"
+        widget: "string"
+        hint: "Voor- en achternaam"
 
-      # Contact & online aanwezigheid
-      - { label: "E-mailadres (niet zichtbaar op site)", name: email,
-          widget: string, required: false }
-      - { label: "Telefoonnummer", name: telefoon, widget: string, required: false }
-      - { label: "Website", name: website, widget: string, required: false }
+      - label: "Praktijknaam"
+        name: "praktijk"
+        widget: "string"
+        hint: "Naam van je praktijk of bedrijf"
 
-      # Categorieën & methoden
-      - label: "Categorieën"
-        name: categorieen
-        widget: select
-        multiple: true
-        options: [Massage, Voeding, Bewegen, Meditatie, Coaching,
-                  Energetisch, Coaching met dieren, Kindgericht,
-                  Hulp voor huisdieren, Expressie]
-
-      - label: "Methoden / technieken"
-        name: methoden
-        widget: list
-        hint: "Één methode per regel. Bijv: REIKI, Voetreflex, Access Bars"
-        field: { label: Methode, name: methode, widget: string }
-
-      # Sessie-informatie
-      - { label: "Sessieduur", name: sessieduur, widget: string,
-          hint: "Bijv: 60 min of 60–90 min", required: false }
-      - { label: "Tarief per sessie", name: tarief, widget: string,
-          hint: "Bijv: €75,- per sessie", required: false }
-      - { label: "Online sessies mogelijk?", name: online, widget: select,
-          options: [Ja, Nee, Op aanvraag], required: false }
-      - { label: "Eerste gesprek", name: eerste_gesprek, widget: string,
-          default: "Gratis kennismaking", required: false }
-      - { label: "Vergoeding zorgverzekeraar", name: vergoeding, widget: string,
-          hint: "Bijv: Mogelijk via aanvullend pakket", required: false }
-      - { label: "Wachttijd", name: wachttijd, widget: string,
-          hint: "Bijv: Binnen 2 weken beschikbaar", required: false }
-
-      # Opleiding & betrouwbaarheid
-      - label: "Opleidingen & certificeringen"
-        name: opleidingen
-        widget: list
-        hint: "Één opleiding of certificering per regel"
-        field: { label: Opleiding, name: opleiding, widget: string }
-
-      - label: "Beroepsverenigingen"
-        name: verenigingen
-        widget: list
-        hint: "Bijv: NVA, NVST, RBNG — één per regel"
-        field: { label: Vereniging, name: vereniging, widget: string }
-
-      - { label: "Jaren ervaring", name: ervaringsjaren, widget: number,
-          value_type: int, min: 0, max: 50, required: false }
-
-      - label: "Doelgroepen"
-        name: doelgroepen
-        widget: select
-        multiple: true
+      - label: "Profielfoto"
+        name: "foto"
+        widget: "image"
         required: false
-        options: [Volwassenen, Kinderen, Jongeren, Ouderen, Gezinnen,
-                  Vrouwen, Mannen, Sporters, Mensen met chronische klachten,
-                  Burnout herstel, Mensen met angst of stress, Online cliënten]
+        hint: "Uploaden als vierkant portretfoto (minimaal 400×400px)"
+
+      - label: "Provincie"
+        name: "provincie"
+        widget: "select"
+        options:
+          - "Drenthe"
+          - "Groningen"
+          - "Friesland"
+          - "Overijssel"
+          - "Gelderland"
+          - "Utrecht"
+          - "Noord-Holland"
+          - "Zuid-Holland"
+          - "Zeeland"
+          - "Noord-Brabant"
+          - "Limburg"
+          - "Flevoland"
+
+      - label: "Stad / gemeente"
+        name: "stad"
+        widget: "string"
+        required: false
+        hint: "Bijv. Emmen, Assen, Hoogeveen"
+
+      - label: "Categorieën"
+        name: "categorieen"
+        widget: "select"
+        multiple: true
+        options:
+          - "Massage"
+          - "Voeding"
+          - "Bewegen"
+          - "Meditatie"
+          - "Coaching"
+          - "Energetisch"
+          - "Coaching met dieren"
+          - "Kindgericht"
+          - "Hulp voor huisdieren"
+          - "Expressie / Creativiteit"
+        hint: "Selecteer alle categorieën die van toepassing zijn"
+
+      - label: "Methoden / specialismen"
+        name: "methoden"
+        widget: "list"
+        hint: "Bijv. REIKI, Voetreflexologie, PSYCH-K® — één per regel"
+
+      # ── CONTACT & PRAKTISCH ──
+      - label: "Website"
+        name: "website"
+        widget: "string"
+        required: false
+        hint: "https://jouwwebsite.nl"
+
+      - label: "E-mailadres (zichtbaar op profiel)"
+        name: "email_zichtbaar"
+        widget: "string"
+        required: false
+        hint: "Laat leeg als je geen e-mail op je profiel wilt"
+
+      - label: "Telefoonnummer (zichtbaar op profiel)"
+        name: "telefoon"
+        widget: "string"
+        required: false
+
+      - label: "Online sessies mogelijk?"
+        name: "online"
+        widget: "select"
+        options: ["Ja", "Nee", "Op aanvraag"]
+        default: "Op aanvraag"
+
+      - label: "Sessieduur"
+        name: "sessieduur"
+        widget: "string"
+        required: false
+        hint: "Bijv. 60 min of 60–90 min"
+
+      - label: "Tarief"
+        name: "tarief"
+        widget: "string"
+        required: false
+        hint: "Bijv. €75 per sessie. Laat leeg als je dit niet wilt vermelden."
+
+      - label: "Eerste gesprek"
+        name: "eerste_gesprek"
+        widget: "select"
+        options: ["Gratis kennismaking", "Gratis (30 min)", "Op aanvraag", "Betaald"]
+        default: "Gratis kennismaking"
+
+      - label: "Vergoeding zorgverzekeraar"
+        name: "vergoeding"
+        widget: "string"
+        required: false
+        hint: "Bijv. Mogelijk via aanvullend pakket (check bij jouw verzekeraar)"
 
       - label: "Talen"
-        name: talen
-        widget: select
-        multiple: true
-        default: [Nederlands]
-        options: [Nederlands, Engels, Duits, Frans, Spaans]
+        name: "talen"
+        widget: "list"
+        default: ["Nederlands"]
+        hint: "In welke talen werk jij?"
 
-      # Bio
-      - { label: "Over mij (korte biografie)", name: bio,
-          widget: text,
-          hint: "Max. 200 woorden. Geen opmaak nodig — gewone tekst." }
+      # ── OPLEIDING & KWALIFICATIES ──
+      - label: "Opleidingen & certificeringen"
+        name: "opleidingen"
+        widget: "list"
+        hint: "Eén opleiding of certificaat per regel — bijv. REIKI Master gecertificeerd"
 
-      # Onderscheidende vragen
-      - label: "Persoonlijke vragen"
-        name: persoonlijk
-        widget: object
-        collapsed: false
-        hint: "Deze antwoorden maken jouw profiel uniek. Schrijf zoals je praat."
-        fields:
-          - { label: "Waarom deed jij deze opleiding?",
-              name: waarom_opleiding, widget: text, required: false,
-              hint: "Vertel het verhaal achter jouw keuze." }
-          - { label: "Waarvoor bel je mij wél — en waarvoor juist niet?",
-              name: voor_wie, widget: text, required: false,
-              hint: "Eerlijk antwoord. Helpt mensen snel te kiezen." }
-          - { label: "Wat zegt een cliënt die je goed kent over jou?",
-              name: clientquote, widget: text, required: false,
-              hint: "Geen officiële testimonial — gewoon hoe een cliënt jou zou beschrijven." }
-          - { label: "Wat doe jij zelf om gezond en bewust te blijven?",
-              name: zelf_bewust, widget: text, required: false,
-              hint: "Laat zien dat je ook zelf leeft wat je uitdraagt." }
+      - label: "Beroepsverenigingen"
+        name: "verenigingen"
+        widget: "list"
+        required: false
+        hint: "Bijv. NVA, NVST, RBCZ — één per regel"
 
-      # Publicatie
-      - { label: "Actief op platform", name: actief, widget: boolean, default: true }
+      - label: "Jaren werkervaring"
+        name: "ervaringsjaren"
+        widget: "number"
+        required: false
+        value_type: "int"
+        min: 0
+        max: 50
 
-  # ── SITEBEHEER (alleen superuser) ──────────────────────────────
+      - label: "Doelgroepen"
+        name: "doelgroepen"
+        widget: "list"
+        hint: "Voor wie is jouw werk het meest geschikt? Bijv. Volwassenen, Vrouwen, Kinderen, Senioren"
+
+      # ── JOUW VERHAAL (de onderscheidende vragen) ──
+      - label: "Korte introductie"
+        name: "bio"
+        widget: "text"
+        hint: "2–4 zinnen over wie je bent en wat je doet. Schrijf zoals je praat — geen verkooptekst."
+
+      - label: "Waarom is dit jouw werk?"
+        name: "waarom"
+        widget: "text"
+        hint: "Wat was het moment of de ervaring die je naar dit werk bracht? Dit mag persoonlijk zijn."
+
+      - label: "Wat maakt jou anders dan andere therapeuten?"
+        name: "onderscheid"
+        widget: "text"
+        hint: "Wat doe jij dat anderen niet doen, of anders doen? Wees concreet."
+
+      - label: "Waarvoor bel je mij wél — en waarvoor juist niet?"
+        name: "voor_wie"
+        widget: "text"
+        hint: "Eerlijkheid wekt vertrouwen. Voor welke situaties ben jij de juiste persoon? En wanneer verwijs je door?"
+
+      - label: "Wat zegt een cliënt na drie sessies over jou?"
+        name: "wat_zeggen_clienten"
+        widget: "text"
+        hint: "Beschrijf in de woorden van je cliënten wat ze merken of ervaren. Geen letterlijk citaat nodig."
+
+      - label: "Wat geef je een cliënt mee naar huis na een sessie?"
+        name: "na_sessie"
+        widget: "text"
+        required: false
+        hint: "Een gevoel, inzicht, oefening, of iets anders concreets?"
+
+      # ── ZICHTBAARHEID (alleen superuser) ──
+      - label: "Gepubliceerd"
+        name: "gepubliceerd"
+        widget: "boolean"
+        default: true
+        hint: "Zet uit om het profiel tijdelijk te verbergen"
+
+      - label: "Uitgelicht op homepage"
+        name: "uitgelicht"
+        widget: "boolean"
+        default: false
+        hint: "Alleen superuser: toon dit profiel in de homepage-selectie"
+
+      - label: "Lidmaatschap"
+        name: "lidmaatschap"
+        widget: "select"
+        options: ["Bewust-maker", "Mee-maker"]
+        default: "Bewust-maker"
+
+  # ── AGENDA ─────────────────────────────────────────────────────────────────
+  - name: "agenda"
+    label: "Agenda"
+    label_singular: "Activiteit"
+    folder: "_agenda"
+    create: true
+    slug: "{{jaar}}-{{maand}}-{{dag}}-{{slug}}"
+    summary: "{{datum}} – {{titel}} ({{organisator}})"
+
+    fields:
+      - label: "Titel activiteit"
+        name: "titel"
+        widget: "string"
+
+      - label: "Datum"
+        name: "datum"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "DD-MM-YYYY"
+        time_format: false
+
+      - label: "Tijdstip"
+        name: "tijdstip"
+        widget: "string"
+        required: false
+        hint: "Bijv. 09:00–11:00"
+
+      - label: "Locatie"
+        name: "locatie"
+        widget: "string"
+        hint: "Stad of Online"
+
+      - label: "Organisator"
+        name: "organisator"
+        widget: "string"
+        hint: "Jouw naam of praktijknaam"
+
+      - label: "Beschrijving"
+        name: "beschrijving"
+        widget: "text"
+
+      - label: "Aanmeldlink of contactinfo"
+        name: "aanmeld"
+        widget: "string"
+        required: false
+        hint: "URL of e-mailadres voor aanmelding"
+
+      - label: "Gepubliceerd"
+        name: "gepubliceerd"
+        widget: "boolean"
+        default: true
+
+  # ── SITE-INSTELLINGEN (alleen superuser) ───────────────────────────────────
   - name: "instellingen"
-    label: "⚙️ Sitebeheer"
+    label: "Site-instellingen"
     files:
-      - label: "Sitegegevens"
-        name: "sitegegevens"
-        file: "_data/sitegegevens.yml"
+      - label: "Algemene instellingen"
+        name: "algemeen"
+        file: "_data/instellingen.yml"
         fields:
-          - { label: "Telefoon Marcella", name: marcella, widget: string }
-          - { label: "Telefoon Elsemarie", name: elsemarie, widget: string }
-          - { label: "E-mail", name: email, widget: string }
-          - { label: "Facebook URL", name: facebook, widget: string }
-          - { label: "Instagram URL", name: instagram, widget: string }
-          - { label: "WhatsApp URL", name: whatsapp, widget: string }
-          - { label: "Formspree endpoint", name: formspree_endpoint, widget: string }
+          - label: "Maandelijks inspiratie-artikel: naam auteur"
+            name: "inspiratie_auteur"
+            widget: "string"
+          - label: "Maandelijks inspiratie-artikel: titel"
+            name: "inspiratie_titel"
+            widget: "string"
+          - label: "Maandelijks inspiratie-artikel: intro-tekst"
+            name: "inspiratie_intro"
+            widget: "text"
+          - label: "Maandelijks inspiratie-artikel: link"
+            name: "inspiratie_link"
+            widget: "string"
+          - label: "Maandelijks inspiratie-artikel: foto-naam"
+            name: "inspiratie_foto"
+            widget: "string"
+            hint: "Bestandsnaam in assets/images/makers/"
+          - label: "Teller: aantal Bewust-makers"
+            name: "teller_bewust_makers"
+            widget: "number"
+            value_type: "int"
+          - label: "Teller: aantal Mee-makers"
+            name: "teller_mee_makers"
+            widget: "number"
+            value_type: "int"
