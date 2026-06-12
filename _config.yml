@@ -1,24 +1,16 @@
 title: "Nederland-Bewust"
 description: "Dé startpagina voor alternatieve zorg, holistische therapie, natuurlijke gezondheid én welzijn in Nederland."
-baseurl: "/nederland-bewust"
-url: "https://hands4flownl.github.io"
-
-# Voor een custom domein later: zet baseurl terug op "" en pas url aan:
-# baseurl: ""
-# url: "https://nederland-bewust.nl"
+baseurl: ""
+url: "https://nederland-bewust.netlify.app"
 
 lang: nl
 timezone: Europe/Amsterdam
-
-# Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
 
-# Formspree configuratie (vervang met je eigen endpoint)
 formspree_endpoint: "https://formspree.io/f/JOUWFORMID"
 
-# Contactgegevens
 contact:
   marcella: "06-21312490"
   elsemarie: "06-59111456"
@@ -27,7 +19,23 @@ contact:
   instagram: "https://instagram.com/nederlandbewust2026"
   whatsapp: "https://wa.me/31659111456"
 
-# Uitsluitingen
+# Jekyll collections voor CMS
+collections:
+  bewust-makers:
+    output: true
+    permalink: /bewust-makers/:slug/
+  agenda:
+    output: true
+    permalink: /activiteiten/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: "bewust-makers"
+    values:
+      layout: "bewust-maker"
+      gepubliceerd: true
+
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -35,18 +43,6 @@ exclude:
   - vendor
   - README.md
 
-# Plugins
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-
-collections:
-  bewust_makers:
-    output: false
-
-defaults:
-  - scope:
-      path: ""
-      type: "bewust_makers"
-    values:
-      actief: true
