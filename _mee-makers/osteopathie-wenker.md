@@ -1,8 +1,8 @@
 ---
 naam: "Osteopathie Wenker"
-beschrijving: "Osteopathie"
+beschrijving: "Osteopathie."
 website: ""
-logo: "https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-osteopathie-wenker-1.png"
+logo: "/assets/images/meemakers/osteopathie-wenker.png"
 provincie: "Drenthe"
 gepubliceerd: true
 lidmaatschap: "Mee-maker"
