@@ -18,6 +18,23 @@
   <script>
     window.addEventListener('load', function() {
       if (window.netlifyIdentity) {
+        // Na login: ga naar welkomstpagina (eerste keer) of admin
+        window.netlifyIdentity.on('login', function(user) {
+          var huidig = window.location.pathname;
+          // Als we op een gewone pagina zijn (niet admin), stuur naar welkom
+          if (!huidig.startsWith('/admin')) {
+            window.location.href = '/welkom-beheer/';
+          }
+        });
+        window.netlifyIdentity.on('logout', function() {
+          window.location.href = '/';
+        });
+      }
+    });
+  </script>
+  <script>
+    window.addEventListener('load', function() {
+      if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', function(user) {
           if (!user) {
             window.netlifyIdentity.on('login', function(user) {
