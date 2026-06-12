@@ -15,7 +15,7 @@ layout: standaard
 
       {% if m.logo %}
       <div style="flex-shrink:0;">
-        <img src="{{ m.logo }}" alt="{{ m.naam }}"
+        <img src="{{ m.logo | relative_url }}" alt="{{ m.naam }}"
           style="width:160px;height:160px;object-fit:contain;border-radius:var(--radius-groot);border:2px solid var(--border);padding:1rem;background:var(--wit);"
           loading="lazy" onerror="this.style.opacity='0.3'">
       </div>
