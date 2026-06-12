@@ -158,6 +158,88 @@ collections:
 
 
 
+
+  # ── PAGINATEKSTEN (alleen eigenaren) ──────────────────────────────────────
+  - name: "paginateksten"
+    label: "✏️ Paginateksten"
+    files:
+
+      - label: "Homepage teksten"
+        name: "homepage"
+        file: "_data/paginateksten.yml"
+        fields:
+          - label: "── HERO SECTIE ──"
+            name: "hero_sectie"
+            widget: "hidden"
+            default: ""
+          - {label: "Hero: label boven de titel", name: "homepage_hero_label", widget: "string"}
+          - {label: "Hero: hoofdtitel", name: "homepage_hero_titel", widget: "string"}
+          - {label: "Hero: subtitel", name: "homepage_hero_subtitel", widget: "string"}
+          - {label: "Hero: tekst", name: "homepage_hero_tekst", widget: "text"}
+          - {label: "Hero: knop 1 tekst", name: "homepage_hero_knop1", widget: "string"}
+          - {label: "Hero: knop 2 tekst", name: "homepage_hero_knop2", widget: "string"}
+          - label: "── PIJLERS ──"
+            name: "pijlers_sectie"
+            widget: "hidden"
+            default: ""
+          - {label: "Pijlers: titel", name: "homepage_pijlers_titel", widget: "string"}
+          - {label: "Pijlers: intro tekst", name: "homepage_pijlers_tekst", widget: "text"}
+          - {label: "Pijler 1: titel", name: "homepage_pijler1_titel", widget: "string"}
+          - {label: "Pijler 1: tekst", name: "homepage_pijler1_tekst", widget: "text"}
+          - {label: "Pijler 2: titel", name: "homepage_pijler2_titel", widget: "string"}
+          - {label: "Pijler 2: tekst", name: "homepage_pijler2_tekst", widget: "text"}
+          - {label: "Pijler 3: titel", name: "homepage_pijler3_titel", widget: "string"}
+          - {label: "Pijler 3: tekst", name: "homepage_pijler3_tekst", widget: "text"}
+          - label: "── ADVIESGESPREK ──"
+            name: "intake_sectie"
+            widget: "hidden"
+            default: ""
+          - {label: "Adviesgesprek: titel", name: "homepage_intake_titel", widget: "string"}
+          - {label: "Adviesgesprek: tekst", name: "homepage_intake_tekst", widget: "text"}
+          - {label: "Adviesgesprek: knop tekst", name: "homepage_intake_knop", widget: "string"}
+          - label: "── ONDERSTE CTA ──"
+            name: "cta_sectie"
+            widget: "hidden"
+            default: ""
+          - {label: "CTA: titel", name: "homepage_cta_titel", widget: "string"}
+          - {label: "CTA: tekst", name: "homepage_cta_tekst", widget: "text"}
+
+      - label: "Maandelijks inspiratie-artikel"
+        name: "inspiratie"
+        file: "_data/instellingen.yml"
+        fields:
+          - {label: "Naam auteur", name: "inspiratie_auteur", widget: "string",
+             hint: "Bijv. Judith Hendriks"}
+          - {label: "Functie auteur", name: "inspiratie_functie", widget: "string",
+             hint: "Bijv. orthomoleculair therapeut, By Juud"}
+          - {label: "Artikel titel", name: "inspiratie_titel", widget: "string"}
+          - {label: "Intro tekst (2-3 zinnen)", name: "inspiratie_intro", widget: "text"}
+          - {label: "Link naar volledig artikel", name: "inspiratie_link", widget: "string"}
+          - {label: "Foto van de auteur", name: "inspiratie_foto", widget: "image",
+             required: false}
+          - label: "── TELLERS ──"
+            name: "tellers_sectie"
+            widget: "hidden"
+            default: ""
+          - {label: "Aantal Bewust-makers", name: "teller_bewust_makers",
+             widget: "number", value_type: "int", default: 18}
+          - {label: "Aantal Mee-makers", name: "teller_mee_makers",
+             widget: "number", value_type: "int", default: 7}
+
+      - label: "Over-pagina teksten"
+        name: "over"
+        file: "_data/paginateksten.yml"
+        fields:
+          - {label: "Missie tekst", name: "over_missie_tekst", widget: "text"}
+          - {label: "Visie tekst", name: "over_visie_tekst", widget: "text"}
+          - {label: "Visie citaat", name: "over_visie_quote", widget: "string"}
+
+      - label: "Contact teksten"
+        name: "contact"
+        file: "_data/paginateksten.yml"
+        fields:
+          - {label: "Intro tekst", name: "contact_intro", widget: "text"}
+
   # ── KENNISBANK ────────────────────────────────────────────────────────────
   - name: "kennisbank-wiki"
     label: "📚 Kennisbank"
