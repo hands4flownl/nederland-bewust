@@ -166,35 +166,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ===================== NETLIFY IDENTITY: BEHEERSKNOP =====================
-// Toon "Mijn profiel" knop alleen voor ingelogde bewust-makers
 (function() {
   function checkLogin() {
     var knop = document.getElementById('nav-beheer-item');
     if (!knop) return;
 
-    // Netlify Identity slaat gebruiker op in localStorage
-    var sleutel = Object.keys(localStorage).find(function(k) {
-      return k.startsWith('gotrue-');
-    });
-    if (sleutel) {
-      try {
-        var data = JSON.parse(localStorage.getItem(sleutel));
-        if (data && data.access_token) {
-          knop.style.display = 'block';
-          return;
+    // Netlify Identity gebruikt 'gotrue-session' in localStorage
+    var ingelogd = false;
+    try {
+      var sessie = localStorage.getItem('gotrue-session');
+      if (sessie) {
+        var data = JSON.parse(sessie);
+        ingelogd = !!(data && data.access_token);
+      }
+      // Fallback: zoek alle gotrue-* keys
+      if (!ingelogd) {
+        for (var i = 0; i < localStorage.length; i++) {
+          var key = localStorage.key(i);
+          if (key && key.indexOf('gotrue') !== -1) {
+            try {
+              var val = JSON.parse(localStorage.getItem(key));
+              if (val && val.access_token) { ingelogd = true; break; }
+            } catch(e) {}
+          }
         }
-      } catch(e) {}
-    }
-    knop.style.display = 'none';
+      }
+    } catch(e) {}
+
+    knop.style.display = ingelogd ? 'block' : 'none';
   }
 
-  // Check bij laden
   document.addEventListener('DOMContentLoaded', checkLogin);
 
-  // Check ook na Identity events
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on('login', function() {
-      setTimeout(checkLogin, 500);
+      setTimeout(checkLogin, 800);
     });
     window.netlifyIdentity.on('logout', function() {
       var knop = document.getElementById('nav-beheer-item');
