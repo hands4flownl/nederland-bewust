@@ -1,7 +1,7 @@
 title: "Nederland-Bewust"
 description: "Dé startpagina voor alternatieve zorg, holistische therapie, natuurlijke gezondheid én welzijn in Nederland."
-baseurl: ""
-url: "https://nederland-bewust.netlify.app"
+baseurl: "/nederland-bewust"
+url: "https://hands4flownl.github.io"
 
 lang: nl
 timezone: Europe/Amsterdam
@@ -19,7 +19,6 @@ contact:
   instagram: "https://instagram.com/nederlandbewust2026"
   whatsapp: "https://wa.me/31659111456"
 
-# Jekyll collections voor CMS
 collections:
   bewust-makers:
     output: true
@@ -42,6 +41,8 @@ exclude:
   - node_modules
   - vendor
   - README.md
+  - netlify.toml
+  - _config_netlify.yml
 
 plugins:
   - jekyll-seo-tag
