@@ -5,6 +5,8 @@ backend:
 media_folder: "assets/images/makers"
 public_folder: "/assets/images/makers"
 
+publish_mode: editorial_workflow
+
 locale: 'nl'
 
 # Superuser ziet alles. Bewust-maker ziet gefilterde weergave.
