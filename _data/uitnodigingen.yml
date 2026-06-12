@@ -1,0 +1,8 @@
+# Bewust-makers uitnodigen
+# Vul in via het beheerpaneel: Uitnodigingen
+# Claude verstuurt daarna de Netlify uitnodiging
+naam: ""
+email: ""
+type: "Bewust-maker"
+notitie: ""
+status: "Te verwerken"
