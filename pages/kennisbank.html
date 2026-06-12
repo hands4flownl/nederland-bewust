@@ -1,103 +1,116 @@
 ---
 layout: standaard
 title: "Holistische kennisbank"
-beschrijving: "Kennis en informatie over holistische gezondheid, alternatieve geneeswijzen en bewust leven in Nederland."
+beschrijving: "Betrouwbare informatie over holistische behandelvormen, therapieën en begrippen. Geschreven en beheerd door Nederland-Bewust."
 permalink: /kennisbank/
 ---
 
 <div class="pagina-header">
   <h1>Holistische kennisbank</h1>
-  <p>Kennis en informatie over holistische gezondheid en bewust leven</p>
+  <p>Betrouwbare informatie over behandelvormen, therapieën en begrippen</p>
 </div>
 
 <section class="sectie">
   <div class="container">
 
-    <!-- Tag filter -->
-    <div class="tag-lijst">
-      <button class="tag actief js-tag-filter" data-filter="alles">Alles</button>
-      <button class="tag js-tag-filter" data-filter="massage">Massage</button>
-      <button class="tag js-tag-filter" data-filter="voeding">Voeding</button>
-      <button class="tag js-tag-filter" data-filter="bewegen">Bewegen</button>
-      <button class="tag js-tag-filter" data-filter="meditatie">Meditatie</button>
-      <button class="tag js-tag-filter" data-filter="energetisch">Energetisch</button>
-      <button class="tag js-tag-filter" data-filter="coaching">Coaching</button>
-      <button class="tag js-tag-filter" data-filter="lichaam">Lichaam</button>
-      <button class="tag js-tag-filter" data-filter="brein">Brein</button>
+    <div style="max-width:680px;margin:0 auto 2.5rem;text-align:center;">
+      <p>Hier vind je heldere, eerlijke informatie over holistische behandelvormen. Wat is het, hoe werkt het, voor wie is het geschikt — en voor wie niet. Geschreven en beheerd door Nederland-Bewust, aangevuld door onze bewust-makers.</p>
     </div>
 
-    <!-- Kennisbank items -->
-    <!-- =====================================================
-         HOE VOEG JE EEN KENNISBANK-ARTIKEL TOE?
-         Voeg een .md bestand toe in de map _kennisbank/
-         met front matter: layout, title, tags, etc.
-         Of kopieer het kaart-blok hieronder.
-         ===================================================== -->
-    <div class="grid-3">
+    <!-- Zoekbalk -->
+    <div style="max-width:500px;margin:0 auto 2rem;">
+      <input type="text" id="kb-zoek" placeholder="🔍 Zoek op behandelvorm of begrip..."
+        style="width:100%;padding:0.8rem 1.2rem;border:2px solid var(--border);border-radius:50px;font-size:1rem;font-family:var(--font-body);transition:border-color 0.2s;"
+        oninput="filterKennisbank(this.value)"
+        onfocus="this.style.borderColor='var(--goud)'"
+        onblur="this.style.borderColor='var(--border)'">
+    </div>
 
-      <div class="kaart js-filterbaar" data-tags="lichaam bewegen">
-        <div style="background:linear-gradient(135deg, var(--groen), var(--groen-licht)); height:160px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🧘</div>
-        <div class="kaart__inhoud">
-          <p class="kaart__label">Lichaam &amp; bewegen</p>
-          <h3 class="kaart__titel">Het menselijk lichaam vanuit een holistisch perspectief</h3>
-          <p class="kaart__tekst">Ervaar jij fysieke klachten? Ben je benieuwd naar de boodschap achter deze klacht? Lees hier meer over de holistische benadering van jouw fysieke lichaam.</p>
-          <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--groen" style="font-size:0.85rem;">Lees meer</a>
+    <!-- Filter op categorie -->
+    <div class="tag-lijst" style="justify-content:center;margin-bottom:2rem;">
+      <button class="tag actief js-kb-filter" data-filter="alles">Alles</button>
+      <button class="tag js-kb-filter" data-filter="Massage">Massage</button>
+      <button class="tag js-kb-filter" data-filter="Energetisch">Energetisch</button>
+      <button class="tag js-kb-filter" data-filter="Coaching">Coaching</button>
+      <button class="tag js-kb-filter" data-filter="Voeding">Voeding</button>
+      <button class="tag js-kb-filter" data-filter="Bewegen">Bewegen</button>
+      <button class="tag js-kb-filter" data-filter="Meditatie">Meditatie</button>
+    </div>
+
+    <!-- Artikelen grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;"
+         id="kb-grid">
+      {% assign gepubliceerd = site.kennisbank | where: "gepubliceerd", true | sort: "titel" %}
+      {% for artikel in gepubliceerd %}
+      <a href="{{ artikel.url | relative_url }}"
+         class="kb-item"
+         data-categorie="{{ artikel.categorie }}"
+         data-zoek="{{ artikel.titel | downcase }} {{ artikel.ook_bekend_als | downcase }} {{ artikel.categorie | downcase }}"
+         style="display:block;background:var(--wit);border-radius:var(--radius-groot);padding:1.5rem;box-shadow:var(--schaduw);text-decoration:none;border:2px solid transparent;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;"
+         onmouseover="this.style.borderColor='var(--goud)';this.style.transform='translateY(-3px)';this.style.boxShadow='var(--schaduw-hover)'"
+         onmouseout="this.style.borderColor='transparent';this.style.transform='';this.style.boxShadow='var(--schaduw)'">
+        <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--goud-donker);margin-bottom:0.4rem;">
+          {{ artikel.categorie }}
         </div>
+        <h3 style="font-size:1.1rem;margin-bottom:0.5rem;color:var(--tekst);">
+          {{ artikel.titel }}
+        </h3>
+        {% if artikel.ook_bekend_als %}
+        <p style="font-size:0.8rem;color:var(--tekst-licht);margin-bottom:0.5rem;">
+          Ook bekend als: {{ artikel.ook_bekend_als }}
+        </p>
+        {% endif %}
+        <p style="font-size:0.9rem;color:var(--tekst-licht);line-height:1.55;margin:0;">
+          {{ artikel.inleiding | truncate: 120 }}
+        </p>
+      </a>
+      {% endfor %}
+
+      {% if gepubliceerd.size == 0 %}
+      <div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--tekst-licht);">
+        <p style="font-size:1.1rem;">De kennisbank wordt momenteel opgebouwd.</p>
+        <p style="margin-top:0.5rem;">Bewust-makers voegen binnenkort hun methoden toe.</p>
       </div>
+      {% endif %}
+    </div>
 
-      <div class="kaart js-filterbaar" data-tags="brein coaching">
-        <div style="background:linear-gradient(135deg, #5c6bc0, #7986cb); height:160px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🧠</div>
-        <div class="kaart__inhoud">
-          <p class="kaart__label">Brein &amp; coaching</p>
-          <h3 class="kaart__titel">Het brein vanuit een holistische visie</h3>
-          <p class="kaart__tekst">Jouw mentale gezondheid heeft grote impact op je totale zijn. Ontdek wat jij kunt doen aan een gezond brein en meer mentale veerkracht.</p>
-          <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--groen" style="font-size:0.85rem;">Lees meer</a>
-        </div>
-      </div>
+    <p id="kb-geen" style="display:none;text-align:center;color:var(--tekst-licht);margin-top:2rem;">
+      Geen resultaten gevonden. Probeer een andere zoekterm.
+    </p>
 
-      <div class="kaart js-filterbaar" data-tags="energetisch meditatie">
-        <div style="background:linear-gradient(135deg, #f57c00, #ffb74d); height:160px; display:flex; align-items:center; justify-content:center; font-size:3rem;">✨</div>
-        <div class="kaart__inhoud">
-          <p class="kaart__label">Energetische ondersteuning</p>
-          <h3 class="kaart__titel">Energetische ondersteuning van het menselijk lichaam</h3>
-          <p class="kaart__tekst">Alles om je heen is frequentie of energie. Is je energiefrequentie hoog? Dan stroomt alle voedende energie goed door je lichaam.</p>
-          <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--groen" style="font-size:0.85rem;">Lees meer</a>
-        </div>
-      </div>
-
-      <div class="kaart js-filterbaar" data-tags="massage lichaam">
-        <div style="background:linear-gradient(135deg, var(--aarde), #c49a6c); height:160px; display:flex; align-items:center; justify-content:center; font-size:3rem;">💆</div>
-        <div class="kaart__inhoud">
-          <p class="kaart__label">Massage</p>
-          <h3 class="kaart__titel">Stoelmassage die direct verlicht</h3>
-          <p class="kaart__tekst">Een moment voor jezelf. Ontdek hoe massage kan bijdragen aan ontspanning, stressreductie en meer lichaamsbewustzijn.</p>
-          <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--groen" style="font-size:0.85rem;">Lees meer</a>
-        </div>
-      </div>
-
-      <div class="kaart js-filterbaar" data-tags="coaching bewegen">
-        <div style="background:linear-gradient(135deg, #43a047, #81c784); height:160px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🐴</div>
-        <div class="kaart__inhoud">
-          <p class="kaart__label">Coaching met dieren</p>
-          <h3 class="kaart__titel">Laat een paard jouw spiegel zijn</h3>
-          <p class="kaart__tekst">Paarden zijn meesters in het spiegelen van menselijk gedrag. Ontdek hoe paardencoaching jou kan helpen groeien.</p>
-          <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--groen" style="font-size:0.85rem;">Lees meer</a>
-        </div>
-      </div>
-
-      <div class="kaart js-filterbaar" data-tags="energetisch">
-        <div style="background:linear-gradient(135deg, #e91e63, #f48fb1); height:160px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🔮</div>
-        <div class="kaart__inhoud">
-          <p class="kaart__label">Energetisch</p>
-          <h3 class="kaart__titel">Bioresonantie voor mens en huisdier</h3>
-          <p class="kaart__tekst">Wat bioresonantie kan betekenen voor jou en jouw huisdieren. Een energetische methode die steeds meer erkenning krijgt.</p>
-          <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--groen" style="font-size:0.85rem;">Lees meer</a>
-        </div>
-      </div>
-
-      <!-- VOEG HIER NIEUWE KENNISBANK ARTIKELEN TOE -->
-
+    <div style="text-align:center;margin-top:3rem;padding:2rem;background:var(--creme);border-radius:var(--radius-groot);">
+      <h3>Een methode die ontbreekt?</h3>
+      <p style="margin:0.5rem 0 1rem;color:var(--tekst-licht);">Ben je bewust-maker en wil je jouw methode toevoegen aan de kennisbank? Dat kan via het beheerpaneel.</p>
+      <a href="https://nederland-bewust-beheer.netlify.app/admin/" class="knop knop--groen">Naar het beheerpaneel</a>
     </div>
 
   </div>
 </section>
+
+<script>
+function filterKennisbank(zoekterm) {
+  var items = document.querySelectorAll('.kb-item');
+  var term = zoekterm.toLowerCase();
+  var zichtbaar = 0;
+  items.forEach(function(item) {
+    var tekst = item.dataset.zoek || '';
+    var match = !term || tekst.indexOf(term) !== -1;
+    // Check ook actieve categorie filter
+    var actieveTag = document.querySelector('.js-kb-filter.actief');
+    var catFilter = actieveTag ? actieveTag.dataset.filter : 'alles';
+    var catMatch = catFilter === 'alles' || item.dataset.categorie === catFilter;
+    item.style.display = (match && catMatch) ? '' : 'none';
+    if (match && catMatch) zichtbaar++;
+  });
+  document.getElementById('kb-geen').style.display = zichtbaar === 0 ? 'block' : 'none';
+}
+
+document.querySelectorAll('.js-kb-filter').forEach(function(knop) {
+  knop.addEventListener('click', function() {
+    document.querySelectorAll('.js-kb-filter').forEach(function(k) { k.classList.remove('actief'); });
+    this.classList.add('actief');
+    var zoek = document.getElementById('kb-zoek');
+    filterKennisbank(zoek ? zoek.value : '');
+  });
+});
+</script>
