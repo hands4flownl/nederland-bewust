@@ -6,8 +6,8 @@ permalink: /contact/
 ---
 
 <div class="pagina-header">
-  <h1>Contact</h1>
-  <p>Kom in verbinding op de manier die bij jou past</p>
+  <h1>{{ site.data.paginateksten.contact.titel }}</h1>
+  <p>{{ site.data.paginateksten.contact.subtitel }}</p>
 </div>
 
 <section class="sectie">
@@ -17,7 +17,7 @@ permalink: /contact/
 
       <!-- Contactinfo links -->
       <div>
-        <p style="margin-bottom:1.5rem;">Ben je op zoek naar een therapievorm die past bij jouw situatie of die van jouw gezin? Heb je een onderneming die zich inzet voor een bewuster leven? Of heb je een vraag over ons platform? We staan voor je klaar!</p>
+        <p style="margin-bottom:1.5rem;">{{ site.data.paginateksten.contact.intro }}</p>
 
         <div class="contact-info__item">
           <span class="contact-info__icoon">📧</span>
@@ -78,7 +78,7 @@ permalink: /contact/
 
       <!-- Contactformulier rechts -->
       <div>
-        <h2 style="margin-bottom:1.5rem;">Stuur een bericht</h2>
+        <h2 style="margin-bottom:1.5rem;">{{ site.data.paginateksten.contact.formulier_titel }}</h2>
         {% include contactformulier.html %}
       </div>
 
