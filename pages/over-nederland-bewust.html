@@ -6,14 +6,14 @@ permalink: /over-nederland-bewust/
 ---
 
 <div class="pagina-header">
-  <h1>Over Nederland-bewust</h1>
-  <p>Startpagina met een bewuste missie</p>
+  <h1>{{ site.data.paginateksten.over.titel }}</h1>
+  <p>{{ site.data.paginateksten.over.subtitel }}</p>
 </div>
 
 <section class="sectie">
   <div class="container container--nauw">
 
-    <p>Kan jouw innerlijk welzijn en/of fysieke gezondheid wel een steuntje in de rug gebruiken? Kom jij niet verder en ben je toe aan een andere (aanvullende) benadering van jouw situatie? Kom gemakkelijk in contact met aanbieders uit de regio. <a href="{{ '/onze-bewust-makers/' | relative_url }}">Onze Bewust-makers</a> begeleiden je graag naar een leven, waarbij innerlijk welzijn en een zo optimaal mogelijke fysieke gezondheid voorop staan.</p>
+    <p>{{ site.data.paginateksten.over.intro }} <a href="{{ '/onze-bewust-makers/' | relative_url }}">Onze Bewust-makers</a> begeleiden je graag naar een leven, waarbij innerlijk welzijn en een zo optimaal mogelijke fysieke gezondheid voorop staan.</p>
 
     <p>Daarnaast biedt Nederland-bewust ook <a href="{{ '/inspiratie/' | relative_url }}">inspirerende verhalen</a> en deelt handige <a href="{{ '/kennisbank/' | relative_url }}">kennis</a> &amp; tips! Kortom: een positieve energie voor mens én dier!</p>
 
@@ -28,8 +28,8 @@ permalink: /over-nederland-bewust/
 
 <section class="sectie sectie--kleur">
   <div class="container container--nauw">
-    <h2>Missie</h2>
-    <p>Nederland-bewust brengt jou in verbinding met de Bewust-makers in jouw regio, professionals die je vanuit een holistische visie begeleiden naar een leven in balans. Wij geloven dat innerlijk welzijn en optimale fysieke gezondheid de basis zijn voor een levendig en vervuld leven.</p>
+    <h2>{{ site.data.paginateksten.over.missie_titel }}</h2>
+    <p>{{ site.data.paginateksten.over.missie_tekst }}</p>
     <p>Door aandacht te geven aan alle aspecten van jezelf – je lichaam, je mind en je ziel – zowel bewust als onbewust, kun je groeien in verbinding met jezelf. Wanneer je jezelf goed leert kennen, ben je ook in staat de verbinding met anderen te versterken.</p>
     <p>Wij geloven dat bewustwording je niet alleen inzicht en vertrouwen biedt, maar je OER-sterk maakt. Zo leef je een gezond en gelukkig leven, van binnenuit.</p>
   </div>
@@ -37,11 +37,11 @@ permalink: /over-nederland-bewust/
 
 <section class="sectie">
   <div class="container container--nauw">
-    <h2>Visie</h2>
-    <p>Wij dromen van een samenleving waarin zelfbewustzijn vanzelfsprekend is. Een wereld waarin toekomstige generaties opgroeien met ruimte en aandacht om zichzelf écht te leren kennen, in elke omgeving: thuis, op school, op het werk, bij vrienden of in de sport.</p>
+    <h2>{{ site.data.paginateksten.over.visie_titel }}</h2>
+    <p>{{ site.data.paginateksten.over.visie_tekst }}</p>
     <p>Een samenleving waarin we leren luisteren naar wat ons lichaam ons wil vertellen. Waar emoties en pijn worden gezien als waardevolle signalen, waardoor de mogelijkheid ontstaat om van binnenuit te helen – voordat klachten zich vastzetten.</p>
     <blockquote style="border-left:4px solid var(--groen); padding-left:1.5rem; margin:1.5rem 0; font-style:italic; font-size:1.1rem; color:var(--groen-donker);">
-      "Een nieuwe generatie die leeft van binnenuit – vol vertrouwen, verbonden en bruisend van levenslust"
+      "{{ site.data.paginateksten.over.visie_quote }}"
     </blockquote>
   </div>
 </section>
@@ -96,7 +96,6 @@ permalink: /over-nederland-bewust/
   <div class="container container--nauw">
     <h2>Kom in contact met ons</h2>
     <p>Vul het formulier in en wij nemen spoedig contact met je op.</p>
-
     {% include contactformulier.html %}
   </div>
 </section>
