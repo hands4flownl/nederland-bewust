@@ -74,41 +74,91 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ===================== AFSTAND HULPFUNCTIE =====================
+  function berekenKm(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const d = Math.PI / 180;
+    const dlat = (lat2 - lat1) * d;
+    const dlon = (lon2 - lon1) * d;
+    const a = Math.sin(dlat/2) * Math.sin(dlat/2) +
+              Math.cos(lat1 * d) * Math.cos(lat2 * d) *
+              Math.sin(dlon/2) * Math.sin(dlon/2);
+    return R * 2 * Math.asin(Math.sqrt(a));
+  }
+
   // ===================== ZOEK & FILTER BEWUST-MAKERS =====================
-  const zoekInput = document.getElementById('zoek-naam');
-  const zoekProvincie = document.getElementById('zoek-provincie');
-  const zoekMethode = document.getElementById('zoek-methode');
-  const filterTags = document.querySelectorAll('.js-tag-filter');
-  const makerItems = document.querySelectorAll('.js-maker');
-  const resultaatTekst = document.getElementById('zoek-resultaat');
+  const zoekInput    = document.getElementById('zoek-naam');
+  const zoekProv     = document.getElementById('zoek-provincie');
+  const filterTags   = document.querySelectorAll('.js-tag-filter');
+  const makerItems   = document.querySelectorAll('.js-maker');
+  const resultaatTxt = document.getElementById('zoek-resultaat');
+  const afstandWrap  = document.getElementById('afstand-wrap');
+  const afstandSlider = document.getElementById('afstand-slider');
+  const afstandLabel = document.getElementById('afstand-label');
+  const afstandWis   = document.getElementById('afstand-wis');
+  const provinciVeld = document.getElementById('provincie-veld');
+
+  let gebruikerLat = null;
+  let gebruikerLon = null;
 
   function filterMakers() {
-    const naam = zoekInput ? zoekInput.value.toLowerCase() : '';
-    const provincie = zoekProvincie ? zoekProvincie.value : '';
-    const methode = zoekMethode ? zoekMethode.value : '';
-    const actieveTag = document.querySelector('.js-tag-filter.actief');
-    const tag = actieveTag ? actieveTag.dataset.filter : 'alles';
+    const naam   = zoekInput ? zoekInput.value.toLowerCase().trim() : '';
+    const prov   = zoekProv  ? zoekProv.value : '';
+    const actTag = document.querySelector('.js-tag-filter.actief');
+    const tag    = actTag ? actTag.dataset.filter : 'alles';
+    const maxKm  = afstandSlider ? parseInt(afstandSlider.value) : null;
+    const locActief = gebruikerLat !== null && afstandWrap && afstandWrap.style.display !== 'none';
 
     let zichtbaar = 0;
     makerItems.forEach(function (item) {
-      const naamMatch = !naam || item.dataset.naam.toLowerCase().includes(naam);
-      const provMatch = !provincie || item.dataset.provincie === provincie;
-      const methMatch = !methode || (item.dataset.methoden && item.dataset.methoden.includes(methode));
+      // Tekstzoeken: naam + omschrijving + methoden + tags
+      const zoekVeld = [
+        item.dataset.naam        || '',
+        item.dataset.omschrijving || '',
+        item.dataset.methoden    || '',
+        item.dataset.tags        || ''
+      ].join(' ').toLowerCase();
+      const naamMatch = !naam || zoekVeld.includes(naam);
+
+      // Provincie (alleen als geen locatiefilter actief)
+      const provMatch = locActief || !prov || item.dataset.provincie === prov;
+
+      // Methode-tag
       const tagMatch = tag === 'alles' || (item.dataset.tags && item.dataset.tags.includes(tag));
-      const toon = naamMatch && provMatch && methMatch && tagMatch;
+
+      // Afstand
+      let afstandMatch = true;
+      if (locActief && maxKm) {
+        const mLat = parseFloat(item.dataset.lat);
+        const mLon = parseFloat(item.dataset.lon);
+        if (!isNaN(mLat) && !isNaN(mLon)) {
+          afstandMatch = berekenKm(gebruikerLat, gebruikerLon, mLat, mLon) <= maxKm;
+        } else {
+          // Geen coördinaten: toon altijd (valt buiten filter)
+          afstandMatch = true;
+        }
+      }
+
+      const toon = naamMatch && provMatch && tagMatch && afstandMatch;
       item.style.display = toon ? '' : 'none';
       if (toon) zichtbaar++;
     });
-    if (resultaatTekst) {
-      resultaatTekst.textContent = makerItems.length > 0
+
+    if (resultaatTxt) {
+      resultaatTxt.textContent = makerItems.length > 0
         ? zichtbaar + ' bewust-maker' + (zichtbaar !== 1 ? 's' : '') + ' gevonden'
         : '';
     }
   }
 
-  if (zoekInput) zoekInput.addEventListener('input', filterMakers);
-  if (zoekProvincie) zoekProvincie.addEventListener('change', filterMakers);
-  if (zoekMethode) zoekMethode.addEventListener('change', filterMakers);
+  if (zoekInput)  zoekInput.addEventListener('input', filterMakers);
+  if (zoekProv)   zoekProv.addEventListener('change', filterMakers);
+  if (afstandSlider) {
+    afstandSlider.addEventListener('input', function () {
+      if (afstandLabel) afstandLabel.textContent = 'Binnen ' + this.value + ' km';
+      filterMakers();
+    });
+  }
 
   filterTags.forEach(function (knop) {
     knop.addEventListener('click', function () {
@@ -129,36 +179,35 @@ document.addEventListener('DOMContentLoaded', function () {
       locatieKnop.textContent = '📍 Locatie bepalen...';
       locatieKnop.disabled = true;
       navigator.geolocation.getCurrentPosition(function (pos) {
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
-        // Bepaal provincie via Open Nominatim
-        fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon)
-          .then(function(r) { return r.json(); })
-          .then(function(data) {
-            const prov = data.address && data.address.state ? data.address.state : '';
-            const provMap = {
-              'Drenthe': 'Drenthe', 'Groningen': 'Groningen', 'Friesland': 'Friesland',
-              'Overijssel': 'Overijssel', 'Gelderland': 'Gelderland', 'Utrecht': 'Utrecht',
-              'Noord-Holland': 'Noord-Holland', 'Zuid-Holland': 'Zuid-Holland',
-              'Zeeland': 'Zeeland', 'Noord-Brabant': 'Noord-Brabant',
-              'Limburg': 'Limburg', 'Flevoland': 'Flevoland'
-            };
-            const gevonden = provMap[prov] || '';
-            if (gevonden && zoekProvincie) {
-              zoekProvincie.value = gevonden;
-              filterMakers();
-              locatieKnop.textContent = '📍 ' + gevonden;
-            } else {
-              locatieKnop.textContent = '📍 Gebruik locatie';
-            }
-          })
-          .catch(function() { locatieKnop.textContent = '📍 Gebruik locatie'; })
-          .finally(function() { locatieKnop.disabled = false; });
+        gebruikerLat = pos.coords.latitude;
+        gebruikerLon = pos.coords.longitude;
+
+        // Toon afstand-slider, verberg provincie-dropdown
+        if (afstandWrap)  afstandWrap.style.display = 'block';
+        if (provinciVeld) provinciVeld.style.display = 'none';
+        if (zoekProv)     zoekProv.value = '';
+        if (afstandLabel) afstandLabel.textContent = 'Binnen ' + (afstandSlider ? afstandSlider.value : 20) + ' km';
+
+        locatieKnop.textContent = '📍 Locatie gevonden';
+        locatieKnop.disabled = false;
+        filterMakers();
       }, function () {
         alert('Kon locatie niet ophalen. Selecteer je provincie handmatig.');
-        locatieKnop.textContent = '📍 Gebruik locatie';
+        locatieKnop.textContent = '📍 Zoek op afstand';
         locatieKnop.disabled = false;
       });
+    });
+  }
+
+  // Locatiefilter verwijderen
+  if (afstandWis) {
+    afstandWis.addEventListener('click', function () {
+      gebruikerLat = null;
+      gebruikerLon = null;
+      if (afstandWrap)  afstandWrap.style.display = 'none';
+      if (provinciVeld) provinciVeld.style.display = '';
+      if (locatieKnop)  locatieKnop.textContent = '📍 Zoek op afstand';
+      filterMakers();
     });
   }
 
@@ -166,7 +215,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ===================== BEHEER KNOP (simpel) =====================
 document.addEventListener('DOMContentLoaded', function() {
-  // Check of gebruiker ingelogd is via Netlify Identity localStorage
   var ingelogd = false;
   try {
     for (var i = 0; i < localStorage.length; i++) {
@@ -180,17 +228,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   } catch(e) {}
 
-  var navKnop = document.getElementById('nav-beheer-item');
-  var loginLink = document.getElementById('footer-login-link');
-  var beheerLink = document.getElementById('footer-beheer-link');
+  var navKnop     = document.getElementById('nav-beheer-item');
+  var loginLink   = document.getElementById('footer-login-link');
+  var beheerLink  = document.getElementById('footer-beheer-link');
 
   if (ingelogd) {
-    if (navKnop) navKnop.style.display = 'block';
-    if (loginLink) loginLink.style.display = 'none';
+    if (navKnop)    navKnop.style.display = 'block';
+    if (loginLink)  loginLink.style.display = 'none';
     if (beheerLink) beheerLink.style.display = 'inline';
   } else {
-    if (navKnop) navKnop.style.display = 'none';
-    if (loginLink) loginLink.style.display = 'inline';
+    if (navKnop)    navKnop.style.display = 'none';
+    if (loginLink)  loginLink.style.display = 'inline';
     if (beheerLink) beheerLink.style.display = 'none';
   }
 });
