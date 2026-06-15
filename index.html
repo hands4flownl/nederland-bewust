@@ -26,9 +26,9 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       <div class="zoek-rij">
         <div class="zoek-veld">
           <label for="zoek-naam">Naam of praktijk</label>
-          <input type="text" id="zoek-naam" placeholder="Bijv. massage, coaching...">
+          <input type="text" id="zoek-naam" placeholder="Bijv. voetreflexologie, coaching...">
         </div>
-        <div class="zoek-veld">
+        <div class="zoek-veld" id="provincie-veld">
           <label for="zoek-provincie">Provincie</label>
           <select id="zoek-provincie">
             <option value="">Alle provincies</option>
@@ -39,9 +39,24 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
           </select>
         </div>
         <div class="zoek-veld">
-          <button id="gebruik-locatie" class="knop knop--groen" style="width:100%; padding:0.65rem 1rem; font-size:0.85rem;">📍 Gebruik mijn locatie</button>
+          <button id="gebruik-locatie" class="knop knop--groen" style="width:100%; padding:0.65rem 1rem; font-size:0.85rem;">📍 Zoek op afstand</button>
         </div>
       </div>
+
+      <!-- AFSTAND SLIDER -->
+      <div id="afstand-wrap" style="display:none; margin-top:1rem; background:var(--creme); border-radius:12px; padding:1rem 1.2rem;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
+          <label for="afstand-slider" style="font-weight:600; font-size:0.9rem;">📍 Afstand vanaf jouw locatie</label>
+          <button id="afstand-wis" style="background:none; border:none; color:var(--groen); cursor:pointer; font-size:0.85rem; text-decoration:underline;">Verwijder locatiefilter</button>
+        </div>
+        <input type="range" id="afstand-slider" min="5" max="50" step="5" value="20"
+          style="width:100%; accent-color:var(--groen);">
+        <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--tekst-licht); margin-top:0.2rem;">
+          <span>5 km</span><span>10 km</span><span>15 km</span><span>20 km</span><span>25 km</span><span>30 km</span><span>35 km</span><span>40 km</span><span>45 km</span><span>50 km</span>
+        </div>
+        <p id="afstand-label" style="text-align:center; margin-top:0.6rem; font-weight:600; color:var(--groen-donker); font-size:0.95rem;">Binnen 20 km</p>
+      </div>
+
       <div class="zoek-filters">
         <button class="zoek-filter-tag js-tag-filter actief" data-filter="alles">Alle methoden</button>
         <button class="zoek-filter-tag js-tag-filter" data-filter="massage">Massage</button>
@@ -62,17 +77,19 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
     <div class="grid-3" id="makers-grid">
 
       <div class="maker-kaart js-maker"
-        data-naam="elsemarie van der ploeg hands4flow"
+        data-naam="elsemarie van der ploeg hands4flow massage reiki energetisch"
         data-provincie="Drenthe"
         data-methoden="massage energetisch"
-        data-tags="massage energetisch">
+        data-tags="massage energetisch"
+        data-omschrijving="massage reiki access bars energetisch lichaam kracht spiritueel emmen drenthe"
+        data-lat="52.7697" data-lon="6.9142">
         <div class="maker-kaart__foto-wrap">
           <img src="https://nederland-bewust.nl/wp-content/uploads/2025/09/cropped-cropped-cropped-foto-Bewust-maker-Elsemarie.jpg"
             alt="Elsemarie van der Ploeg" class="maker-kaart__foto" loading="lazy">
         </div>
         <h3 class="maker-kaart__naam">Elsemarie van der Ploeg</h3>
         <p class="maker-kaart__praktijk">Hands4Flow</p>
-        <p class="maker-kaart__regio">📍 Drenthe</p>
+        <p class="maker-kaart__regio">📍 Emmen, Drenthe</p>
         <div class="maker-kaart__tags">
           <span class="maker-kaart__tag">Massage</span>
           <span class="maker-kaart__tag">Energetisch</span>
@@ -83,10 +100,12 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       </div>
 
       <div class="maker-kaart js-maker"
-        data-naam="gilian van scheven atlamodi"
+        data-naam="gilian van scheven atlamodi verlies workshops coaching"
         data-provincie="Drenthe"
         data-methoden="coaching"
-        data-tags="coaching">
+        data-tags="coaching"
+        data-omschrijving="coaching verlies rouw workshops balans beweging drenthe"
+        data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="https://nederland-bewust.nl/wp-content/uploads/2025/10/cropped-cropped-cropped-cropped-Gilian-Scheven-scaled-1.jpg"
             alt="Gilian van Scheven" class="maker-kaart__foto" loading="lazy">
@@ -104,10 +123,12 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       </div>
 
       <div class="maker-kaart js-maker"
-        data-naam="janet van der veen psych-k"
+        data-naam="janet van der veen psych-k reflexintegratie access bars coaching"
         data-provincie="Drenthe"
         data-methoden="coaching energetisch"
-        data-tags="coaching energetisch">
+        data-tags="coaching energetisch"
+        data-omschrijving="psych-k reflexintegratie access bars coaching patronen rust zelfvertrouwen drenthe"
+        data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-maker-Janet-van-der-Veen-1.jpg"
             alt="Janet van der Veen" class="maker-kaart__foto" loading="lazy">
@@ -125,17 +146,19 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       </div>
 
       <div class="maker-kaart js-maker"
-        data-naam="marcella van den burg praktijk de kezel nei"
+        data-naam="marcella van den burg praktijk de kezel nei eft voeding"
         data-provincie="Drenthe"
         data-methoden="voeding coaching energetisch"
-        data-tags="voeding coaching energetisch">
+        data-tags="voeding coaching energetisch"
+        data-omschrijving="voeding nei eft coaching energetisch gezondheid bewuste keuze nieuw weerdinge drenthe"
+        data-lat="52.8034" data-lon="6.9989">
         <div class="maker-kaart__foto-wrap">
           <img src="https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-cropped-cropped-Marcella-profiel-foto.jpeg"
             alt="Marcella van den Burg" class="maker-kaart__foto" loading="lazy">
         </div>
         <h3 class="maker-kaart__naam">Marcella van den Burg</h3>
         <p class="maker-kaart__praktijk">Praktijk de Kezel</p>
-        <p class="maker-kaart__regio">📍 Drenthe</p>
+        <p class="maker-kaart__regio">📍 Nieuw Weerdinge, Drenthe</p>
         <div class="maker-kaart__tags">
           <span class="maker-kaart__tag">NEI</span>
           <span class="maker-kaart__tag">EFT</span>
@@ -146,10 +169,12 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       </div>
 
       <div class="maker-kaart js-maker"
-        data-naam="judith hendriks by juud orthomoleculair"
+        data-naam="judith hendriks by juud orthomoleculair vermoeidheid voeding"
         data-provincie="Drenthe"
         data-methoden="voeding"
-        data-tags="voeding">
+        data-tags="voeding"
+        data-omschrijving="orthomoleculair voeding vermoeidheid bloedwaarden herstel gezondheid drenthe"
+        data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-maker-Judith-Hendriks.jpg"
             alt="Judith Hendriks" class="maker-kaart__foto" loading="lazy">
@@ -167,10 +192,12 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       </div>
 
       <div class="maker-kaart js-maker"
-        data-naam="ronald weerman mindful inspirations adem"
+        data-naam="ronald weerman mindful inspirations ademwerk mindset koud water"
         data-provincie="Drenthe"
         data-methoden="bewegen meditatie coaching"
-        data-tags="bewegen meditatie">
+        data-tags="bewegen meditatie"
+        data-omschrijving="ademwerk mindset koud water stressvermindering bewegen meditatie drenthe"
+        data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/ronald-weerman.jpg' | relative_url }}"
             alt="Ronald Weerman" class="maker-kaart__foto" loading="lazy">
@@ -189,7 +216,13 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
 
     </div>
 
-    <div style="text-align:center; margin-top:2rem;">
+    <!-- DOORSTUUR-BLOK: verschijnt als zoekresultaat leeg of gefilterd is -->
+    <div id="homepage-zoek-cta" style="display:none; text-align:center; margin-top:2rem; padding:1.5rem; background:var(--creme); border-radius:16px;">
+      <p id="homepage-zoek-cta-tekst" style="margin-bottom:1rem; color:var(--tekst-licht);"></p>
+      <a id="homepage-zoek-link" href="{{ '/onze-bewust-makers/' | relative_url }}" class="knop knop--groen">Bekijk alle bewust-makers</a>
+    </div>
+
+    <div id="homepage-alle-knop" style="text-align:center; margin-top:2rem;">
       <a href="{{ '/onze-bewust-makers/' | relative_url }}" class="knop knop--groen">Alle bewust-makers bekijken</a>
     </div>
   </div>
@@ -234,7 +267,7 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
   </div>
 </section>
 
-<!-- JUDITH INSPIRATIE (maandelijks — beheerbaar via CMS > Instellingen) -->
+<!-- JUDITH INSPIRATIE -->
 <section class="sectie">
   <div class="container">
     <div style="text-align:center; margin-bottom:1.5rem;">
@@ -298,3 +331,168 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
     </div>
   </div>
 </section>
+
+<script>
+// Homepage zoeklogica — uitbreiding op hoofd.js
+(function() {
+  var BASE = '{{ '/onze-bewust-makers/' | relative_url }}';
+
+  function berekenKm(lat1, lon1, lat2, lon2) {
+    var R = 6371, d = Math.PI / 180;
+    var dlat = (lat2 - lat1) * d, dlon = (lon2 - lon1) * d;
+    var a = Math.sin(dlat/2)*Math.sin(dlat/2) +
+            Math.cos(lat1*d)*Math.cos(lat2*d)*Math.sin(dlon/2)*Math.sin(dlon/2);
+    return R * 2 * Math.asin(Math.sqrt(a));
+  }
+
+  var gebruikerLat = null, gebruikerLon = null;
+
+  function filterHomepage() {
+    var naam        = (document.getElementById('zoek-naam') || {}).value || '';
+    naam = naam.toLowerCase().trim();
+    var prov        = (document.getElementById('zoek-provincie') || {}).value || '';
+    var actTag      = document.querySelector('.js-tag-filter.actief');
+    var tag         = actTag ? actTag.dataset.filter : 'alles';
+    var slider      = document.getElementById('afstand-slider');
+    var maxKm       = slider ? parseInt(slider.value) : null;
+    var afstandWrap = document.getElementById('afstand-wrap');
+    var locActief   = gebruikerLat !== null && afstandWrap && afstandWrap.style.display !== 'none';
+
+    var makers   = document.querySelectorAll('.js-maker');
+    var zichtbaar = 0;
+    var totaal    = makers.length;
+
+    makers.forEach(function(item) {
+      var zoekVeld = [
+        item.dataset.naam         || '',
+        item.dataset.omschrijving || '',
+        item.dataset.methoden     || '',
+        item.dataset.tags         || ''
+      ].join(' ').toLowerCase();
+
+      var naamMatch  = !naam || zoekVeld.includes(naam);
+      var provMatch  = locActief || !prov || item.dataset.provincie === prov;
+      var tagMatch   = tag === 'alles' || (item.dataset.tags && item.dataset.tags.includes(tag));
+      var afstandMatch = true;
+
+      if (locActief && maxKm) {
+        var mLat = parseFloat(item.dataset.lat);
+        var mLon = parseFloat(item.dataset.lon);
+        if (!isNaN(mLat) && !isNaN(mLon)) {
+          afstandMatch = berekenKm(gebruikerLat, gebruikerLon, mLat, mLon) <= maxKm;
+        }
+      }
+
+      var toon = naamMatch && provMatch && tagMatch && afstandMatch;
+      item.style.display = toon ? '' : 'none';
+      if (toon) zichtbaar++;
+    });
+
+    // Resultaattekst
+    var resultaatEl = document.getElementById('zoek-resultaat');
+    if (resultaatEl) {
+      resultaatEl.textContent = (naam || prov || tag !== 'alles' || locActief)
+        ? zichtbaar + ' bewust-maker' + (zichtbaar !== 1 ? 's' : '') + ' gevonden'
+        : '';
+    }
+
+    var ctaEl    = document.getElementById('homepage-zoek-cta');
+    var ctaTekst = document.getElementById('homepage-zoek-cta-tekst');
+    var ctaLink  = document.getElementById('homepage-zoek-link');
+    var allesKnop = document.getElementById('homepage-alle-knop');
+    var isGefilterd = naam || prov || tag !== 'alles' || locActief;
+
+    if (!isGefilterd) {
+      // Geen filter actief: normale toestand
+      if (ctaEl)    ctaEl.style.display    = 'none';
+      if (allesKnop) allesKnop.style.display = 'block';
+      return;
+    }
+
+    // Filter actief
+    if (allesKnop) allesKnop.style.display = 'none';
+
+    if (zichtbaar === 0) {
+      // Geen resultaten
+      if (ctaTekst) ctaTekst.textContent = 'Geen bewust-makers gevonden met deze zoekopdracht. Er zijn er wel meer — zoek verder in het volledige overzicht.';
+      var zoekParams = naam ? '?zoek=' + encodeURIComponent(naam) : '';
+      if (ctaLink)  ctaLink.href = BASE + zoekParams;
+      if (ctaLink)  ctaLink.textContent = 'Zoek verder tussen alle bewust-makers';
+      if (ctaEl)    ctaEl.style.display = 'block';
+    } else if (zichtbaar === totaal) {
+      // Alles zichtbaar maar filter actief (bijv. provincie zonder treffer)
+      if (ctaTekst) ctaTekst.textContent = 'Meer makers beschikbaar — bekijk het volledige overzicht.';
+      if (ctaLink)  ctaLink.href = BASE;
+      if (ctaLink)  ctaLink.textContent = 'Bekijk alle bewust-makers';
+      if (ctaEl)    ctaEl.style.display = 'block';
+    } else {
+      // Deels gefilterd
+      if (ctaTekst) ctaTekst.textContent = 'Er zijn meer bewust-makers beschikbaar. Bekijk het volledige overzicht voor alle resultaten.';
+      var zoekParams2 = naam ? '?zoek=' + encodeURIComponent(naam) : '';
+      if (ctaLink)  ctaLink.href = BASE + zoekParams2;
+      if (ctaLink)  ctaLink.textContent = 'Bekijk alle ' + totaal + '+ bewust-makers';
+      if (ctaEl)    ctaEl.style.display = 'block';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var zoekInput   = document.getElementById('zoek-naam');
+    var zoekProv    = document.getElementById('zoek-provincie');
+    var filterTags  = document.querySelectorAll('.js-tag-filter');
+    var slider      = document.getElementById('afstand-slider');
+    var afstandLabel = document.getElementById('afstand-label');
+    var afstandWrap = document.getElementById('afstand-wrap');
+    var afstandWis  = document.getElementById('afstand-wis');
+    var provVeld    = document.getElementById('provincie-veld');
+    var locKnop     = document.getElementById('gebruik-locatie');
+
+    if (zoekInput) zoekInput.addEventListener('input', filterHomepage);
+    if (zoekProv)  zoekProv.addEventListener('change', filterHomepage);
+    if (slider) slider.addEventListener('input', function() {
+      if (afstandLabel) afstandLabel.textContent = 'Binnen ' + this.value + ' km';
+      filterHomepage();
+    });
+
+    filterTags.forEach(function(knop) {
+      knop.addEventListener('click', function() {
+        filterTags.forEach(function(k) { k.classList.remove('actief'); });
+        this.classList.add('actief');
+        filterHomepage();
+      });
+    });
+
+    if (locKnop) {
+      locKnop.addEventListener('click', function() {
+        if (!navigator.geolocation) { alert('Locatie wordt niet ondersteund door jouw browser.'); return; }
+        locKnop.textContent = '📍 Locatie bepalen...';
+        locKnop.disabled = true;
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          gebruikerLat = pos.coords.latitude;
+          gebruikerLon = pos.coords.longitude;
+          if (afstandWrap) afstandWrap.style.display = 'block';
+          if (provVeld)    provVeld.style.display    = 'none';
+          if (zoekProv)    zoekProv.value            = '';
+          if (afstandLabel) afstandLabel.textContent = 'Binnen ' + (slider ? slider.value : 20) + ' km';
+          locKnop.textContent = '📍 Locatie gevonden';
+          locKnop.disabled = false;
+          filterHomepage();
+        }, function() {
+          alert('Kon locatie niet ophalen. Selecteer je provincie handmatig.');
+          locKnop.textContent = '📍 Zoek op afstand';
+          locKnop.disabled = false;
+        });
+      });
+    }
+
+    if (afstandWis) {
+      afstandWis.addEventListener('click', function() {
+        gebruikerLat = null; gebruikerLon = null;
+        if (afstandWrap) afstandWrap.style.display = 'none';
+        if (provVeld)    provVeld.style.display    = '';
+        if (locKnop)     locKnop.textContent       = '📍 Zoek op afstand';
+        filterHomepage();
+      });
+    }
+  });
+})();
+</script>
