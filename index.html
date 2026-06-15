@@ -7,13 +7,13 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
 <!-- HERO -->
 <section class="hero" id="page-top">
   <div class="hero-inhoud">
-    <span class="hero-label">Nederland-Bewust</span>
-    <h1>Dé startpagina voor holistische therapie en welzijn in Nederland</h1>
-    <h2>Vind de juiste coach, therapeut of behandelaar bij jou in de buurt</h2>
-    <p>Van massage en coaching tot voeding en energetische begeleiding — hier vind je de bewust-maker die écht bij jou past.</p>
+    <span class="hero-label">{{ site.data.paginateksten.homepage.hero_label }}</span>
+    <h1>{{ site.data.paginateksten.homepage.hero_titel }}</h1>
+    <h2>{{ site.data.paginateksten.homepage.hero_subtitel }}</h2>
+    <p>{{ site.data.paginateksten.homepage.hero_tekst }}</p>
     <div class="hero-knoppen">
-      <a href="{{ '/onze-bewust-makers/' | relative_url }}" class="knop knop--primair">Vind een bewust-maker</a>
-      <a href="{{ '/contact/' | relative_url }}" class="knop knop--omlijnd">Gratis adviesgesprek</a>
+      <a href="{{ '/onze-bewust-makers/' | relative_url }}" class="knop knop--primair">{{ site.data.paginateksten.homepage.hero_knop1 }}</a>
+      <a href="{{ '/contact/' | relative_url }}" class="knop knop--omlijnd">{{ site.data.paginateksten.homepage.hero_knop2 }}</a>
     </div>
   </div>
 </section>
@@ -22,7 +22,7 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
 <section class="zoek-sectie">
   <div class="container">
     <div class="zoek-wrap">
-      <h3>🔍 Zoek een bewust-maker bij jou in de buurt</h3>
+      <h3>{{ site.data.paginateksten.homepage.zoek_titel }}</h3>
       <div class="zoek-rij">
         <div class="zoek-veld">
           <label for="zoek-naam">Naam of praktijk</label>
@@ -199,16 +199,16 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
 <section class="sectie sectie--kleur">
   <div class="container">
     <div style="text-align:center; max-width:600px; margin:0 auto 2.2rem;">
-      <h2>Jij bent meer dan alleen je lichaam</h2>
-      <p style="color:var(--tekst-licht)">Wat je denkt, voelt en ervaart is met elkaar verbonden. Onze bewust-makers werken vanuit drie pijlers.</p>
+      <h2>{{ site.data.paginateksten.homepage.pijlers_titel }}</h2>
+      <p style="color:var(--tekst-licht)">{{ site.data.paginateksten.homepage.pijlers_tekst }}</p>
     </div>
     <div class="grid-3">
       <div class="pijler">
         <img src="https://nederland-bewust.nl/wp-content/uploads/2025/07/cropped-yoga-free-stock-1.jpg"
           alt="Fysiek, voeding en bewegen" class="pijler__afbeelding" loading="lazy">
         <div class="pijler__inhoud">
-          <h3>Fysiek, voeding &amp; bewegen</h3>
-          <p>Klachten in je lichaam? Ontdek de holistische benadering van je fysieke gezondheid.</p>
+          <h3>{{ site.data.paginateksten.homepage.pijler1_titel }}</h3>
+          <p>{{ site.data.paginateksten.homepage.pijler1_tekst }}</p>
           <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--goud" style="font-size:0.85rem;">Kom in je oerkracht</a>
         </div>
       </div>
@@ -216,8 +216,8 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
         <img src="https://nederland-bewust.nl/wp-content/uploads/2025/09/cropped-habitos-que-nuestro-cerebro-ama.jpg"
           alt="Mentaal en coaching" class="pijler__afbeelding" loading="lazy">
         <div class="pijler__inhoud">
-          <h3>Mentaal &amp; coaching</h3>
-          <p>Je mentale gezondheid bepaalt hoe je je voelt. Ontdek wat jij kunt doen voor een gezond brein.</p>
+          <h3>{{ site.data.paginateksten.homepage.pijler2_titel }}</h3>
+          <p>{{ site.data.paginateksten.homepage.pijler2_tekst }}</p>
           <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--goud" style="font-size:0.85rem;">Gezond brein</a>
         </div>
       </div>
@@ -225,8 +225,8 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
         <img src="https://nederland-bewust.nl/wp-content/uploads/2025/09/cropped-cropped-795905921c29d2376380a73bf17a38f3-e1758629417385.jpg"
           alt="Energie en spirit" class="pijler__afbeelding" loading="lazy">
         <div class="pijler__inhoud">
-          <h3>Energie &amp; spirit</h3>
-          <p>Alles is frequentie. Een hoge energiefrequentie betekent dat je je blij en gezond voelt.</p>
+          <h3>{{ site.data.paginateksten.homepage.pijler3_titel }}</h3>
+          <p>{{ site.data.paginateksten.homepage.pijler3_tekst }}</p>
           <a href="{{ '/kennisbank/' | relative_url }}" class="knop knop--goud" style="font-size:0.85rem;">Positieve energieflow</a>
         </div>
       </div>
@@ -234,7 +234,7 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
   </div>
 </section>
 
-<!-- JUDITH INSPIRATIE (vast maandelijks item) -->
+<!-- JUDITH INSPIRATIE (maandelijks — beheerbaar via CMS > Instellingen) -->
 <section class="sectie">
   <div class="container">
     <div style="text-align:center; margin-bottom:1.5rem;">
@@ -242,13 +242,17 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       <h2>Van onze bewust-maker</h2>
     </div>
     <div class="judith-sectie">
-      <img src="https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-maker-Judith-Hendriks.jpg"
-        alt="Judith Hendriks – By Juud" class="judith-foto" loading="lazy">
+      {% if site.data.instellingen.inspiratie_foto != "" %}
+        <img src="{{ site.data.instellingen.inspiratie_foto }}" alt="{{ site.data.instellingen.inspiratie_auteur }}" class="judith-foto" loading="lazy">
+      {% else %}
+        <img src="https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-maker-Judith-Hendriks.jpg"
+          alt="{{ site.data.instellingen.inspiratie_auteur }}" class="judith-foto" loading="lazy">
+      {% endif %}
       <div class="judith-inhoud">
-        <p class="judith-label">Judith Hendriks — orthomoleculair therapeut, By Juud</p>
-        <h2>Je bloedwaarden zijn goed. Maar waarom voel je je dan zo slecht?</h2>
-        <p>Veel vrouwen functioneren nog wel. Ze gaan naar hun werk, zorgen voor anderen. Maar worden moe wakker, voelen zich overprikkeld, hebben spierklachten of een kort lontje. En horen dan: "Alles ziet er goed uit."</p>
-        <a href="{{ '/' | relative_url }}wat-gebeurd-er-met-je-lichaam-als-hij-zij-continue-aanstaat/" target="_blank" rel="noopener" class="knop knop--goud">Lees het volledige artikel</a>
+        <p class="judith-label">{{ site.data.instellingen.inspiratie_auteur }} — {{ site.data.instellingen.inspiratie_functie }}</p>
+        <h2>{{ site.data.instellingen.inspiratie_titel }}</h2>
+        <p>{{ site.data.instellingen.inspiratie_intro }}</p>
+        <a href="{{ site.data.instellingen.inspiratie_link }}" target="_blank" rel="noopener" class="knop knop--goud">Lees het volledige artikel</a>
       </div>
     </div>
   </div>
@@ -259,18 +263,18 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
   <div class="container">
     <div class="grid-2" style="align-items:center; gap:3rem;">
       <div>
-        <h2>Weet je niet welke bewust-maker bij je past?</h2>
-        <p>Marcella en Elsemarie van Nederland-Bewust bespreken graag jouw situatie en helpen je — <strong>gratis en zonder verplichtingen</strong> — de bewust-maker te vinden die écht bij jou past.</p>
-        <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen">Ja, plan een gratis adviesgesprek</a>
+        <h2>{{ site.data.paginateksten.homepage.intake_titel }}</h2>
+        <p>{{ site.data.paginateksten.homepage.intake_tekst }}</p>
+        <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen">{{ site.data.paginateksten.homepage.intake_knop }}</a>
       </div>
       <div>
         <div class="teller-rij" style="padding:1.5rem 0;">
           <div class="teller">
-            <div class="teller__getal" data-doel="18">18</div>
+            <div class="teller__getal" data-doel="{{ site.data.instellingen.teller_bewust_makers }}">{{ site.data.instellingen.teller_bewust_makers }}</div>
             <div class="teller__label">Bewust-makers</div>
           </div>
           <div class="teller">
-            <div class="teller__getal" data-doel="7">7</div>
+            <div class="teller__getal" data-doel="{{ site.data.instellingen.teller_mee_makers }}">{{ site.data.instellingen.teller_mee_makers }}</div>
             <div class="teller__label">Mee-makers</div>
           </div>
         </div>
@@ -284,9 +288,9 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
 <section class="sectie sectie--groen" style="position:relative; overflow:hidden;">
   <div class="tulpen-deco"></div>
   <div class="container" style="text-align:center; position:relative;">
-    <h2>Word jij de volgende bewust-maker?</h2>
+    <h2>{{ site.data.paginateksten.homepage.cta_titel }}</h2>
     <p style="opacity:0.88; margin-top:0.5rem; max-width:500px; margin-left:auto; margin-right:auto;">
-      Zichtbaarheid voor je praktijk, een eigen profielpagina en verbinding met gelijkgestemden in heel Nederland.
+      {{ site.data.paginateksten.homepage.cta_tekst }}
     </p>
     <div style="margin-top:1.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
       <a href="{{ '/meld-je-aan/' | relative_url }}" class="knop knop--primair">Ja, ik meld me aan</a>
