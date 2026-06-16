@@ -3,7 +3,7 @@ naam: "Alice Hesp"
 praktijk: "Ponti Noi"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-maker-Alice-Hesp.png"
+foto: "/assets/images/makers/alice-hesp.jpg"
 categorieen:
   - "Bewegen"
 methoden:
