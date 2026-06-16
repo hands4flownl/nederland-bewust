@@ -3,7 +3,7 @@ naam: "Judith Hendriks"
 praktijk: "By Juud"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-maker-Judith-Hendriks.jpg"
+foto: "/assets/images/makers/judith-hendriks.jpg"
 categorieen:
   - "Voeding"
 methoden:
