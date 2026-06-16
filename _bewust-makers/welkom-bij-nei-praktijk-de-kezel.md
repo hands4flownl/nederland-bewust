@@ -1,51 +1,53 @@
 ---
-naam: "Marcella van den Burg"
-praktijk: "Praktijk de Kezel"
-provincie: "Drenthe"
+naam: Marcella van den Burg
+praktijk: NEI Praktijk de Kezel
+foto: /assets/images/makers/marcella-van-den-burg.jpg
+provincie: Drenthe
 stad: ""
-foto: "/assets/images/makers/marcella-van-den-burg.jpg"
 categorieen:
-  - "Coaching"
-  - "Voeding"
-  - "Energetisch"
+  - Coaching
+  - Voeding
+  - Energetisch
 methoden:
-  - "NEI-therapeut"
-  - "Emotional Freedom Technique (EFT)"
-  - "Bach Bloesem"
-  - "Flowerplex"
-  - "Edelstenen"
-  - "Orthomoleculaire voeding"
-  - "Detox"
-  - "Dentotox"
+  - NEI-therapeut
+  - Emotional Freedom Technique (EFT)
+  - Bach Bloesem
+  - Flowerplex
+  - Edelstenen
+  - Orthomoleculaire voeding
+  - Detox
+  - Dentotox
 website: ""
 email_zichtbaar: ""
 telefoon: ""
-online: "Ja"
-sessieduur: "60–90 min"
+online: Ja
+sessieduur: 60–90 min
 tarief: ""
-eerste_gesprek: "Gratis kennismaking"
+eerste_gesprek: Gratis kennismaking
 vergoeding: ""
 ervaringsjaren: 12
 talen:
-  - "Nederlands"
+  - Nederlands
 doelgroepen:
-  - "Volwassenen"
-  - "Mensen met chronische klachten"
+  - Volwassenen
+  - Mensen met chronische klachten
 opleidingen:
-  - "NEI-therapeut gecertificeerd"
-  - "EFT gecertificeerd"
-  - "Orthomoleculaire voeding"
-  - "Bach Bloesem therapeut"
+  - NEI-therapeut gecertificeerd
+  - EFT gecertificeerd
+  - Orthomoleculaire voeding
+  - Bach Bloesem therapeut
 verenigingen: []
-bio: "Initiatiefnemer van Nederland-Bewust en praktijkhoudster van Praktijk de Kezel. Marcella werkt met NEI-therapie, EFT, Bach Bloesem, Flowerplex, edelstenen, orthomoleculaire voeding, detox en dentotox."
+bio: Initiatiefnemer van Nederland-Bewust en praktijkhoudster van Praktijk de
+  Kezel. Marcella werkt met NEI-therapie, EFT, Bach Bloesem, Flowerplex,
+  edelstenen, orthomoleculaire voeding, detox en dentotox.
+wat_zeggen_clienten: ""
+layout: bewust-maker
+permalink: /bewust-makers/welkom-bij-nei-praktijk-de-kezel/
 waarom: ""
 onderscheid: ""
 voor_wie: ""
-wat_zeggen_clienten: ""
 na_sessie: ""
 gepubliceerd: true
 uitgelicht: false
-lidmaatschap: "Bewust-maker"
-layout: bewust-maker
-permalink: /bewust-makers/welkom-bij-nei-praktijk-de-kezel/
+lidmaatschap: Bewust-maker
 ---
