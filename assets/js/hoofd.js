@@ -86,66 +86,64 @@ document.addEventListener('DOMContentLoaded', function () {
     return R * 2 * Math.asin(Math.sqrt(a));
   }
 
-  // ===================== ZOEK & FILTER BEWUST-MAKERS =====================
-  const zoekInput    = document.getElementById('zoek-naam');
-  const zoekProv     = document.getElementById('zoek-provincie');
-  const filterTags   = document.querySelectorAll('.js-tag-filter');
-  const makerItems   = document.querySelectorAll('.js-maker');
-  const resultaatTxt = document.getElementById('zoek-resultaat');
-  const afstandWrap  = document.getElementById('afstand-wrap');
+  // ===================== ZOEK & FILTER =====================
+  const zoekInput     = document.getElementById('zoek-naam');
+  const zoekProv      = document.getElementById('zoek-provincie');
+  const filterTags    = document.querySelectorAll('.js-tag-filter');
+  const klachtTags    = document.querySelectorAll('.js-klacht-filter');
+  const makerItems    = document.querySelectorAll('.js-maker');
+  const resultaatTxt  = document.getElementById('zoek-resultaat');
+  const afstandWrap   = document.getElementById('afstand-wrap');
   const afstandSlider = document.getElementById('afstand-slider');
-  const afstandLabel = document.getElementById('afstand-label');
-  const afstandWis   = document.getElementById('afstand-wis');
-  const provinciVeld = document.getElementById('provincie-veld');
+  const afstandLabel  = document.getElementById('afstand-label');
+  const afstandWis    = document.getElementById('afstand-wis');
+  const provinciVeld  = document.getElementById('provincie-veld');
 
   let gebruikerLat = null;
   let gebruikerLon = null;
+  let actiefKlacht = null;
 
   function filterMakers() {
-    const naam   = zoekInput ? zoekInput.value.toLowerCase().trim() : '';
-    const prov   = zoekProv  ? zoekProv.value : '';
+    const naam  = zoekInput ? zoekInput.value.toLowerCase().trim() : '';
+    const prov  = zoekProv  ? zoekProv.value : '';
     const actTag = document.querySelector('.js-tag-filter.actief');
-    const tag    = actTag ? actTag.dataset.filter : 'alles';
-    const maxKm  = afstandSlider ? parseInt(afstandSlider.value) : null;
+    const tag   = actTag ? actTag.dataset.filter : 'alles';
+    const maxKm = afstandSlider ? parseInt(afstandSlider.value) : null;
     const locActief = gebruikerLat !== null && afstandWrap && afstandWrap.style.display !== 'none';
 
     let zichtbaar = 0;
     makerItems.forEach(function (item) {
-      // Tekstzoeken: naam + omschrijving + methoden + tags
+      // Zoektekst: naam + omschrijving + methoden + klachten
       const zoekVeld = [
-        item.dataset.naam        || '',
+        item.dataset.naam         || '',
         item.dataset.omschrijving || '',
-        item.dataset.methoden    || '',
-        item.dataset.tags        || ''
+        item.dataset.methoden     || '',
+        item.dataset.tags         || '',
+        item.dataset.klachten     || ''
       ].join(' ').toLowerCase();
-      const naamMatch = !naam || zoekVeld.includes(naam);
 
-      // Provincie (alleen als geen locatiefilter actief)
-      const provMatch = locActief || !prov || item.dataset.provincie === prov;
+      const naamMatch    = !naam || zoekVeld.includes(naam);
+      const provMatch    = locActief || !prov || item.dataset.provincie === prov;
+      const tagMatch     = tag === 'alles' || (item.dataset.tags && item.dataset.tags.includes(tag));
+      const klachtMatch  = !actiefKlacht || (item.dataset.klachten && item.dataset.klachten.includes(actiefKlacht));
 
-      // Methode-tag
-      const tagMatch = tag === 'alles' || (item.dataset.tags && item.dataset.tags.includes(tag));
-
-      // Afstand
       let afstandMatch = true;
       if (locActief && maxKm) {
         const mLat = parseFloat(item.dataset.lat);
         const mLon = parseFloat(item.dataset.lon);
         if (!isNaN(mLat) && !isNaN(mLon)) {
           afstandMatch = berekenKm(gebruikerLat, gebruikerLon, mLat, mLon) <= maxKm;
-        } else {
-          // Geen coördinaten: toon altijd (valt buiten filter)
-          afstandMatch = true;
         }
       }
 
-      const toon = naamMatch && provMatch && tagMatch && afstandMatch;
+      const toon = naamMatch && provMatch && tagMatch && klachtMatch && afstandMatch;
       item.style.display = toon ? '' : 'none';
       if (toon) zichtbaar++;
     });
 
     if (resultaatTxt) {
-      resultaatTxt.textContent = makerItems.length > 0
+      const isGefilterd = naam || prov || tag !== 'alles' || actiefKlacht || locActief;
+      resultaatTxt.textContent = isGefilterd
         ? zichtbaar + ' bewust-maker' + (zichtbaar !== 1 ? 's' : '') + ' gevonden'
         : '';
     }
@@ -168,26 +166,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // ===================== LOCATIE ZOEKEN =====================
+  // Klacht-filter
+  klachtTags.forEach(function (knop) {
+    knop.addEventListener('click', function () {
+      if (this.classList.contains('actief')) {
+        // Klik nogmaals = deactiveer
+        this.classList.remove('actief');
+        actiefKlacht = null;
+      } else {
+        klachtTags.forEach(function (k) { k.classList.remove('actief'); });
+        this.classList.add('actief');
+        actiefKlacht = this.dataset.klacht;
+      }
+      filterMakers();
+    });
+  });
+
+  // Locatie zoeken
   const locatieKnop = document.getElementById('gebruik-locatie');
   if (locatieKnop) {
     locatieKnop.addEventListener('click', function () {
-      if (!navigator.geolocation) {
-        alert('Locatie wordt niet ondersteund door jouw browser.');
-        return;
-      }
+      if (!navigator.geolocation) { alert('Locatie wordt niet ondersteund door jouw browser.'); return; }
       locatieKnop.textContent = '📍 Locatie bepalen...';
       locatieKnop.disabled = true;
       navigator.geolocation.getCurrentPosition(function (pos) {
         gebruikerLat = pos.coords.latitude;
         gebruikerLon = pos.coords.longitude;
-
-        // Toon afstand-slider, verberg provincie-dropdown
         if (afstandWrap)  afstandWrap.style.display = 'block';
         if (provinciVeld) provinciVeld.style.display = 'none';
         if (zoekProv)     zoekProv.value = '';
         if (afstandLabel) afstandLabel.textContent = 'Binnen ' + (afstandSlider ? afstandSlider.value : 20) + ' km';
-
         locatieKnop.textContent = '📍 Locatie gevonden';
         locatieKnop.disabled = false;
         filterMakers();
@@ -199,21 +207,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Locatiefilter verwijderen
   if (afstandWis) {
     afstandWis.addEventListener('click', function () {
-      gebruikerLat = null;
-      gebruikerLon = null;
+      gebruikerLat = null; gebruikerLon = null;
       if (afstandWrap)  afstandWrap.style.display = 'none';
       if (provinciVeld) provinciVeld.style.display = '';
       if (locatieKnop)  locatieKnop.textContent = '📍 Zoek op afstand';
       filterMakers();
     });
   }
-
 });
 
-// ===================== BEHEER KNOP (simpel) =====================
+// ===================== BEHEER KNOP =====================
 document.addEventListener('DOMContentLoaded', function() {
   var ingelogd = false;
   try {
@@ -227,11 +232,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   } catch(e) {}
-
-  var navKnop     = document.getElementById('nav-beheer-item');
-  var loginLink   = document.getElementById('footer-login-link');
-  var beheerLink  = document.getElementById('footer-beheer-link');
-
+  var navKnop    = document.getElementById('nav-beheer-item');
+  var loginLink  = document.getElementById('footer-login-link');
+  var beheerLink = document.getElementById('footer-beheer-link');
   if (ingelogd) {
     if (navKnop)    navKnop.style.display = 'block';
     if (loginLink)  loginLink.style.display = 'none';
