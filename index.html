@@ -66,6 +66,22 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
         <button class="zoek-filter-tag js-tag-filter" data-filter="bewegen">Bewegen</button>
         <button class="zoek-filter-tag js-tag-filter" data-filter="meditatie">Meditatie</button>
       </div>
+      <div style="margin-top:0.3rem;">
+        <button id="toon-klachten" style="background:none;border:none;color:var(--groen);font-size:0.82rem;cursor:pointer;padding:0.2rem 0;text-decoration:underline;">▾ Zoek op klacht</button>
+        <div id="klacht-filters" style="display:none; margin-top:0.5rem;">
+          <div class="zoek-filters">
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="stress">Stress</button>
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="vermoeidheid">Vermoeidheid</button>
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="burnout">Burnout</button>
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="angst">Angst</button>
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="rugpijn">Rugpijn</button>
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="slaapproblemen">Slaapproblemen</button>
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="rouw">Rouw / verlies</button>
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="hormonale disbalans">Hormonen</button>
+            <button class="zoek-filter-tag js-klacht-filter" data-klacht="chronische klachten">Chronische klachten</button>
+          </div>
+        </div>
+      </div>
       <p class="zoek-resultaat-info" id="zoek-resultaat"></p>
     </div>
   </div>
@@ -346,6 +362,7 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
   }
 
   var gebruikerLat = null, gebruikerLon = null;
+  var actiefKlacht = null;
 
   function filterHomepage() {
     var naam        = (document.getElementById('zoek-naam') || {}).value || '';
@@ -358,7 +375,7 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
     var afstandWrap = document.getElementById('afstand-wrap');
     var locActief   = gebruikerLat !== null && afstandWrap && afstandWrap.style.display !== 'none';
 
-    var makers   = document.querySelectorAll('.js-maker');
+    var makers    = document.querySelectorAll('.js-maker');
     var zichtbaar = 0;
     var totaal    = makers.length;
 
@@ -371,9 +388,10 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
         item.dataset.klachten     || ''
       ].join(' ').toLowerCase();
 
-      var naamMatch  = !naam || zoekVeld.includes(naam);
-      var provMatch  = locActief || !prov || item.dataset.provincie === prov;
-      var tagMatch   = tag === 'alles' || (item.dataset.tags && item.dataset.tags.includes(tag));
+      var naamMatch    = !naam || zoekVeld.includes(naam);
+      var provMatch    = locActief || !prov || item.dataset.provincie === prov;
+      var tagMatch     = tag === 'alles' || (item.dataset.tags && item.dataset.tags.includes(tag));
+      var klachtMatch  = !actiefKlacht || (item.dataset.klachten && item.dataset.klachten.includes(actiefKlacht));
       var afstandMatch = true;
 
       if (locActief && maxKm) {
@@ -384,7 +402,7 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
         }
       }
 
-      var toon = naamMatch && provMatch && tagMatch && afstandMatch;
+      var toon = naamMatch && provMatch && tagMatch && klachtMatch && afstandMatch;
       item.style.display = toon ? '' : 'none';
       if (toon) zichtbaar++;
     });
@@ -392,60 +410,59 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
     // Resultaattekst
     var resultaatEl = document.getElementById('zoek-resultaat');
     if (resultaatEl) {
-      resultaatEl.textContent = (naam || prov || tag !== 'alles' || locActief)
+      var isGefilterd = naam || prov || tag !== 'alles' || actiefKlacht || locActief;
+      resultaatEl.textContent = isGefilterd
         ? zichtbaar + ' bewust-maker' + (zichtbaar !== 1 ? 's' : '') + ' gevonden'
         : '';
     }
 
-    var ctaEl    = document.getElementById('homepage-zoek-cta');
-    var ctaTekst = document.getElementById('homepage-zoek-cta-tekst');
-    var ctaLink  = document.getElementById('homepage-zoek-link');
+    var ctaEl     = document.getElementById('homepage-zoek-cta');
+    var ctaTekst  = document.getElementById('homepage-zoek-cta-tekst');
+    var ctaLink   = document.getElementById('homepage-zoek-link');
     var allesKnop = document.getElementById('homepage-alle-knop');
-    var isGefilterd = naam || prov || tag !== 'alles' || locActief;
+    var isGefilterd = naam || prov || tag !== 'alles' || actiefKlacht || locActief;
 
     if (!isGefilterd) {
-      // Geen filter actief: normale toestand
-      if (ctaEl)    ctaEl.style.display    = 'none';
+      if (ctaEl)     ctaEl.style.display     = 'none';
       if (allesKnop) allesKnop.style.display = 'block';
       return;
     }
 
-    // Filter actief
     if (allesKnop) allesKnop.style.display = 'none';
 
     if (zichtbaar === 0) {
-      // Geen resultaten
-      if (ctaTekst) ctaTekst.textContent = 'Geen bewust-makers gevonden met deze zoekopdracht. Er zijn er wel meer — zoek verder in het volledige overzicht.';
-      var zoekParams = naam ? '?zoek=' + encodeURIComponent(naam) : '';
-      if (ctaLink)  ctaLink.href = BASE + zoekParams;
-      if (ctaLink)  ctaLink.textContent = 'Zoek verder tussen alle bewust-makers';
-      if (ctaEl)    ctaEl.style.display = 'block';
-    } else if (zichtbaar === totaal) {
-      // Alles zichtbaar maar filter actief (bijv. provincie zonder treffer)
-      if (ctaTekst) ctaTekst.textContent = 'Meer makers beschikbaar — bekijk het volledige overzicht.';
-      if (ctaLink)  ctaLink.href = BASE;
-      if (ctaLink)  ctaLink.textContent = 'Bekijk alle bewust-makers';
+      if (ctaTekst) ctaTekst.textContent = 'Geen bewust-makers gevonden. Er zijn er wel meer — zoek verder in het volledige overzicht.';
+      if (ctaLink)  { ctaLink.href = BASE + (naam ? '?zoek=' + encodeURIComponent(naam) : ''); ctaLink.textContent = 'Zoek verder tussen alle bewust-makers'; }
       if (ctaEl)    ctaEl.style.display = 'block';
     } else {
-      // Deels gefilterd
-      if (ctaTekst) ctaTekst.textContent = 'Er zijn meer bewust-makers beschikbaar. Bekijk het volledige overzicht voor alle resultaten.';
-      var zoekParams2 = naam ? '?zoek=' + encodeURIComponent(naam) : '';
-      if (ctaLink)  ctaLink.href = BASE + zoekParams2;
-      if (ctaLink)  ctaLink.textContent = 'Bekijk alle ' + totaal + '+ bewust-makers';
+      if (ctaTekst) ctaTekst.textContent = 'Er zijn meer bewust-makers beschikbaar in het volledige overzicht.';
+      if (ctaLink)  { ctaLink.href = BASE + (naam ? '?zoek=' + encodeURIComponent(naam) : ''); ctaLink.textContent = 'Bekijk alle ' + totaal + '+ bewust-makers'; }
       if (ctaEl)    ctaEl.style.display = 'block';
     }
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var zoekInput   = document.getElementById('zoek-naam');
-    var zoekProv    = document.getElementById('zoek-provincie');
-    var filterTags  = document.querySelectorAll('.js-tag-filter');
-    var slider      = document.getElementById('afstand-slider');
+    var zoekInput    = document.getElementById('zoek-naam');
+    var zoekProv     = document.getElementById('zoek-provincie');
+    var filterTags   = document.querySelectorAll('.js-tag-filter');
+    var klachtTags   = document.querySelectorAll('.js-klacht-filter');
+    var slider       = document.getElementById('afstand-slider');
     var afstandLabel = document.getElementById('afstand-label');
-    var afstandWrap = document.getElementById('afstand-wrap');
-    var afstandWis  = document.getElementById('afstand-wis');
-    var provVeld    = document.getElementById('provincie-veld');
-    var locKnop     = document.getElementById('gebruik-locatie');
+    var afstandWrap  = document.getElementById('afstand-wrap');
+    var afstandWis   = document.getElementById('afstand-wis');
+    var provVeld     = document.getElementById('provincie-veld');
+    var locKnop      = document.getElementById('gebruik-locatie');
+    var toonKlachten = document.getElementById('toon-klachten');
+    var klachtFilters = document.getElementById('klacht-filters');
+
+    // Inklapbaar klacht-panel
+    if (toonKlachten && klachtFilters) {
+      toonKlachten.addEventListener('click', function() {
+        var open = klachtFilters.style.display === 'none' || klachtFilters.style.display === '';
+        klachtFilters.style.display = open ? 'block' : 'none';
+        toonKlachten.textContent = open ? '▴ Verberg klachten' : '▾ Zoek op klacht';
+      });
+    }
 
     if (zoekInput) zoekInput.addEventListener('input', filterHomepage);
     if (zoekProv)  zoekProv.addEventListener('change', filterHomepage);
@@ -462,6 +479,20 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       });
     });
 
+    klachtTags.forEach(function(knop) {
+      knop.addEventListener('click', function() {
+        if (this.classList.contains('actief')) {
+          this.classList.remove('actief');
+          actiefKlacht = null;
+        } else {
+          klachtTags.forEach(function(k) { k.classList.remove('actief'); });
+          this.classList.add('actief');
+          actiefKlacht = this.dataset.klacht;
+        }
+        filterHomepage();
+      });
+    });
+
     if (locKnop) {
       locKnop.addEventListener('click', function() {
         if (!navigator.geolocation) { alert('Locatie wordt niet ondersteund door jouw browser.'); return; }
@@ -470,10 +501,10 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
         navigator.geolocation.getCurrentPosition(function(pos) {
           gebruikerLat = pos.coords.latitude;
           gebruikerLon = pos.coords.longitude;
-          if (afstandWrap) afstandWrap.style.display = 'block';
-          if (provVeld)    provVeld.style.display    = 'none';
-          if (zoekProv)    zoekProv.value            = '';
-          if (afstandLabel) afstandLabel.textContent = 'Binnen ' + (slider ? slider.value : 20) + ' km';
+          if (afstandWrap)  afstandWrap.style.display = 'block';
+          if (provVeld)     provVeld.style.display    = 'none';
+          if (zoekProv)     zoekProv.value            = '';
+          if (afstandLabel) afstandLabel.textContent  = 'Binnen ' + (slider ? slider.value : 20) + ' km';
           locKnop.textContent = '📍 Locatie gevonden';
           locKnop.disabled = false;
           filterHomepage();
@@ -488,9 +519,9 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
     if (afstandWis) {
       afstandWis.addEventListener('click', function() {
         gebruikerLat = null; gebruikerLon = null;
-        if (afstandWrap) afstandWrap.style.display = 'none';
-        if (provVeld)    provVeld.style.display    = '';
-        if (locKnop)     locKnop.textContent       = '📍 Zoek op afstand';
+        if (afstandWrap)  afstandWrap.style.display = 'none';
+        if (provVeld)     provVeld.style.display    = '';
+        if (locKnop)      locKnop.textContent       = '📍 Zoek op afstand';
         filterHomepage();
       });
     }
