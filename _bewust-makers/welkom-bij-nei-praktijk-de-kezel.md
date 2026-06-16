@@ -25,7 +25,7 @@ sessieduur: 60–90 min
 tarief: ""
 eerste_gesprek: Gratis kennismaking
 vergoeding: nvt
-ervaringsjaren: 12
+ervaringsjaren: 3
 talen:
   - Nederlands
 doelgroepen:
@@ -33,7 +33,6 @@ doelgroepen:
   - gezinnen
 opleidingen:
   - NEI-therapeut gecertificeerd
-  - EFT gecertificeerd
   - Orthomoleculaire voeding
   - Bach Bloesem therapeut
 verenigingen:
