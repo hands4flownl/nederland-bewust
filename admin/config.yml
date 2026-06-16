@@ -5,7 +5,7 @@ backend:
 media_folder: "assets/images/makers"
 public_folder: "/assets/images/makers"
 
-publish_mode: editorial_workflow
+publish_mode: simple
 locale: "nl"
 
 # ════════════════════════════════════════════════════════
@@ -192,7 +192,7 @@ collections:
           - {label: "Aantal Mee-makers", name: "teller_mee_makers",
              widget: "number", value_type: "int"}
 
-  - name: "kennisbank-wiki"
+  - name: "kennisbank"
     label: "📚 Kennisbank"
     label_singular: "Artikel"
     folder: "_kennisbank"
@@ -217,7 +217,7 @@ collections:
       - {label: "Bronnen", name: "bronnen", widget: "string", required: false}
       - {label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: false}
 
-  - name: "mee-makers-beheer"
+  - name: "mee-makers"
     label: "🤝 Mee-Makers"
     folder: "_mee-makers"
     create: true
