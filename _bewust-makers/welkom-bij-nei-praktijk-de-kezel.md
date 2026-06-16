@@ -3,7 +3,7 @@ naam: "Marcella van den Burg"
 praktijk: "Praktijk de Kezel"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-cropped-cropped-Marcella-profiel-foto.jpeg"
+foto: "/assets/images/makers/marcella-van-den-burg.jpg"
 categorieen:
   - "Coaching"
   - "Voeding"
