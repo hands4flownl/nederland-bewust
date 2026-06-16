@@ -3,7 +3,7 @@ naam: "Janet van der Veen"
 praktijk: "Praktijk Janet van der Veen"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-maker-Janet-van-der-Veen-1.jpg"
+foto: "/assets/images/makers/janet-van-der-veen.jpg"
 categorieen:
   - "Coaching"
   - "Energetisch"
