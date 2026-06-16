@@ -1,9 +1,0 @@
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "assets/images/makers"
-public_folder: "/assets/images/makers"
-locale: "nl"
-
-collections: []
