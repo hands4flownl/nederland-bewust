@@ -15,9 +15,13 @@ permalink: /agenda/
 
     <p style="margin-bottom:2rem;">Vanuit een holistische benadering nodigen we je uit om op verschillende manieren bij te dragen aan jouw gezondheid en welzijn. Van expressieve workshops tot fysieke beweging en ademwerk, van momenten van stilte tot diepere zelfbewustwording.</p>
 
+    {% assign alle_items = site.agenda | where: "gepubliceerd", true %}
+    {% assign doorlopend = alle_items | where: "doorlopend", true %}
+    {% assign gepland = alle_items | where: "doorlopend", false | sort: "datum" %}
+
     <div id="agenda-lijst">
 
-      <!-- Doorlopende activiteiten (geen vervaldatum) -->
+      {% for item in doorlopend %}
       <article class="agenda-item" data-datum="">
         <div class="agenda-datum">
           <div class="agenda-datum__dag">∞</div>
@@ -25,82 +29,77 @@ permalink: /agenda/
         </div>
         <div class="agenda-info">
           <p class="agenda-info__titel">
-            <a href="https://drentse-alchemist.nl/product/diy-tinctuurpakket-met-mailondersteuning" target="_blank" rel="noopener">DIY pakket tinctuur maken</a>
-            — alle materialen inbegrepen
+            {% if item.aanmeld and item.aanmeld != "" %}
+              <a href="{{ item.aanmeld }}" target="_blank" rel="noopener">{{ item.titel }}</a>
+            {% else %}
+              {{ item.titel }}
+            {% endif %}
           </p>
           <p class="agenda-info__meta">
-            📍 Online &nbsp;|&nbsp; ⏰ Wanneer het jou uitkomt &nbsp;|&nbsp; 💶 €59,95
+            📍 {{ item.locatie }} &nbsp;|&nbsp;
+            ⏰ {{ item.tijdstip }} &nbsp;|&nbsp;
+            💶 {{ item.prijs }}
           </p>
+          {% if item.beschrijving %}
+          <p style="font-size:0.9rem;color:#555;margin-top:0.4rem;">{{ item.beschrijving }}</p>
+          {% endif %}
           <p style="font-size:0.9rem;color:#555;margin-top:0.4rem;">
-            Aangeboden door: <a href="https://drentse-alchemist.nl" target="_blank" rel="noopener">Drentse Alchemist</a>
+            Aangeboden door: {{ item.organisator }}
           </p>
         </div>
       </article>
+      {% endfor %}
 
-      <article class="agenda-item" data-datum="">
+      {% for item in gepland %}
+      {% assign datum_parts = item.datum | split: "-" %}
+      {% assign maanden = "jan,feb,mrt,apr,mei,jun,jul,aug,sep,okt,nov,dec" | split: "," %}
+      {% assign maand_nr = datum_parts[1] | minus: 1 %}
+      {% assign maand_naam = maanden[maand_nr] %}
+      <article class="agenda-item" data-datum="{{ item.datum }}">
         <div class="agenda-datum">
-          <div class="agenda-datum__dag">∞</div>
-          <div class="agenda-datum__maand">Doorlopend</div>
+          <div class="agenda-datum__dag">{{ datum_parts[2] }}</div>
+          <div class="agenda-datum__maand">{{ maand_naam }}</div>
         </div>
         <div class="agenda-info">
           <p class="agenda-info__titel">
-            <a href="https://drentse-alchemist.nl/blog/gratis-mini-cursus-over-tincturen" target="_blank" rel="noopener">Gratis mini cursus over tincturen</a>
+            {% if item.aanmeld and item.aanmeld != "" %}
+              <a href="{{ item.aanmeld }}" target="_blank" rel="noopener">{{ item.titel }}</a>
+            {% else %}
+              {{ item.titel }}
+            {% endif %}
           </p>
           <p class="agenda-info__meta">
-            📍 Online &nbsp;|&nbsp; ⏰ Wanneer het jou uitkomt &nbsp;|&nbsp; 💶 Gratis
+            📍 {{ item.locatie }} &nbsp;|&nbsp;
+            ⏰ {{ item.tijdstip }} &nbsp;|&nbsp;
+            💶 {{ item.prijs }}
           </p>
+          {% if item.beschrijving %}
+          <p style="font-size:0.9rem;color:#555;margin-top:0.4rem;">{{ item.beschrijving }}</p>
+          {% endif %}
           <p style="font-size:0.9rem;color:#555;margin-top:0.4rem;">
-            Aangeboden door: <a href="https://drentse-alchemist.nl" target="_blank" rel="noopener">Drentse Alchemist</a>
+            Georganiseerd door: {{ item.organisator }}
           </p>
         </div>
       </article>
+      {% endfor %}
 
-      <!-- Geplande activiteiten — data-datum="YYYY-MM-DD" -->
-      <article class="agenda-item" data-datum="2026-07-05">
-        <div class="agenda-datum">
-          <div class="agenda-datum__dag">05</div>
-          <div class="agenda-datum__maand">jul</div>
-        </div>
-        <div class="agenda-info">
-          <p class="agenda-info__titel">Zincafé Zweeloo — Filosofiegesprek</p>
-          <p class="agenda-info__meta">
-            📍 Zweeloo &nbsp;|&nbsp; ⏰ Nader te bepalen &nbsp;|&nbsp; 💶 Gratis
-          </p>
-          <p style="font-size:0.9rem;color:#555;margin-top:0.4rem;">
-            Intieme filosofiegesprekken voor wie nadenkt over het leven.
-          </p>
-        </div>
-      </article>
+      {% if alle_items.size == 0 %}
+      <div style="text-align:center; padding:3rem 0; color:var(--tekst-licht);">
+        <p style="font-size:1.1rem;">Er staan momenteel geen activiteiten gepland.</p>
+        <p style="margin-top:0.5rem; font-size:0.9rem;">Volg ons op
+          <a href="https://www.facebook.com/profile.php?id=61587382533407" target="_blank" rel="noopener">Facebook</a>
+          of <a href="https://www.instagram.com/nederlandbewust2026/" target="_blank" rel="noopener">Instagram</a>
+          voor de laatste updates.</p>
+      </div>
+      {% endif %}
 
-      <article class="agenda-item" data-datum="2026-09-19">
-        <div class="agenda-datum">
-          <div class="agenda-datum__dag">19</div>
-          <div class="agenda-datum__maand">sep</div>
-        </div>
-        <div class="agenda-info">
-          <p class="agenda-info__titel">Holistische dag — Emmen</p>
-          <p class="agenda-info__meta">
-            📍 Emmen &nbsp;|&nbsp; ⏰ Nader te bepalen &nbsp;|&nbsp; 💶 Nader te bepalen
-          </p>
-          <p style="font-size:0.9rem;color:#555;margin-top:0.4rem;">
-            Een dag vol inspiratie, ontmoeting en holistische behandelingen.
-          </p>
-        </div>
-      </article>
-
-    </div>
-
-    <div id="agenda-leeg" style="display:none; text-align:center; padding:3rem 0; color:var(--tekst-licht);">
-      <p style="font-size:1.1rem;">Er staan momenteel geen activiteiten gepland.</p>
-      <p style="margin-top:0.5rem; font-size:0.9rem;">Volg ons op <a href="https://www.facebook.com/profile.php?id=61587382533407" target="_blank" rel="noopener">Facebook</a> of <a href="https://www.instagram.com/nederlandbewust2026/" target="_blank" rel="noopener">Instagram</a> voor de laatste updates.</p>
     </div>
 
     <!-- Activiteit aanmelden -->
     <div style="margin-top:3rem; background:var(--creme); border-radius:var(--radius-groot); padding:1.5rem 2rem; text-align:center;">
       <h3 style="margin-bottom:0.5rem;">Een activiteit aanmelden?</h3>
-      <p style="font-size:0.9rem; color:var(--tekst-licht); margin-bottom:1rem;">Ben je bewust-maker en wil je een workshop of evenement toevoegen? Stuur ons een mail.</p>
-      <a href="mailto:info@nederland-bewust.nl?subject=Activiteit toevoegen aan agenda&body=Hallo,%0A%0AIk wil graag de volgende activiteit toevoegen:%0A%0ATitel: %0ADatum: %0ATijdstip: %0ALocatie: %0APrijs: %0ALink voor aanmelding: %0AOmschrijving: %0A%0AMet vriendelijke groet,"
-         class="knop knop--groen" style="font-size:0.9rem;">📅 Activiteit aanmelden</a>
+      <p style="font-size:0.9rem; color:var(--tekst-licht); margin-bottom:1rem;">Ben je bewust-maker en wil je een workshop of evenement toevoegen? Log in via het beheerpaneel.</p>
+      <a href="/maker-beheer/" class="knop knop--groen" style="font-size:0.9rem;">📅 Activiteit toevoegen</a>
     </div>
 
   </div>
@@ -111,30 +110,10 @@ permalink: /agenda/
 document.addEventListener('DOMContentLoaded', function() {
   var vandaag = new Date();
   vandaag.setHours(0, 0, 0, 0);
-  var items = document.querySelectorAll('.agenda-item[data-datum]');
-  var zichtbaar = 0;
-
-  items.forEach(function(item) {
+  document.querySelectorAll('.agenda-item[data-datum]').forEach(function(item) {
     var datum = item.getAttribute('data-datum');
-    if (!datum) {
-      // Doorlopend — altijd tonen
-      zichtbaar++;
-      return;
-    }
-    var itemDatum = new Date(datum);
-    if (itemDatum < vandaag) {
-      item.style.display = 'none';
-    } else {
-      zichtbaar++;
-    }
+    if (!datum) return; // doorlopend
+    if (new Date(datum) < vandaag) item.style.display = 'none';
   });
-
-  // Als alles weg is, toon lege staat
-  if (zichtbaar === 0) {
-    var lijst = document.getElementById('agenda-lijst');
-    var leeg = document.getElementById('agenda-leeg');
-    if (lijst) lijst.style.display = 'none';
-    if (leeg) leeg.style.display = 'block';
-  }
 });
 </script>
