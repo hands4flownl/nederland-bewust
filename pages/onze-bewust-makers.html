@@ -72,6 +72,32 @@ permalink: /onze-bewust-makers/
   </div>
 </section>
 
+<script>
+// Pik ?filter= of ?zoek= parameter op uit URL
+document.addEventListener('DOMContentLoaded', function() {
+  var params = new URLSearchParams(window.location.search);
+  var filter = params.get('filter');
+  var zoek   = params.get('zoek');
+
+  if (filter) {
+    // Activeer de juiste tag-filter knop
+    var knop = document.querySelector('.js-tag-filter[data-filter="' + filter + '"]');
+    if (knop) {
+      document.querySelectorAll('.js-tag-filter').forEach(function(k) { k.classList.remove('actief'); });
+      knop.classList.add('actief');
+      knop.click();
+    }
+  }
+  if (zoek) {
+    var input = document.getElementById('zoek-naam');
+    if (input) {
+      input.value = zoek;
+      input.dispatchEvent(new Event('input'));
+    }
+  }
+});
+</script>
+
 <section class="sectie">
   <div class="container">
     <div class="grid-3" id="makers-grid">
