@@ -9,7 +9,9 @@ markdown: kramdown
 highlighter: rouge
 permalink: pretty
 
-formspree_endpoint: "https://formspree.io/f/JOUWFORMID"
+formspree_contact:      "https://formspree.io/f/xdavjnjk"
+formspree_bewustmaker:  "https://formspree.io/f/mpqenank"
+formspree_meemaker:     "https://formspree.io/f/mzdqwpwv"
 
 contact:
   marcella: "06-21312490"
