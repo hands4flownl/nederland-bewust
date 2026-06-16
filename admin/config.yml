@@ -11,17 +11,16 @@ locale: "nl"
 collections:
 
   # ════════════════════════════════════
-  # VOOR BEWUST-MAKERS
+  # VOOR BEWUST-MAKERS EN EIGENAREN
   # ════════════════════════════════════
 
   - name: "bewust-makers"
-    label: "👤 Mijn profiel"
+    label: "👤 Bewust-maker profielen"
     label_singular: "Profiel"
     folder: "_bewust-makers"
     create: false
     identifier_field: naam
     summary: "{{naam}} – {{praktijk}} ({{provincie}})"
-    description: "Zoek jouw naam op en pas je profiel aan. Wijzigingen worden doorgestuurd ter beoordeling."
     fields:
       - {label: "Naam", name: "naam", widget: "string"}
       - {label: "Praktijknaam", name: "praktijk", widget: "string"}
@@ -40,7 +39,8 @@ collections:
       - {label: "Online sessies?", name: "online", widget: "select", options: ["Ja","Nee","Op aanvraag"], default: "Op aanvraag"}
       - {label: "Sessieduur", name: "sessieduur", widget: "string", required: false, hint: "Bijv. 60–90 min"}
       - {label: "Tarief", name: "tarief", widget: "string", required: false}
-      - {label: "Eerste gesprek", name: "eerste_gesprek", widget: "select", options: ["Gratis kennismaking","Gratis (30 min)","Op aanvraag","Betaald"], default: "Gratis kennismaking"}
+      - {label: "Eerste gesprek", name: "eerste_gesprek", widget: "select",
+         options: ["Gratis kennismaking","Gratis (30 min)","Op aanvraag","Betaald"], default: "Gratis kennismaking"}
       - {label: "Vergoeding zorgverzekeraar", name: "vergoeding", widget: "string", required: false}
       - {label: "Jaren werkervaring", name: "ervaringsjaren", widget: "number", required: false, value_type: "int", min: 0, max: 50}
       - {label: "Talen", name: "talen", widget: "list", default: ["Nederlands"]}
@@ -56,6 +56,9 @@ collections:
       - {label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: true}
       - {label: "Uitgelicht op homepage", name: "uitgelicht", widget: "boolean", default: false}
       - {label: "Lidmaatschap", name: "lidmaatschap", widget: "select", options: ["Bewust-maker","Mee-maker"], default: "Bewust-maker"}
+      # Verborgen velden die in de MD staan maar niet bewerkbaar zijn via CMS
+      - {label: "Layout", name: "layout", widget: "hidden", default: "bewust-maker"}
+      - {label: "Permalink", name: "permalink", widget: "hidden", default: ""}
 
   - name: "agenda"
     label: "📅 Agenda"
@@ -64,22 +67,17 @@ collections:
     create: true
     identifier_field: titel
     summary: "{{titel}} — {{locatie}}"
-    description: "Voeg workshops en evenementen toe of verwijder verlopen items."
     fields:
       - {label: "Titel", name: "titel", widget: "string"}
-      - {label: "Doorlopend (geen vaste datum)", name: "doorlopend", widget: "boolean", default: false, hint: "Zet aan voor activiteiten zonder einddatum, bijv. online cursussen"}
+      - {label: "Doorlopend (geen vaste datum)", name: "doorlopend", widget: "boolean", default: false}
       - {label: "Datum", name: "datum", widget: "string", required: false, hint: "Formaat: JJJJ-MM-DD — laat leeg als doorlopend"}
-      - {label: "Tijdstip", name: "tijdstip", widget: "string", required: false, hint: "Bijv. 10:00–16:30"}
-      - {label: "Locatie", name: "locatie", widget: "string", hint: "Stad, adres of Online"}
+      - {label: "Tijdstip", name: "tijdstip", widget: "string", required: false}
+      - {label: "Locatie", name: "locatie", widget: "string"}
       - {label: "Organisator", name: "organisator", widget: "string"}
       - {label: "Beschrijving", name: "beschrijving", widget: "text"}
-      - {label: "Aanmeldlink of contactinfo", name: "aanmeld", widget: "string", required: false}
-      - {label: "Prijs", name: "prijs", widget: "string", required: false, hint: "Bijv. €25,- of Gratis"}
+      - {label: "Aanmeldlink", name: "aanmeld", widget: "string", required: false}
+      - {label: "Prijs", name: "prijs", widget: "string", required: false}
       - {label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: true}
-
-  # ════════════════════════════════════
-  # VOOR EIGENAREN
-  # ════════════════════════════════════
 
   - name: "bewust-makers-nieuw"
     label: "➕ Nieuw profiel aanmaken"
@@ -102,6 +100,8 @@ collections:
       - {label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: false}
       - {label: "Uitgelicht", name: "uitgelicht", widget: "boolean", default: false}
       - {label: "Lidmaatschap", name: "lidmaatschap", widget: "select", options: ["Bewust-maker","Mee-maker"], default: "Bewust-maker"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "bewust-maker"}
+      - {label: "Permalink", name: "permalink", widget: "hidden", default: ""}
 
   - name: "mee-makers"
     label: "🤝 Mee-Makers"
@@ -113,11 +113,14 @@ collections:
     fields:
       - {label: "Naam organisatie", name: "naam", widget: "string"}
       - {label: "Logo", name: "logo", widget: "image", required: false}
-      - {label: "Beschrijving", name: "beschrijving", widget: "text", required: false, hint: "Korte zin over de organisatie — zichtbaar op de mee-makers pagina"}
+      - {label: "Beschrijving", name: "beschrijving", widget: "text", required: false}
       - {label: "Website", name: "website", widget: "string", required: false}
       - {label: "Provincie", name: "provincie", widget: "select",
          options: ["Drenthe","Groningen","Friesland","Overijssel","Gelderland","Utrecht","Noord-Holland","Zuid-Holland","Zeeland","Noord-Brabant","Limburg","Flevoland"]}
       - {label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: true}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "mee-maker"}
+      - {label: "Permalink", name: "permalink", widget: "hidden", default: ""}
+      - {label: "Lidmaatschap", name: "lidmaatschap", widget: "hidden", default: "Mee-maker"}
 
   - name: "kennisbank"
     label: "📚 Kennisbank"
@@ -127,18 +130,19 @@ collections:
     identifier_field: titel
     summary: "{{titel}} ({{categorie}})"
     fields:
-      - {label: "Titel (naam behandelvorm)", name: "titel", widget: "string", hint: "Bijv. Voetreflexologie, REIKI, Ademwerk"}
+      - {label: "Titel", name: "titel", widget: "string"}
       - {label: "Categorie", name: "categorie", widget: "select",
          options: ["Massage","Voeding","Bewegen","Meditatie","Coaching","Energetisch","Coaching met dieren","Kindgericht","Hulp voor huisdieren","Expressie / Creativiteit","Begrip"]}
-      - {label: "Ook bekend als", name: "ook_bekend_als", widget: "string", required: false, hint: "Synoniemen of andere namen"}
+      - {label: "Ook bekend als", name: "ook_bekend_als", widget: "string", required: false}
       - {label: "Geschikt voor", name: "geschikt_voor", widget: "string", required: false}
-      - {label: "Inleiding (1–2 zinnen)", name: "inleiding", widget: "text", hint: "Kernachtige beschrijving — ook zichtbaar in Google"}
+      - {label: "Inleiding", name: "inleiding", widget: "text"}
       - {label: "Uitgebreide beschrijving", name: "body", widget: "markdown"}
       - {label: "Wat kun je verwachten?", name: "wat_te_verwachten", widget: "text", required: false}
-      - {label: "Voor wie geschikt?", name: "voor_wie", widget: "text", required: false}
-      - {label: "Wanneer minder geschikt?", name: "niet_voor", widget: "text", required: false, hint: "Contra-indicaties"}
+      - {label: "Voor wie?", name: "voor_wie", widget: "text", required: false}
+      - {label: "Wanneer minder geschikt?", name: "niet_voor", widget: "text", required: false}
       - {label: "Bronnen", name: "bronnen", widget: "string", required: false}
       - {label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: false}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "kennisbank-artikel"}
 
   - name: "uitnodigingen"
     label: "📨 Bewust-maker uitnodigen"
@@ -151,9 +155,8 @@ collections:
           - {label: "E-mailadres", name: "email", widget: "string"}
           - {label: "Lidmaatschap", name: "type", widget: "select", options: ["Bewust-maker","Mee-maker"], default: "Bewust-maker"}
           - {label: "Notitie", name: "notitie", widget: "text", required: false}
-          - {label: "Status", name: "status", widget: "select", options: ["Te verwerken","Uitnodiging verstuurd","Actief"], default: "Te verwerken"}
-
-  # ── PAGINATEKSTEN (nu met aparte bestanden per pagina) ────────
+          - {label: "Status", name: "status", widget: "select",
+             options: ["Te verwerken","Uitnodiging verstuurd","Actief"], default: "Te verwerken"}
 
   - name: "teksten"
     label: "✏️ Teksten aanpassen"
@@ -163,21 +166,13 @@ collections:
         name: "homepage"
         file: "_data/teksten_homepage.yml"
         fields:
-          - label: "── Hero sectie ──"
-            name: "hero_sectie_label"
-            widget: "hidden"
-            default: ""
           - {label: "Label boven de titel", name: "hero_label", widget: "string"}
           - {label: "Hoofdtitel", name: "hero_titel", widget: "string"}
           - {label: "Subtitel", name: "hero_subtitel", widget: "string"}
           - {label: "Tekst onder de titel", name: "hero_tekst", widget: "text"}
-          - {label: "Knop 1 tekst (naar makers)", name: "hero_knop1", widget: "string"}
-          - {label: "Knop 2 tekst (contact)", name: "hero_knop2", widget: "string"}
+          - {label: "Knop 1 (naar makers)", name: "hero_knop1", widget: "string"}
+          - {label: "Knop 2 (contact)", name: "hero_knop2", widget: "string"}
           - {label: "Zoekbalk titel", name: "zoek_titel", widget: "string"}
-          - label: "── Drie pijlers ──"
-            name: "pijlers_label"
-            widget: "hidden"
-            default: ""
           - {label: "Pijlers: titel", name: "pijlers_titel", widget: "string"}
           - {label: "Pijlers: intro tekst", name: "pijlers_tekst", widget: "text"}
           - {label: "Pijler 1: titel", name: "pijler1_titel", widget: "string"}
@@ -186,17 +181,9 @@ collections:
           - {label: "Pijler 2: tekst", name: "pijler2_tekst", widget: "text"}
           - {label: "Pijler 3: titel", name: "pijler3_titel", widget: "string"}
           - {label: "Pijler 3: tekst", name: "pijler3_tekst", widget: "text"}
-          - label: "── Adviesgesprek ──"
-            name: "intake_label"
-            widget: "hidden"
-            default: ""
           - {label: "Adviesgesprek: titel", name: "intake_titel", widget: "string"}
           - {label: "Adviesgesprek: tekst", name: "intake_tekst", widget: "text"}
           - {label: "Adviesgesprek: knop tekst", name: "intake_knop", widget: "string"}
-          - label: "── Onderste CTA ──"
-            name: "cta_label"
-            widget: "hidden"
-            default: ""
           - {label: "CTA: titel", name: "cta_titel", widget: "string"}
           - {label: "CTA: tekst", name: "cta_tekst", widget: "text"}
 
@@ -226,19 +213,11 @@ collections:
         name: "instellingen"
         file: "_data/instellingen.yml"
         fields:
-          - label: "── Maandelijkse inspiratie ──"
-            name: "inspiratie_label"
-            widget: "hidden"
-            default: ""
           - {label: "Naam auteur", name: "inspiratie_auteur", widget: "string"}
           - {label: "Functie auteur", name: "inspiratie_functie", widget: "string"}
           - {label: "Artikel titel", name: "inspiratie_titel", widget: "string"}
-          - {label: "Intro tekst (2–3 zinnen)", name: "inspiratie_intro", widget: "text"}
+          - {label: "Intro tekst (2-3 zinnen)", name: "inspiratie_intro", widget: "text"}
           - {label: "Link naar volledig artikel", name: "inspiratie_link", widget: "string"}
           - {label: "Foto van de auteur", name: "inspiratie_foto", widget: "image", required: false}
-          - label: "── Tellers homepage ──"
-            name: "tellers_label"
-            widget: "hidden"
-            default: ""
           - {label: "Aantal Bewust-makers", name: "teller_bewust_makers", widget: "number", value_type: "int"}
           - {label: "Aantal Mee-makers", name: "teller_mee_makers", widget: "number", value_type: "int"}
