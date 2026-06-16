@@ -1,7 +1,7 @@
 ---
 naam: Elsemarie van der Ploeg
 praktijk: Hands4Flow
-foto: https://nederland-bewust.nl/wp-content/uploads/2025/09/cropped-cropped-cropped-foto-Bewust-maker-Elsemarie.jpg
+foto: /assets/images/makers/elsemarie.jpg
 provincie: Drenthe
 stad: Emmen
 categorieen:
