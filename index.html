@@ -25,8 +25,8 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
       <h3>{{ site.data.paginateksten.homepage.zoek_titel }}</h3>
       <div class="zoek-rij">
         <div class="zoek-veld">
-          <label for="zoek-naam">Naam of praktijk</label>
-          <input type="text" id="zoek-naam" placeholder="Bijv. voetreflexologie, coaching...">
+          <label for="zoek-naam">Naam, methode of klacht</label>
+          <input type="text" id="zoek-naam" placeholder="Bijv. voetreflex, stress, burnout...">
         </div>
         <div class="zoek-veld" id="provincie-veld">
           <label for="zoek-provincie">Provincie</label>
@@ -367,7 +367,8 @@ beschrijving: "Dé startpagina voor alternatieve zorg, holistische therapie en w
         item.dataset.naam         || '',
         item.dataset.omschrijving || '',
         item.dataset.methoden     || '',
-        item.dataset.tags         || ''
+        item.dataset.tags         || '',
+        item.dataset.klachten     || ''
       ].join(' ').toLowerCase();
 
       var naamMatch  = !naam || zoekVeld.includes(naam);
