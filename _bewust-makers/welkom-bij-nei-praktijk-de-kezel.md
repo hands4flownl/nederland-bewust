@@ -17,26 +17,27 @@ methoden:
   - Orthomoleculaire voeding
   - Detox
   - Dentotox
-website: ""
-email_zichtbaar: ""
-telefoon: ""
+website: https://praktijkdekezel.nl
+email_zichtbaar: marcella@praktijkdekezel.nl
+telefoon: 06-21312490
 online: Ja
 sessieduur: 60–90 min
 tarief: ""
 eerste_gesprek: Gratis kennismaking
-vergoeding: ""
+vergoeding: nvt
 ervaringsjaren: 12
 talen:
   - Nederlands
 doelgroepen:
-  - Volwassenen
-  - Mensen met chronische klachten
+  - Vrouwen
+  - gezinnen
 opleidingen:
   - NEI-therapeut gecertificeerd
   - EFT gecertificeerd
   - Orthomoleculaire voeding
   - Bach Bloesem therapeut
-verenigingen: []
+verenigingen:
+  - VVNT
 bio: Initiatiefnemer van Nederland-Bewust en praktijkhoudster van Praktijk de
   Kezel. Marcella werkt met NEI-therapie, EFT, Bach Bloesem, Flowerplex,
   edelstenen, orthomoleculaire voeding, detox en dentotox.
