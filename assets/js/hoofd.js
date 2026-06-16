@@ -218,30 +218,4 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// ===================== BEHEER KNOP =====================
-document.addEventListener('DOMContentLoaded', function() {
-  var ingelogd = false;
-  try {
-    for (var i = 0; i < localStorage.length; i++) {
-      var key = localStorage.key(i);
-      if (key && key.indexOf('gotrue') !== -1) {
-        try {
-          var val = JSON.parse(localStorage.getItem(key));
-          if (val && val.access_token) { ingelogd = true; break; }
-        } catch(e) {}
-      }
-    }
-  } catch(e) {}
-  var navKnop    = document.getElementById('nav-beheer-item');
-  var loginLink  = document.getElementById('footer-login-link');
-  var beheerLink = document.getElementById('footer-beheer-link');
-  if (ingelogd) {
-    if (navKnop)    navKnop.style.display = 'block';
-    if (loginLink)  loginLink.style.display = 'none';
-    if (beheerLink) beheerLink.style.display = 'inline';
-  } else {
-    if (navKnop)    navKnop.style.display = 'none';
-    if (loginLink)  loginLink.style.display = 'inline';
-    if (beheerLink) beheerLink.style.display = 'none';
-  }
-});
+
