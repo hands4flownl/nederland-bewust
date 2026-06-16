@@ -52,6 +52,20 @@
       </span>
     </p>
   </div>
+
+<!-- Netlify Identity voor inlog-knop in footer -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", function(user) {
+    if (!user) {
+      window.netlifyIdentity.on("login", function() {
+        document.location.href = "https://nederland-bewust-beheer.netlify.app/admin/";
+      });
+    }
+  });
+}
+</script>
 </footer>
 
 <!-- Cookiebanner -->
