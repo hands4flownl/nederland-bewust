@@ -3,7 +3,7 @@ naam: "Gilian Scheven"
 praktijk: "Atlamodi"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2025/10/cropped-cropped-cropped-cropped-Gilian-Scheven-scaled-1.jpg"
+foto: "/assets/images/makers/gilian-van-scheven.jpg"
 categorieen:
   - "Coaching"
 methoden:
