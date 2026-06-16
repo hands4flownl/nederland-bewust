@@ -1,6 +1,6 @@
 ---
 naam: Elsemarie van der Ploeg
-praktijk: Hands4Flow
+praktijk: Hands4flow
 foto: /assets/images/makers/elsemarie.jpg
 provincie: Drenthe
 stad: Emmen
@@ -21,21 +21,25 @@ sessieduur: 60–90 min
 tarief: 60-90 euro per sessie
 eerste_gesprek: Gratis kennismaking
 vergoeding: nee
-ervaringsjaren: 9
+ervaringsjaren: 2
 talen:
   - Nederlands
 doelgroepen:
   - Volwassenen
-  - Burnout herstel
+  - (Burn-out) herstel
   - Mensen met stressklachten
+  - pijnklachten
 opleidingen:
   - Voetreflexologie gecertificeerd
   - REIKI gecertificeerd
   - Access Bars gecertificeerd
-verenigingen: []
+  - stoelmassage gecertificeerd
+verenigingen:
+  - Reiki vereniging Cirkel
+  - Beroepsvereniging voor Stoelmasseurs
 bio: Initiatiefnemer van Nederland-Bewust en praktijkhoudster van Hands4Flow.
   Elsemarie werkt met voetreflex, diverse massagetechnieken, REIKI, Access Bars
-  en aromatherapie.
+  en aromatherapie. Tevens ben ik gecertificeerd Happy Soul coach
 wat_zeggen_clienten: ""
 layout: bewust-maker
 permalink: /bewust-makers/welkom-bij-hands4flow/
