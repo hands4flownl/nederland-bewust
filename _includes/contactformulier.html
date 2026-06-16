@@ -1,13 +1,12 @@
 <div class="formulier-wrap">
   <form
-    action="{{ site.formspree_endpoint }}"
+    action="{{ site.formspree_contact }}"
     method="POST"
     class="js-formulier"
     novalidate>
 
-    <!-- Spam bescherming -->
     <input type="text" name="_gotcha" style="display:none">
-    <input type="hidden" name="_subject" value="Gratis adviesgesprek aanvraag – Nederland-Bewust">
+    <input type="hidden" name="_subject" value="Contactbericht – Nederland-Bewust">
 
     <div class="veld-groep">
       <label for="naam">Naam *</label>
