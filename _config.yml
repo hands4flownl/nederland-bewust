@@ -26,8 +26,7 @@ collections:
     output: true
     permalink: /bewust-makers/:slug/
   agenda:
-    output: true
-    permalink: /activiteiten/:slug/
+    output: false
   mee-makers:
     output: true
     permalink: /mee-makers/:slug/
