@@ -1,3 +1,7 @@
+---
+layout: null
+permalink: /admin/
+---
 <!doctype html>
 <html>
 <head>
