@@ -3,7 +3,7 @@ naam: "Heike Plomp"
 praktijk: "Praktijk Heike Plomp"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2025/07/cropped-OIP-1-1.webp"
+foto: "/assets/images/makers/heike-plomp.jpg"
 categorieen:
   - "Massage"
   - "Energetisch"
