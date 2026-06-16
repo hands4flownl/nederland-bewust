@@ -1,13 +1,13 @@
 ---
 layout: standaard
 title: "Onze Bewust-Makers"
-beschrijving: "Vind de juiste coach, therapeut of behandelaar bij jou in de buurt. Filter op provincie, methode of afstand."
+beschrijving: "Vind de juiste coach, therapeut of behandelaar bij jou in de buurt. Filter op provincie, methode, klacht of afstand."
 permalink: /onze-bewust-makers/
 ---
 
 <div class="pagina-header">
   <h1>Onze Bewust-Makers</h1>
-  <p>Vind de begeleider die bij jou past — filter op provincie, methode of afstand</p>
+  <p>Vind de begeleider die bij jou past — zoek op methode, klacht of afstand</p>
 </div>
 
 <!-- ZOEK & FILTER -->
@@ -16,8 +16,8 @@ permalink: /onze-bewust-makers/
     <div class="zoek-wrap">
       <div class="zoek-rij">
         <div class="zoek-veld">
-          <label for="zoek-naam">Zoek op naam, methode of omschrijving</label>
-          <input type="text" id="zoek-naam" placeholder="Bijv. voetreflexologie, coaching, Janet...">
+          <label for="zoek-naam">Zoek op naam, methode, klacht of omschrijving</label>
+          <input type="text" id="zoek-naam" placeholder="Bijv. voetreflex, stress, coaching...">
         </div>
         <div class="zoek-veld" id="provincie-veld">
           <label for="zoek-provincie">Provincie</label>
@@ -33,22 +33,18 @@ permalink: /onze-bewust-makers/
           <button id="gebruik-locatie" class="knop knop--groen" style="width:100%; padding:0.65rem 1rem; font-size:0.85rem;">📍 Zoek op afstand</button>
         </div>
       </div>
-
-      <!-- AFSTAND SLIDER (verborgen totdat locatie bekend is) -->
       <div id="afstand-wrap" style="display:none; margin-top:1rem; background:var(--creme); border-radius:12px; padding:1rem 1.2rem;">
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
           <label for="afstand-slider" style="font-weight:600; font-size:0.9rem;">📍 Afstand vanaf jouw locatie</label>
           <button id="afstand-wis" style="background:none; border:none; color:var(--groen); cursor:pointer; font-size:0.85rem; text-decoration:underline;">Verwijder locatiefilter</button>
         </div>
-        <input type="range" id="afstand-slider" min="5" max="50" step="5" value="20"
-          style="width:100%; accent-color:var(--groen);">
+        <input type="range" id="afstand-slider" min="5" max="50" step="5" value="20" style="width:100%; accent-color:var(--groen);">
         <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--tekst-licht); margin-top:0.2rem;">
           <span>5 km</span><span>10 km</span><span>15 km</span><span>20 km</span><span>25 km</span><span>30 km</span><span>35 km</span><span>40 km</span><span>45 km</span><span>50 km</span>
         </div>
         <p id="afstand-label" style="text-align:center; margin-top:0.6rem; font-weight:600; color:var(--groen-donker); font-size:0.95rem;">Binnen 20 km</p>
       </div>
-
-      <div class="zoek-filters">
+      <div class="zoek-filters" style="margin-bottom:0.4rem;">
         <button class="zoek-filter-tag js-tag-filter actief" data-filter="alles">Alle methoden</button>
         <button class="zoek-filter-tag js-tag-filter" data-filter="massage">Massage</button>
         <button class="zoek-filter-tag js-tag-filter" data-filter="coaching">Coaching</button>
@@ -56,8 +52,20 @@ permalink: /onze-bewust-makers/
         <button class="zoek-filter-tag js-tag-filter" data-filter="energetisch">Energetisch</button>
         <button class="zoek-filter-tag js-tag-filter" data-filter="bewegen">Bewegen</button>
         <button class="zoek-filter-tag js-tag-filter" data-filter="meditatie">Meditatie</button>
-        <button class="zoek-filter-tag js-tag-filter" data-filter="kinderen">Kindgericht</button>
-        <button class="zoek-filter-tag js-tag-filter" data-filter="dieren">Dieren</button>
+      </div>
+      <div style="margin-bottom:0.8rem;">
+        <p style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--tekst-licht); margin-bottom:0.4rem;">Of zoek op klacht:</p>
+        <div class="zoek-filters">
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="stress">Stress</button>
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="vermoeidheid">Vermoeidheid</button>
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="burnout">Burnout</button>
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="angst">Angst</button>
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="rugpijn">Rugpijn</button>
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="slaapproblemen">Slaapproblemen</button>
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="rouw">Rouw / verlies</button>
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="hormonale disbalans">Hormonen</button>
+          <button class="zoek-filter-tag js-klacht-filter" data-klacht="chronische klachten">Chronische klachten</button>
+        </div>
       </div>
       <p class="zoek-resultaat-info" id="zoek-resultaat"></p>
     </div>
@@ -67,13 +75,13 @@ permalink: /onze-bewust-makers/
 <section class="sectie">
   <div class="container">
     <div class="grid-3" id="makers-grid">
-
       <div class="maker-kaart js-maker"
-        data-naam="elsemarie van der ploeg hands4flow massage reiki energetisch"
+        data-naam="elsemarie van der ploeg hands4flow voetreflex voetreflexologie massage reiki access bars aromatherapie"
         data-provincie="Drenthe"
         data-methoden="massage energetisch"
         data-tags="massage energetisch"
-        data-omschrijving="massage reiki access bars energetisch lichaam kracht spiritueel emmen drenthe"
+        data-omschrijving="voetreflex voetreflexologie massage reiki access bars aromatherapie stress burnout vermoeidheid spanning"
+        data-klachten="stress vermoeidheid burnout hoofdpijn spanning slaapproblemen rugpijn"
         data-lat="52.7697" data-lon="6.9142">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/elsemarie.jpg' | relative_url }}" alt="Elsemarie van der Ploeg" class="maker-kaart__foto" loading="lazy">
@@ -81,16 +89,16 @@ permalink: /onze-bewust-makers/
         <h3 class="maker-kaart__naam">Elsemarie van der Ploeg</h3>
         <p class="maker-kaart__praktijk">Hands4Flow</p>
         <p class="maker-kaart__regio">📍 Emmen, Drenthe</p>
-        <div class="maker-kaart__tags"><span class="maker-kaart__tag">Massage</span><span class="maker-kaart__tag">REIKI</span><span class="maker-kaart__tag">Access Bars</span></div>
+        <div class="maker-kaart__tags"><span class="maker-kaart__tag">Voetreflex</span><span class="maker-kaart__tag">REIKI</span><span class="maker-kaart__tag">Access Bars</span></div>
         <a href="{{ '/bewust-makers/welkom-bij-hands4flow/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="marcella van den burg praktijk de kezel nei eft voeding"
+        data-naam="marcella van den burg praktijk de kezel nei eft bach bloesem orthomoleculaire voeding detox"
         data-provincie="Drenthe"
         data-methoden="voeding coaching energetisch"
         data-tags="voeding coaching energetisch"
-        data-omschrijving="voeding nei eft coaching energetisch gezondheid bewuste keuze nieuw weerdinge drenthe"
+        data-omschrijving="nei eft bach bloesem orthomoleculair voeding detox chronische klachten energetisch coaching"
+        data-klachten="chronische klachten vermoeidheid overgewicht darmklachten hormonale disbalans stress burn-out"
         data-lat="52.8034" data-lon="6.9989">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/marcella-van-den-burg.jpg' | relative_url }}" alt="Marcella van den Burg" class="maker-kaart__foto" loading="lazy">
@@ -101,13 +109,13 @@ permalink: /onze-bewust-makers/
         <div class="maker-kaart__tags"><span class="maker-kaart__tag">NEI</span><span class="maker-kaart__tag">EFT</span><span class="maker-kaart__tag">Voeding</span></div>
         <a href="{{ '/bewust-makers/welkom-bij-nei-praktijk-de-kezel/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="heike plomp shiatsu cupping kruiden"
+        data-naam="heike plomp praktijk heike plomp shiatsu cupping moxa dorn methode oor-acupunctuur kruidengeneeskunde"
         data-provincie="Drenthe"
         data-methoden="massage"
         data-tags="massage"
-        data-omschrijving="shiatsu cupping kruiden massage lichaam drenthe"
+        data-omschrijving="shiatsu cupping moxa dorn acupunctuur kruiden chronische pijn rugpijn nekpijn spanning massage"
+        data-klachten="rugpijn nekpijn spanning chronische pijn stijfheid migraine gewrichtspijn"
         data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/heike-plomp.jpg' | relative_url }}" alt="Heike Plomp" class="maker-kaart__foto" loading="lazy">
@@ -118,13 +126,13 @@ permalink: /onze-bewust-makers/
         <div class="maker-kaart__tags"><span class="maker-kaart__tag">Shiatsu</span><span class="maker-kaart__tag">Cupping</span><span class="maker-kaart__tag">Kruiden</span></div>
         <a href="{{ '/bewust-makers/welkom-bij-praktijk-heike-plomp/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="janet van der veen psych-k reflexintegratie access bars coaching"
+        data-naam="janet van der veen praktijk janet van der veen psych-k reflexintegratie access bars coaching"
         data-provincie="Drenthe"
         data-methoden="coaching energetisch"
         data-tags="coaching energetisch"
-        data-omschrijving="psych-k reflexintegratie access bars coaching patronen rust zelfvertrouwen drenthe"
+        data-omschrijving="psych-k reflexintegratie access bars coaching stress angst burnout patronen zelfvertrouwen"
+        data-klachten="stress angst burnout negatieve patronen zelfvertrouwen slaapproblemen faalangst"
         data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/janet-van-der-veen.jpg' | relative_url }}" alt="Janet van der Veen" class="maker-kaart__foto" loading="lazy">
@@ -132,16 +140,16 @@ permalink: /onze-bewust-makers/
         <h3 class="maker-kaart__naam">Janet van der Veen</h3>
         <p class="maker-kaart__praktijk">Praktijk Janet van der Veen</p>
         <p class="maker-kaart__regio">📍 Drenthe</p>
-        <div class="maker-kaart__tags"><span class="maker-kaart__tag">PSYCH-K®</span><span class="maker-kaart__tag">Access Bars</span></div>
+        <div class="maker-kaart__tags"><span class="maker-kaart__tag">PSYCH-K®</span><span class="maker-kaart__tag">Access Bars</span><span class="maker-kaart__tag">Coaching</span></div>
         <a href="{{ '/bewust-makers/welkom-bij-praktijk-janet-van-der-veen/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="gilian van scheven atlamodi verlies workshops coaching"
+        data-naam="gilian van scheven praktijk atlamodi verliesbegeleiding rouwbegeleiding coaching workshops"
         data-provincie="Drenthe"
         data-methoden="coaching"
         data-tags="coaching"
-        data-omschrijving="coaching verlies rouw workshops balans beweging drenthe"
+        data-omschrijving="verlies rouw coaching workshops balans eenzaamheid verdriet scheiding levend verlies"
+        data-klachten="rouw verlies eenzaamheid verdriet levend verlies scheiding"
         data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/gilian-van-scheven.jpg' | relative_url }}" alt="Gilian van Scheven" class="maker-kaart__foto" loading="lazy">
@@ -152,28 +160,30 @@ permalink: /onze-bewust-makers/
         <div class="maker-kaart__tags"><span class="maker-kaart__tag">Coaching</span><span class="maker-kaart__tag">Verlies</span><span class="maker-kaart__tag">Workshops</span></div>
         <a href="{{ '/bewust-makers/welkom-bij-atlamodi/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="sjouk coaching energetisch angst healing"
+        data-naam="sjouk bysjouk coaching energetische healing angstbegeleiding"
         data-provincie="Drenthe"
         data-methoden="coaching energetisch"
         data-tags="coaching energetisch"
-        data-omschrijving="coaching healing angst energetisch veiligheid drenthe"
+        data-omschrijving="coaching healing angst paniekaanvallen onveiligheid trauma stress energetisch"
+        data-klachten="angst paniekaanvallen onveiligheid stress trauma"
         data-lat="" data-lon="">
-        <div class="maker-kaart__foto-wrap" style="background:var(--creme); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🌿</div>
+        <div class="maker-kaart__foto-wrap">
+          <img src="{{ '/assets/images/makers/sjouk.jpg' | relative_url }}" alt="Sjouk" class="maker-kaart__foto" loading="lazy">
+        </div>
         <h3 class="maker-kaart__naam">Sjouk</h3>
         <p class="maker-kaart__praktijk">BySjouk</p>
         <p class="maker-kaart__regio">📍 Drenthe</p>
         <div class="maker-kaart__tags"><span class="maker-kaart__tag">Coaching</span><span class="maker-kaart__tag">Healing</span><span class="maker-kaart__tag">Angst</span></div>
         <a href="{{ '/bewust-makers/voel-je-veilig-en-welkom-by-sjouk/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="alice hesp ponti noi bodysculptor ems bewegen"
+        data-naam="alice hesp ponti noi bodysculptor ems slimup lichaamsverzorging"
         data-provincie="Drenthe"
         data-methoden="bewegen"
         data-tags="bewegen"
-        data-omschrijving="ems bodysculptor bewegen lichaamsvorm drenthe"
+        data-omschrijving="ems bodysculptor slimup lichaamsverzorging overgewicht spieren vorming bewegen"
+        data-klachten="overgewicht slappe spieren cellulitis lichaamsvorming"
         data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/alice-hesp.jpg' | relative_url }}" alt="Alice Hesp" class="maker-kaart__foto" loading="lazy">
@@ -181,16 +191,16 @@ permalink: /onze-bewust-makers/
         <h3 class="maker-kaart__naam">Alice Hesp</h3>
         <p class="maker-kaart__praktijk">Ponti Noi</p>
         <p class="maker-kaart__regio">📍 Drenthe</p>
-        <div class="maker-kaart__tags"><span class="maker-kaart__tag">EMS</span><span class="maker-kaart__tag">Bodysculptor</span></div>
+        <div class="maker-kaart__tags"><span class="maker-kaart__tag">EMS</span><span class="maker-kaart__tag">Bodysculptor</span><span class="maker-kaart__tag">Bewegen</span></div>
         <a href="{{ '/bewust-makers/ponti-noi/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="bas van der tang ademcoach human design tantra coaching bewegen"
+        data-naam="bas van der tang bas van der tang ademcoach ademwerk human design coaching"
         data-provincie="Drenthe"
         data-methoden="coaching bewegen meditatie"
-        data-tags="coaching meditatie bewegen"
-        data-omschrijving="ademcoach human design tantra meditatie coaching beweging drenthe"
+        data-tags="coaching bewegen meditatie"
+        data-omschrijving="ademcoach ademwerk human design coaching stress spanning burnout verbinding meditatie bewegen"
+        data-klachten="stress angst ademhalingsklachten spanning burnout verbinding"
         data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/bas-van-der-tang.jpg' | relative_url }}" alt="Bas van der Tang" class="maker-kaart__foto" loading="lazy">
@@ -198,16 +208,16 @@ permalink: /onze-bewust-makers/
         <h3 class="maker-kaart__naam">Bas van der Tang</h3>
         <p class="maker-kaart__praktijk">Bas van der Tang</p>
         <p class="maker-kaart__regio">📍 Drenthe</p>
-        <div class="maker-kaart__tags"><span class="maker-kaart__tag">Ademcoach</span><span class="maker-kaart__tag">Human Design</span></div>
+        <div class="maker-kaart__tags"><span class="maker-kaart__tag">Ademcoach</span><span class="maker-kaart__tag">Human Design</span><span class="maker-kaart__tag">Coaching</span></div>
         <a href="{{ '/bewust-makers/bas-van-der-tang/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="judith hendriks by juud orthomoleculair vermoeidheid voeding"
+        data-naam="judith hendriks by juud orthomoleculaire therapie embtest voedingsadvies"
         data-provincie="Drenthe"
         data-methoden="voeding"
         data-tags="voeding"
-        data-omschrijving="orthomoleculair voeding vermoeidheid bloedwaarden herstel gezondheid drenthe"
+        data-omschrijving="orthomoleculair voeding embtest vermoeidheid hormonen herstel darmklachten concentratie"
+        data-klachten="vermoeidheid hormonale disbalans herstel na ziekte darmklachten concentratieproblemen"
         data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/judith-hendriks.jpg' | relative_url }}" alt="Judith Hendriks" class="maker-kaart__foto" loading="lazy">
@@ -215,16 +225,16 @@ permalink: /onze-bewust-makers/
         <h3 class="maker-kaart__naam">Judith Hendriks</h3>
         <p class="maker-kaart__praktijk">By Juud</p>
         <p class="maker-kaart__regio">📍 Drenthe</p>
-        <div class="maker-kaart__tags"><span class="maker-kaart__tag">Voeding</span><span class="maker-kaart__tag">Orthomoleculair</span></div>
+        <div class="maker-kaart__tags"><span class="maker-kaart__tag">Voeding</span><span class="maker-kaart__tag">Orthomoleculair</span><span class="maker-kaart__tag">Vermoeidheid</span></div>
         <a href="{{ '/bewust-makers/byjuud/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
-
       <div class="maker-kaart js-maker"
-        data-naam="ronald weerman mindful inspirations ademwerk mindset koud water"
+        data-naam="ronald weerman mindful inspirations ademwerk mindset coaching koud water mindfulness"
         data-provincie="Drenthe"
         data-methoden="bewegen meditatie"
         data-tags="bewegen meditatie"
-        data-omschrijving="ademwerk mindset koud water stressvermindering bewegen meditatie drenthe"
+        data-omschrijving="ademwerk mindset koud water mindfulness stressvermindering bewegen meditatie energie"
+        data-klachten="stress burnout slaapproblemen gebrek aan energie prestatiedruk"
         data-lat="" data-lon="">
         <div class="maker-kaart__foto-wrap">
           <img src="{{ '/assets/images/makers/ronald-weerman.jpg' | relative_url }}" alt="Ronald Weerman" class="maker-kaart__foto" loading="lazy">
@@ -232,18 +242,16 @@ permalink: /onze-bewust-makers/
         <h3 class="maker-kaart__naam">Ronald Weerman</h3>
         <p class="maker-kaart__praktijk">Mindful Inspirations</p>
         <p class="maker-kaart__regio">📍 Drenthe</p>
-        <div class="maker-kaart__tags"><span class="maker-kaart__tag">Ademwerk</span><span class="maker-kaart__tag">Mindset</span></div>
+        <div class="maker-kaart__tags"><span class="maker-kaart__tag">Ademwerk</span><span class="maker-kaart__tag">Mindset</span><span class="maker-kaart__tag">Koud water</span></div>
         <a href="{{ '/bewust-makers/welkom-bij-mindful-inspirations/' | relative_url }}" target="_blank" rel="noopener" class="knop knop--goud" style="font-size:0.83rem;">Bekijk profiel</a>
       </div>
 
-      <!-- AANMELDEN KAART -->
       <div class="maker-kaart" style="background:var(--creme); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:280px; border: 2px dashed var(--goud);">
         <div style="font-size:2.5rem; margin-bottom:0.8rem;">🌿</div>
         <h3 style="font-size:1rem; margin-bottom:0.4rem;">Jouw praktijk hier?</h3>
         <p style="font-size:0.88rem; color:var(--tekst-licht); margin-bottom:1rem;">Word bewust-maker en vergroot je zichtbaarheid in heel Nederland.</p>
         <a href="{{ '/meld-je-aan/' | relative_url }}" class="knop knop--groen" style="font-size:0.85rem;">Meld je aan</a>
       </div>
-
     </div>
   </div>
 </section>
