@@ -3,7 +3,7 @@ naam: "Bas van der Tang"
 praktijk: "Bas van der Tang"
 provincie: "Drenthe"
 stad: ""
-foto: "https://nederland-bewust.nl/wp-content/uploads/2026/03/cropped-Bewust-maker-Bas-van-der-Tang-scaled-1.jpg"
+foto: "/assets/images/makers/bas-van-der-tang.jpg"
 categorieen:
   - "Coaching"
   - "Bewegen"
