@@ -1,7 +1,7 @@
 ---
 naam: Marcella van den Burg
 praktijk: NEI Praktijk de Kezel
-foto: /assets/images/makers/marcella-van-den-burg.jpg
+foto: /assets/images/makers/profielfoto-marcella20.jpeg
 provincie: Drenthe
 stad: Nieuw-Weerdinge
 categorieen:
