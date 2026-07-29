@@ -11,6 +11,20 @@ methoden:
   - "PSYCH-K®"
   - "Reflexintegratie"
   - "Access Bars"
+klachten:
+  - "stress"
+  - "angst"
+  - "burnout"
+  - "negatieve patronen"
+  - "zelfvertrouwen"
+  - "slaapproblemen"
+  - "faalangst"
+kaart_tags:
+  - "PSYCH-K®"
+  - "Access Bars"
+  - "Coaching"
+citaat: "Patronen doorbreken voor meer rust en zelfvertrouwen."
+volgorde: 4
 website: ""
 email_zichtbaar: ""
 telefoon: ""
@@ -38,7 +52,7 @@ voor_wie: ""
 wat_zeggen_clienten: ""
 na_sessie: ""
 gepubliceerd: true
-uitgelicht: false
+uitgelicht: true
 lidmaatschap: "Bewust-maker"
 layout: bewust-maker
 permalink: /bewust-makers/welkom-bij-praktijk-janet-van-der-veen/

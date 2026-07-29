@@ -13,6 +13,22 @@ methoden:
   - REIKI
   - Access Bars
   - Aromatherapie
+klachten:
+  - "stress"
+  - "vermoeidheid"
+  - "burnout"
+  - "hoofdpijn"
+  - "spanning"
+  - "slaapproblemen"
+  - "rugpijn"
+kaart_tags:
+  - "Voetreflex"
+  - "REIKI"
+  - "Access Bars"
+citaat: "Jou terugzetten in je kracht — fysiek, mentaal én spiritueel."
+volgorde: 1
+lat: 52.7697
+lon: 6.9142
 website: https://www.hands4flow.nl
 email_zichtbaar: ""
 telefoon: ""

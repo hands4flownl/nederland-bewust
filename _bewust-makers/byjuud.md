@@ -11,6 +11,18 @@ methoden:
   - "Vermoeidheid"
   - "Orthomoleculaire therapie"
   - "EMBtest"
+klachten:
+  - "vermoeidheid"
+  - "hormonale disbalans"
+  - "herstel na ziekte"
+  - "darmklachten"
+  - "concentratieproblemen"
+kaart_tags:
+  - "Voeding"
+  - "Orthomoleculair"
+  - "Vermoeidheid"
+citaat: "Herstel van binnenuit — voeding als fundament van je gezondheid."
+volgorde: 9
 website: ""
 email_zichtbaar: ""
 telefoon: ""
@@ -38,7 +50,7 @@ voor_wie: ""
 wat_zeggen_clienten: ""
 na_sessie: ""
 gepubliceerd: true
-uitgelicht: false
+uitgelicht: true
 lidmaatschap: "Bewust-maker"
 layout: bewust-maker
 permalink: /bewust-makers/byjuud/

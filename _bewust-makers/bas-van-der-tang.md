@@ -15,6 +15,18 @@ methoden:
   - "Body-dearmourer"
   - "Leraar van consent"
   - "Conscious kink / tantrische BDSM"
+klachten:
+  - "stress"
+  - "angst"
+  - "ademhalingsklachten"
+  - "spanning"
+  - "burnout"
+  - "verbinding"
+kaart_tags:
+  - "Ademcoach"
+  - "Human Design"
+  - "Coaching"
+volgorde: 8
 website: ""
 email_zichtbaar: ""
 telefoon: ""

@@ -13,6 +13,18 @@ methoden:
   - "Stress verminderen met ademhaling"
   - "Adem- en mindset coaching"
   - "Koud water dip workshop"
+klachten:
+  - "stress"
+  - "burnout"
+  - "slaapproblemen"
+  - "gebrek aan energie"
+  - "prestatiedruk"
+kaart_tags:
+  - "Ademwerk"
+  - "Mindset"
+  - "Koud water"
+citaat: "Stressvermindering via ademhaling, mindset en bewuste beweging."
+volgorde: 10
 website: ""
 email_zichtbaar: ""
 telefoon: ""
@@ -40,7 +52,7 @@ voor_wie: ""
 wat_zeggen_clienten: ""
 na_sessie: ""
 gepubliceerd: true
-uitgelicht: false
+uitgelicht: true
 lidmaatschap: "Bewust-maker"
 layout: bewust-maker
 permalink: /bewust-makers/welkom-bij-mindful-inspirations/

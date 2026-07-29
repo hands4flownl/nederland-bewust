@@ -14,6 +14,19 @@ methoden:
   - "Dorn methode"
   - "Oor-acupunctuur"
   - "Kruidengeneeskunde"
+klachten:
+  - "rugpijn"
+  - "nekpijn"
+  - "spanning"
+  - "chronische pijn"
+  - "stijfheid"
+  - "migraine"
+  - "gewrichtspijn"
+kaart_tags:
+  - "Shiatsu"
+  - "Cupping"
+  - "Kruiden"
+volgorde: 3
 website: ""
 email_zichtbaar: ""
 telefoon: ""

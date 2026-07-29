@@ -10,6 +10,19 @@ methoden:
   - "Individuele sessies"
   - "Gezins- of groepsbegeleiding"
   - "Creatieve workshops rond levend verlies"
+klachten:
+  - "rouw"
+  - "verlies"
+  - "eenzaamheid"
+  - "verdriet"
+  - "levend verlies"
+  - "scheiding"
+kaart_tags:
+  - "Coaching"
+  - "Verlies"
+  - "Workshops"
+citaat: "Balans is voor mij geen einddoel, maar een beweging."
+volgorde: 5
 website: ""
 email_zichtbaar: ""
 telefoon: ""
@@ -37,7 +50,7 @@ voor_wie: ""
 wat_zeggen_clienten: ""
 na_sessie: ""
 gepubliceerd: true
-uitgelicht: false
+uitgelicht: true
 lidmaatschap: "Bewust-maker"
 layout: bewust-maker
 permalink: /bewust-makers/welkom-bij-atlamodi/

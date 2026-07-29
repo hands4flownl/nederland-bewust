@@ -13,6 +13,17 @@ methoden:
   - "Angststoornis"
   - "Paniekaanval"
   - "Online traject"
+klachten:
+  - "angst"
+  - "paniekaanvallen"
+  - "onveiligheid"
+  - "stress"
+  - "trauma"
+kaart_tags:
+  - "Coaching"
+  - "Healing"
+  - "Angst"
+volgorde: 6
 website: ""
 email_zichtbaar: ""
 telefoon: ""

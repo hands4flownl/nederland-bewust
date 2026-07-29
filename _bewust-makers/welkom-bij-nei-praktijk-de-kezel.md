@@ -29,6 +29,14 @@ klachten:
   - Hoog sensitief
   - Darmklachten
   - Hoofdpijn
+kaart_tags:
+  - "NEI"
+  - "EFT"
+  - "Voeding"
+citaat: "Van inzicht naar bewuste keuze — voor jezelf en je gezondheid."
+volgorde: 2
+lat: 52.8034
+lon: 6.9989
 omschrijving: >-
   Als je bij mijn NEI praktijk de Kezel binnenstapt, ervaar je een ontspannen
   sfeer en voel je de rust en ruimte om je verhaal te doen. Vanuit daar gaan we
@@ -42,7 +50,7 @@ omschrijving: >-
   Tijdens de NEI sessie mag praten, maar het hoeft niet. Verder kun je rustig zitten en een kopje thee/koffie of water drinken tijdens je NEI sessie. Na 1-1,5 uur zijn we klaar en bepalen we samen de volgende stap. 
 
 
-  Alles gebeurd op jouw tempo en zoals het goed voelt voor jou. 
+  Alles gebeurd op jouw tempo en zoals het goed voelt voor jou.
 website: https://praktijkdekezel.nl
 email_zichtbaar: marcella@praktijkdekezel.nl
 telefoon: 06-21312490
@@ -115,7 +123,7 @@ na_sessie: >-
    
   Wil je met andere thema's/ klachten aan de slag, dan ben je uiteraard altijd welkom voor meer sessies. Ik hou er niet van om mensen aan het 'lijntje' te houden. Mijn insteek is altijd om jou weer zo snel mogelijk (& onafhankelijk!) weer in je eigenkracht te zetten! 
 gepubliceerd: true
-uitgelicht: false
+uitgelicht: true
 lidmaatschap: Bewust-maker
 layout: bewust-maker
 permalink: /bewust-makers/welkom-bij-nei-praktijk-de-kezel/

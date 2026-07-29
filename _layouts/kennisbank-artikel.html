@@ -80,7 +80,7 @@ layout: standaard
            onmouseover="this.style.borderColor='var(--goud)'"
            onmouseout="this.style.borderColor='var(--border)'">
           {% if maker.foto %}
-          <img src="{{ maker.foto }}" alt="{{ maker.naam }}"
+          <img src="{{ maker.foto | relative_url }}" alt="{{ maker.naam }}"
             style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;"
             onerror="this.style.display='none'">
           {% endif %}

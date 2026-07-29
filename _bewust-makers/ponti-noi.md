@@ -9,6 +9,16 @@ categorieen:
 methoden:
   - "Bodysculptor"
   - "EMS-sessies met SlimUp®"
+klachten:
+  - "overgewicht"
+  - "slappe spieren"
+  - "cellulitis"
+  - "lichaamsvorming"
+kaart_tags:
+  - "EMS"
+  - "Bodysculptor"
+  - "Bewegen"
+volgorde: 7
 website: ""
 email_zichtbaar: ""
 telefoon: ""
