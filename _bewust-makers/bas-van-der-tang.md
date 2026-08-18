@@ -2,7 +2,7 @@
 naam: Bas van der Tang
 praktijk: Bas van der Tang
 foto: /assets/images/makers/bas-van-der-tang.jpg
-provincie: Drenthe
+provincie: Groningen
 stad: Groningen
 categorieen:
   - Coaching
