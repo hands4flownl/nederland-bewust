@@ -98,7 +98,7 @@ wat_zeggen_clienten: >
 na_sessie: Voel je meer ruimte, fysiek, emotioneel, spiritueel. Meer gronding en
   meer helderheid in structuren en patronen.
 gepubliceerd: true
-uitgelicht: false
+uitgelicht: true
 lidmaatschap: Bewust-maker
 layout: bewust-maker
 permalink: /bewust-makers/bas-van-der-tang/
