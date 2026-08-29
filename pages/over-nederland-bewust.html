@@ -30,8 +30,10 @@ permalink: /over-nederland-bewust/
   <div class="container container--nauw">
     <h2>{{ site.data.teksten_over.missie_titel }}</h2>
     <p>{{ site.data.teksten_over.missie_tekst }}</p>
-    <p>Door aandacht te geven aan alle aspecten van jezelf – je lichaam, je mind en je ziel – zowel bewust als onbewust, kun je groeien in verbinding met jezelf. Wanneer je jezelf goed leert kennen, ben je ook in staat de verbinding met anderen te versterken.</p>
-    <p>Wij geloven dat bewustwording je niet alleen inzicht en vertrouwen biedt, maar je OER-sterk maakt. Zo leef je een gezond en gelukkig leven, van binnenuit.</p>
+    {% if site.data.teksten_over.missie_extra %}
+    {% assign missie_alineas = site.data.teksten_over.missie_extra | split: "\n\n" %}
+    {% for alinea in missie_alineas %}<p>{{ alinea }}</p>{% endfor %}
+    {% endif %}
   </div>
 </section>
 
@@ -39,7 +41,7 @@ permalink: /over-nederland-bewust/
   <div class="container container--nauw">
     <h2>{{ site.data.teksten_over.visie_titel }}</h2>
     <p>{{ site.data.teksten_over.visie_tekst }}</p>
-    <p>Een samenleving waarin we leren luisteren naar wat ons lichaam ons wil vertellen. Waar emoties en pijn worden gezien als waardevolle signalen, waardoor de mogelijkheid ontstaat om van binnenuit te helen – voordat klachten zich vastzetten.</p>
+    {% if site.data.teksten_over.visie_extra %}<p>{{ site.data.teksten_over.visie_extra }}</p>{% endif %}
     <blockquote style="border-left:4px solid var(--groen); padding-left:1.5rem; margin:1.5rem 0; font-style:italic; font-size:1.1rem; color:var(--groen-donker);">
       "{{ site.data.teksten_over.visie_quote }}"
     </blockquote>
