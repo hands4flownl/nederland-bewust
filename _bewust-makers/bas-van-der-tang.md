@@ -17,25 +17,16 @@ methoden:
   - intimiteit
   - tantra en conscious kink
 klachten:
-  - Zo gauw er maar het gevoel is dat er iets wringt en er een idee is dat er
-    meer onder de zon is dan het ‘normale’ leven
-  - wanneer mensen tegen beperkingen in zichzelf aanlopen rondom communicatie
-  - pleasing
-  - grenzen
-  - trauma gerelateerde stress en beperkende overtuigingen.
+  - "gevoel dat er iets wringt of dat er meer is dan het normale leven"
+  - "beperkingen in communicatie, grenzen stellen en pleasing"
+  - "trauma-gerelateerde stress en beperkende overtuigingen"
 kaart_tags:
   - Ademcoach
   - Human Design
   - Coaching
-citaat: Elke sessie begint met een intake, een kennismaking, een verkenning van
-  wat er speelt, hoe dat er uit ziet, waar naar gezocht wordt om van daar uit
-  een plan op te stellen hoe we te werk gaan. Dat kan via allerlei ingangen, via
-  praten, lichaamswerk, human design, ademwerk, etc.
+citaat: "Elke sessie begint met een intake — een verkenning van wat er speelt. Dat kan via praten, lichaamswerk, human design, ademwerk, etc."
 volgorde: 8
-omschrijving: Elke sessie begint met een intake, een kennismaking, een
-  verkenning van wat er speelt, hoe dat er uit ziet, waar naar gezocht wordt om
-  van daar uit een plan op te stellen hoe we te werk gaan. Dat kan via allerlei
-  ingangen, via praten, lichaamswerk, human design, ademwerk, etc.
+omschrijving: "Elke sessie begint met een intake, een kennismaking, een verkenning van wat er speelt. We stellen samen een plan op: via praten, lichaamswerk, human design, ademwerk, etc."
 website: basvandertang.nl, kinkofthenorth.com
 email_zichtbaar: ""
 telefoon: ""

@@ -3,7 +3,7 @@ naam: "Sjouk"
 praktijk: "BySjouk"
 provincie: "Drenthe"
 stad: ""
-foto: ""
+foto: "/assets/images/makers/sjouk.jpg"
 categorieen:
   - "Coaching"
   - "Energetisch"
