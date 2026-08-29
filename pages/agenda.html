@@ -16,10 +16,10 @@ permalink: /agenda/
     <p style="margin-bottom:2rem;">Vanuit een holistische benadering nodigen we je uit om op verschillende manieren bij te dragen aan jouw gezondheid en welzijn. Van expressieve workshops tot fysieke beweging en ademwerk, van momenten van stilte tot diepere zelfbewustwording.</p>
 
     {% assign alle_items = site.agenda | where: "gepubliceerd", true %}
-    {% assign doorlopend = alle_items | where: "doorlopend", true %}
+    {% assign doorlopend = alle_items | where: "doorlopend", true | sort: "volgorde" %}
     {% assign gepland = alle_items | where: "doorlopend", false | sort: "datum" %}
 
-    <div id="agenda-lijst">
+    <div id="agenda-komend">
 
       {% for item in doorlopend %}
       <article class="agenda-item" data-datum="">
@@ -55,7 +55,7 @@ permalink: /agenda/
       {% assign maanden = "jan,feb,mrt,apr,mei,jun,jul,aug,sep,okt,nov,dec" | split: "," %}
       {% assign maand_nr = datum_parts[1] | minus: 1 %}
       {% assign maand_naam = maanden[maand_nr] %}
-      <article class="agenda-item" data-datum="{{ item.datum }}">
+      <article class="agenda-item js-agenda-gepland" data-datum="{{ item.datum }}">
         <div class="agenda-datum">
           <div class="agenda-datum__dag">{{ datum_parts[2] }}</div>
           <div class="agenda-datum__maand">{{ maand_naam }}</div>
@@ -83,37 +83,74 @@ permalink: /agenda/
       </article>
       {% endfor %}
 
-      {% if alle_items.size == 0 %}
-      <div style="text-align:center; padding:3rem 0; color:var(--tekst-licht);">
+      <div id="agenda-leeg" style="display:none; text-align:center; padding:3rem 0; color:var(--tekst-licht);">
         <p style="font-size:1.1rem;">Er staan momenteel geen activiteiten gepland.</p>
         <p style="margin-top:0.5rem; font-size:0.9rem;">Volg ons op
-          <a href="https://www.facebook.com/profile.php?id=61587382533407" target="_blank" rel="noopener">Facebook</a>
-          of <a href="https://www.instagram.com/nederlandbewust2026/" target="_blank" rel="noopener">Instagram</a>
+          <a href="{{ site.data.teksten_contact.facebook_link }}" target="_blank" rel="noopener">Facebook</a>
+          of <a href="{{ site.data.teksten_contact.instagram_link }}" target="_blank" rel="noopener">Instagram</a>
           voor de laatste updates.</p>
       </div>
-      {% endif %}
+    </div>
 
+    <!-- Geschiedenis: voorbije events komen hier terecht via JavaScript -->
+    <div id="agenda-historie" style="display:none; margin-top:3rem;">
+      <button id="toggle-historie"
+        style="background:none; border:none; color:var(--groen); font-size:0.9rem; cursor:pointer; text-decoration:underline; padding:0; margin-bottom:1rem;">
+        ▾ Toon vorige evenementen
+      </button>
+      <div id="historie-inhoud" style="display:none;"></div>
     </div>
 
     <!-- Activiteit aanmelden -->
     <div style="margin-top:3rem; background:var(--creme); border-radius:var(--radius-groot); padding:1.5rem 2rem; text-align:center;">
       <h3 style="margin-bottom:0.5rem;">Een activiteit aanmelden?</h3>
-      <p style="font-size:0.9rem; color:var(--tekst-licht); margin-bottom:1rem;">Ben je bewust-maker en wil je een workshop of evenement toevoegen? Log in via het beheerpaneel.</p>
-      <a href="/maker-beheer/" class="knop knop--groen" style="font-size:0.9rem;">📅 Activiteit toevoegen</a>
+      <p style="font-size:0.9rem; color:var(--tekst-licht); margin-bottom:1rem;">Ben je bewust-maker en wil je een workshop of evenement toevoegen? Meld het via het contactformulier of log in via het beheerpaneel.</p>
+      <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen" style="font-size:0.9rem;">📅 Activiteit aanmelden</a>
     </div>
 
   </div>
 </section>
 
 <script>
-// Verberg agenda-items waarvan de datum verstreken is
 document.addEventListener('DOMContentLoaded', function() {
   var vandaag = new Date();
   vandaag.setHours(0, 0, 0, 0);
-  document.querySelectorAll('.agenda-item[data-datum]').forEach(function(item) {
-    var datum = item.getAttribute('data-datum');
-    if (!datum) return; // doorlopend
-    if (new Date(datum) < vandaag) item.style.display = 'none';
+
+  var historieWrap = document.getElementById('agenda-historie');
+  var historieInhoud = document.getElementById('historie-inhoud');
+  var komendWrap = document.getElementById('agenda-komend');
+  var leegEl = document.getElementById('agenda-leeg');
+  var toggleBtn = document.getElementById('toggle-historie');
+
+  var items = document.querySelectorAll('.js-agenda-gepland');
+  var komendAantal = document.querySelectorAll('.agenda-item:not(.js-agenda-gepland)').length;
+
+  items.forEach(function(item) {
+    var datumStr = item.getAttribute('data-datum');
+    if (!datumStr) return;
+    var d = new Date(datumStr);
+    if (d < vandaag) {
+      historieInhoud.appendChild(item);
+      item.style.opacity = '0.6';
+    } else {
+      komendAantal++;
+    }
   });
+
+  if (historieInhoud.children.length > 0) {
+    historieWrap.style.display = 'block';
+  }
+
+  if (komendAantal === 0) {
+    leegEl.style.display = 'block';
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      var open = historieInhoud.style.display === 'none';
+      historieInhoud.style.display = open ? 'block' : 'none';
+      toggleBtn.textContent = open ? '▴ Verberg vorige evenementen' : '▾ Toon vorige evenementen';
+    });
+  }
 });
 </script>

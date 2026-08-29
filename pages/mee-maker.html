@@ -5,16 +5,18 @@ beschrijving: "Mee-makers zijn organisaties en initiatieven die de missie van Ne
 permalink: /mee-maker/
 ---
 
+{% assign d = site.data.teksten_mee_maker %}
+
 <div class="pagina-header">
-  <h1>Onze Mee-makers</h1>
-  <p>Organisaties die Nederland bewuster maken</p>
+  <h1>{{ d.kop }}</h1>
+  <p>{{ d.subtitel }}</p>
 </div>
 
 <section class="sectie">
   <div class="container">
 
     <div style="text-align:center;max-width:640px;margin:0 auto 2.5rem;">
-      <p>Mee-makers zijn ondernemers en organisaties die de missie van Nederland-Bewust steunen vanuit de zijlijn. Ze delen onze visie op een bewuster en gezonder Nederland.</p>
+      <p>{{ d.intro }}</p>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.5rem;margin-bottom:3rem;">
@@ -43,20 +45,19 @@ permalink: /mee-maker/
          style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1rem;background:var(--creme);border-radius:var(--radius-groot);border:2px dashed var(--goud);text-decoration:none;min-height:160px;">
         <div style="font-size:2rem;margin-bottom:0.5rem;">➕</div>
         <span style="font-size:0.85rem;font-weight:700;color:var(--goud-donker);text-align:center;">Jouw logo hier?</span>
-        <span style="font-size:0.78rem;color:var(--tekst-licht);text-align:center;margin-top:0.3rem;">Word gratis mee-maker</span>
+        <span style="font-size:0.78rem;color:var(--tekst-licht);text-align:center;margin-top:0.3rem;">{{ d.kaart_tekst }}</span>
       </a>
     </div>
 
     <div style="background:var(--creme);border-radius:var(--radius-groot);padding:2rem;max-width:640px;margin:0 auto;">
-      <h3 style="margin-bottom:1rem;">Word ook Mee-maker — gratis!</h3>
-      <p style="color:var(--tekst-licht);margin-bottom:1.2rem;">Plaats een linkje &amp; logo van Nederland-Bewust op jouw website en word gratis Mee-maker.</p>
+      <h3 style="margin-bottom:1rem;">{{ d.blok_titel }}</h3>
+      <p style="color:var(--tekst-licht);margin-bottom:1.2rem;">{{ d.blok_intro }}</p>
       <ul style="margin-bottom:1.5rem;">
-        <li style="padding:0.35rem 0 0.35rem 1.4rem;position:relative;font-size:0.92rem;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--goud-donker);">✓</span>Jouw logo in de lijst van mee-makers</li>
-        <li style="padding:0.35rem 0 0.35rem 1.4rem;position:relative;font-size:0.92rem;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--goud-donker);">✓</span>Doorverwijs link naar jouw website</li>
-        <li style="padding:0.35rem 0 0.35rem 1.4rem;position:relative;font-size:0.92rem;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--goud-donker);">✓</span>Uitnodiging voor geselecteerde evenementen</li>
-        <li style="padding:0.35rem 0 0.35rem 1.4rem;position:relative;font-size:0.92rem;"><span style="position:absolute;left:0;color:var(--goud-donker);">✓</span>Agendapunten in bundel van 5 stuks voor €25,-</li>
+        {% for voordeel in d.voordelen %}
+        <li style="padding:0.35rem 0 0.35rem 1.4rem;position:relative;font-size:0.92rem;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--goud-donker);">✓</span>{{ voordeel }}</li>
+        {% endfor %}
       </ul>
-      <a href="{{ '/meld-je-aan/' | relative_url }}" class="knop knop--groen">Ja, ik word Mee-maker</a>
+      <a href="{{ '/meld-je-aan/' | relative_url }}" class="knop knop--groen">{{ d.blok_knop }}</a>
     </div>
 
   </div>

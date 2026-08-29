@@ -1,4 +1,19 @@
+# Contactpagina teksten — aanpassen via /admin/
 titel: Contact
-subtitel: Kom in verbinding op de manier die bij jou past!
-intro: "\n\n"
+subtitel: "Kom in verbinding op de manier die bij jou past!"
+intro: "Ben je op zoek naar een therapievorm die past bij jouw situatie? Of wil je meer weten over Nederland-Bewust? We staan voor je klaar!"
 formulier_titel: Stuur een bericht
+email: "info@nederland-bewust.nl"
+persoon1_naam: "Marcella van den Burg"
+persoon1_telefoon: "06-21312490"
+persoon1_telefoon_link: "+31621312490"
+persoon2_naam: "Elsemarie van der Ploeg"
+persoon2_telefoon: "06-59111456"
+persoon2_telefoon_link: "+31659111456"
+whatsapp_link: "https://wa.me/31659111456"
+whatsapp_tekst: "Stuur een WhatsApp bericht"
+facebook_link: "https://www.facebook.com/profile.php?id=61587382533407"
+facebook_tekst: "Volg ons op Facebook"
+instagram_link: "https://www.instagram.com/nederlandbewust2026/"
+instagram_tekst: "@nederlandbewust2026"
+foto_bijschrift: "Marcella van den Burg & Elsemarie van der Ploeg – oprichters"

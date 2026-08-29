@@ -1,0 +1,76 @@
+# Coördinaten van Nederlandse steden — gebruikt als fallback voor 'zoek op afstand'
+# wanneer een bewust-maker geen handmatige lat/lon heeft ingevoerd.
+# Stadnaam moet exact overeenkomen (hoofdlettergevoelig) met het 'stad'-veld van de bewust-maker.
+
+Groningen: {lat: 53.2194, lon: 6.5665}
+Assen: {lat: 52.9925, lon: 6.5641}
+Emmen: {lat: 52.7870, lon: 6.8986}
+Hoogeveen: {lat: 52.7242, lon: 6.4779}
+Meppel: {lat: 52.6961, lon: 6.1938}
+Coevorden: {lat: 52.6607, lon: 6.7435}
+Hardenberg: {lat: 52.5775, lon: 6.6173}
+Roden: {lat: 53.1360, lon: 6.4313}
+Beilen: {lat: 52.8617, lon: 6.5150}
+Westerbork: {lat: 52.8456, lon: 6.6112}
+Borger: {lat: 52.9185, lon: 6.7950}
+Stadskanaal: {lat: 52.9878, lon: 6.9509}
+Winschoten: {lat: 53.1430, lon: 6.9955}
+Delfzijl: {lat: 53.3272, lon: 6.9241}
+Veendam: {lat: 53.1081, lon: 6.8727}
+Appingedam: {lat: 53.3249, lon: 6.8623}
+Hoogezand: {lat: 53.1721, lon: 6.7688}
+Leeuwarden: {lat: 53.2012, lon: 5.7999}
+Sneek: {lat: 53.0320, lon: 5.6600}
+Drachten: {lat: 53.1103, lon: 6.0969}
+Heerenveen: {lat: 52.9608, lon: 5.9224}
+Franeker: {lat: 53.1867, lon: 5.5374}
+Harlingen: {lat: 53.1748, lon: 5.4261}
+Bolsward: {lat: 53.0676, lon: 5.5293}
+Zwolle: {lat: 52.5168, lon: 6.0830}
+Deventer: {lat: 52.2559, lon: 6.1583}
+Enschede: {lat: 52.2215, lon: 6.8937}
+Almelo: {lat: 52.3567, lon: 6.6649}
+Hengelo: {lat: 52.2658, lon: 6.7933}
+Oldenzaal: {lat: 52.3126, lon: 6.9286}
+Steenwijk: {lat: 52.7869, lon: 6.1144}
+Amsterdam: {lat: 52.3676, lon: 4.9041}
+Rotterdam: {lat: 51.9244, lon: 4.4777}
+Den Haag: {lat: 52.0705, lon: 4.3007}
+Utrecht: {lat: 52.0907, lon: 5.1214}
+Eindhoven: {lat: 51.4416, lon: 5.4697}
+Tilburg: {lat: 51.5655, lon: 5.0913}
+Groningen: {lat: 53.2194, lon: 6.5665}
+Almere: {lat: 52.3508, lon: 5.2647}
+Breda: {lat: 51.5719, lon: 4.7683}
+Nijmegen: {lat: 51.8426, lon: 5.8546}
+Arnhem: {lat: 51.9851, lon: 5.8987}
+Maastricht: {lat: 50.8514, lon: 5.6909}
+Dordrecht: {lat: 51.8133, lon: 4.6901}
+Leiden: {lat: 52.1601, lon: 4.4970}
+Haarlemmermeer: {lat: 52.3018, lon: 4.6876}
+Zoetermeer: {lat: 52.0576, lon: 4.4939}
+Zwolle: {lat: 52.5168, lon: 6.0830}
+Amersfoort: {lat: 52.1561, lon: 5.3878}
+Apeldoorn: {lat: 52.2112, lon: 5.9699}
+'s-Hertogenbosch: {lat: 51.6978, lon: 5.3037}
+Haarlem: {lat: 52.3874, lon: 4.6462}
+Zaanstad: {lat: 52.4440, lon: 4.8291}
+Delft: {lat: 52.0116, lon: 4.3571}
+Westland: {lat: 51.9942, lon: 4.2190}
+Alkmaar: {lat: 52.6324, lon: 4.7534}
+Emmen: {lat: 52.7870, lon: 6.8986}
+Venlo: {lat: 51.3704, lon: 6.1724}
+Leidschendam: {lat: 52.0867, lon: 4.3917}
+Helmond: {lat: 51.4781, lon: 5.6614}
+Ede: {lat: 52.0438, lon: 5.6558}
+Lelystad: {lat: 52.5185, lon: 5.4714}
+Sittard: {lat: 51.0001, lon: 5.8697}
+Roosendaal: {lat: 51.5306, lon: 4.4631}
+Middelburg: {lat: 51.4988, lon: 3.6136}
+Vlissingen: {lat: 51.4422, lon: 3.5715}
+Bergen op Zoom: {lat: 51.4978, lon: 4.2903}
+Hoorn: {lat: 52.6440, lon: 5.0602}
+Purmerend: {lat: 52.5052, lon: 4.9568}
+Hilversum: {lat: 52.2292, lon: 5.1797}
+Spijkenisse: {lat: 51.8444, lon: 4.3278}
+Nieuw-Vossemeer: {lat: 51.6138, lon: 4.2463}

@@ -5,39 +5,34 @@ beschrijving: "Ontdek de holistische benadering van je lichamelijke gezondheid. 
 permalink: /pijler-fysiek/
 ---
 
+{% assign d = site.data.teksten_pijler_fysiek %}
+
 <div class="pagina-header">
-  <h1>Fysiek, voeding &amp; bewegen</h1>
-  <p>Jouw lichaam is het fundament van je welzijn</p>
+  <h1>{{ d.kop }}</h1>
+  <p>{{ d.subtitel }}</p>
 </div>
 
 <section class="sectie">
   <div class="container" style="max-width:760px;">
 
-    <p style="font-size:1.1rem; line-height:1.8;">
-      Klachten in je lichaam zijn zelden alleen lichamelijk. Een gespannen schouder, chronische vermoeidheid, spijsverteringsproblemen of slaapgebrek — ze vertellen vaak een dieper verhaal. De bewust-makers binnen deze pijler werken vanuit een <strong>holistische benadering</strong>: ze kijken naar het lichaam als geheel, in samenhang met je geest en energie.
-    </p>
+    <p style="font-size:1.1rem; line-height:1.8;">{{ d.intro }}</p>
 
-    <h2 style="margin-top:2.5rem;">Wat valt onder deze pijler?</h2>
+    <h2 style="margin-top:2.5rem;">{{ d.wat_titel }}</h2>
     <ul style="line-height:2; font-size:1rem;">
-      <li><strong>Massage &amp; lichaamswerk</strong> — zoals shiatsu, cranio-sacraaltherapie, sportmassage en lymfedrainage</li>
-      <li><strong>Voeding &amp; leefstijl</strong> — orthomoleculaire therapie, voedingsadvies en detox-begeleiding</li>
-      <li><strong>Beweging &amp; ademhaling</strong> — yoga, ademcoaching, qigong en functionele training</li>
-      <li><strong>Pijnbegeleiding</strong> — bij chronische klachten, blessures of herstel na ziekte</li>
+      {% for item in d.items %}<li>{{ item }}</li>{% endfor %}
     </ul>
 
-    <h2 style="margin-top:2.5rem;">Voor wie?</h2>
-    <p style="line-height:1.8;">
-      Voor iedereen die iets in zijn of haar lichaam wil aanpakken dat niet helemaal goed voelt — van fysieke klachten tot het gevoel dat je lichaam meer energie verdient. Of je nu op zoek bent naar ontspanning, herstel of een gezondere leefstijl: er is altijd een bewust-maker die bij jouw situatie past.
-    </p>
+    <h2 style="margin-top:2.5rem;">{{ d.voor_wie_titel }}</h2>
+    <p style="line-height:1.8;">{{ d.voor_wie_tekst }}</p>
 
     <div style="background:var(--creme); border-radius:16px; padding:2rem; margin-top:2.5rem;">
-      <h3 style="margin-bottom:0.5rem;">Weet je niet waar je moet beginnen?</h3>
-      <p style="color:var(--tekst-licht); margin-bottom:1.2rem;">Marcella en Elsemarie helpen je kosteloos op weg. In een gratis adviesgesprek bespreken we jouw situatie en welke bewust-maker het beste bij jou past.</p>
-      <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen">Vraag een gratis adviesgesprek aan</a>
+      <h3 style="margin-bottom:0.5rem;">{{ d.cta_titel }}</h3>
+      <p style="color:var(--tekst-licht); margin-bottom:1.2rem;">{{ d.cta_tekst }}</p>
+      <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen">{{ d.cta_knop }}</a>
     </div>
 
     <div style="text-align:center; margin-top:3rem;">
-      <a href="{{ '/onze-bewust-makers/' | relative_url }}?filter=massage" class="knop knop--primair">Vind een bewust-maker Fysiek</a>
+      <a href="{{ '/onze-bewust-makers/' | relative_url }}?filter=massage" class="knop knop--primair">{{ d.makers_knop }}</a>
     </div>
 
   </div>

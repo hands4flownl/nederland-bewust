@@ -5,40 +5,34 @@ beschrijving: "Je mentale gezondheid bepaalt hoe je je voelt. Vind bewust-makers
 permalink: /pijler-mentaal/
 ---
 
+{% assign d = site.data.teksten_pijler_mentaal %}
+
 <div class="pagina-header">
-  <h1>Mentaal &amp; coaching</h1>
-  <p>Jouw gedachten vormen jouw werkelijkheid</p>
+  <h1>{{ d.kop }}</h1>
+  <p>{{ d.subtitel }}</p>
 </div>
 
 <section class="sectie">
   <div class="container" style="max-width:760px;">
 
-    <p style="font-size:1.1rem; line-height:1.8;">
-      Je mentale gezondheid bepaalt hoe je je voelt — in je hoofd, je lichaam en in je relaties. Stress, angst, vastgelopen patronen of het gevoel dat je niet jezelf bent: het zijn signalen die vragen om aandacht. De bewust-makers binnen deze pijler bieden een <strong>veilige ruimte</strong> om te onderzoeken wat er speelt en hoe je verder kunt.
-    </p>
+    <p style="font-size:1.1rem; line-height:1.8;">{{ d.intro }}</p>
 
-    <h2 style="margin-top:2.5rem;">Wat valt onder deze pijler?</h2>
+    <h2 style="margin-top:2.5rem;">{{ d.wat_titel }}</h2>
     <ul style="line-height:2; font-size:1rem;">
-      <li><strong>Life coaching &amp; persoonlijke ontwikkeling</strong> — voor meer richting, zelfvertrouwen en levensgeluk</li>
-      <li><strong>Psychologische therapie</strong> — zoals ACT, cognitieve gedragstherapie en traumaverwerking</li>
-      <li><strong>NLP &amp; hypnotherapie</strong> — voor het doorbreken van beperkende overtuigingen</li>
-      <li><strong>Relatie- en communicatiecoaching</strong> — voor groei in je persoonlijke en professionele relaties</li>
-      <li><strong>Rouw en verlies begeleiding</strong> — ondersteuning bij verlies van een dierbare of ingrijpende verandering</li>
+      {% for item in d.items %}<li>{{ item }}</li>{% endfor %}
     </ul>
 
-    <h2 style="margin-top:2.5rem;">Voor wie?</h2>
-    <p style="line-height:1.8;">
-      Voor mensen die vastlopen, meer uit het leven willen halen, patronen willen doorbreken of gewoon een goed gesprek nodig hebben. Je hoeft geen crisis te hebben om hulp te zoeken — ook preventief werken aan je mentale gezondheid is een daad van zelfzorg.
-    </p>
+    <h2 style="margin-top:2.5rem;">{{ d.voor_wie_titel }}</h2>
+    <p style="line-height:1.8;">{{ d.voor_wie_tekst }}</p>
 
     <div style="background:var(--creme); border-radius:16px; padding:2rem; margin-top:2.5rem;">
-      <h3 style="margin-bottom:0.5rem;">Weet je niet waar je moet beginnen?</h3>
-      <p style="color:var(--tekst-licht); margin-bottom:1.2rem;">Marcella en Elsemarie helpen je kosteloos op weg. In een gratis adviesgesprek bespreken we jouw situatie en welke bewust-maker het beste bij jou past.</p>
-      <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen">Vraag een gratis adviesgesprek aan</a>
+      <h3 style="margin-bottom:0.5rem;">{{ d.cta_titel }}</h3>
+      <p style="color:var(--tekst-licht); margin-bottom:1.2rem;">{{ d.cta_tekst }}</p>
+      <a href="{{ '/contact/' | relative_url }}" class="knop knop--groen">{{ d.cta_knop }}</a>
     </div>
 
     <div style="text-align:center; margin-top:3rem;">
-      <a href="{{ '/onze-bewust-makers/' | relative_url }}?filter=coaching" class="knop knop--primair">Vind een bewust-maker Mentaal</a>
+      <a href="{{ '/onze-bewust-makers/' | relative_url }}?filter=coaching" class="knop knop--primair">{{ d.makers_knop }}</a>
     </div>
 
   </div>
