@@ -31,10 +31,14 @@ email_zichtbaar: ""
 telefoon: ""
 online: Nee
 sessieduur: 45 min
-tarief: ""
+tarief: "Ik werk met twee duidelijke abonnementen:  Abonnement Basis - Wekelijks
+  één SlimUp® sessie   - Inclusief begeleiding   - 60 minuten per sessie   - €
+  155 per vier weken  Abonnement Extra - Wekelijks één dubbele sessie: SlimUp® +
+  BodySculptor   - Inclusief begeleiding   - 90 minuten per sessie   - € 200 per
+  vier weken"
 eerste_gesprek: Gratis kennismaking
-vergoeding: ""
-ervaringsjaren: 3
+vergoeding: nee
+ervaringsjaren: 25
 talen:
   - Nederlands
 doelgroepen:
